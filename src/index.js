@@ -2,11 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Login from './Components/Login'
 import reportWebVitals from './reportWebVitals';
+import Dashboard from './Components/Dashboard'
+import Navbar from './Components/Navbar';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Navbar/>
+    <Dashboard/>
+    <Login/>
   </React.StrictMode>,
   document.getElementById('root')
 );
