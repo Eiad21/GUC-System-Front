@@ -11,7 +11,6 @@ ReactDOM.render(
   <React.StrictMode>
     <Navbar/>
     <Dashboard/>
-    <Login/>
   </React.StrictMode>,
   document.getElementById('root')
 );
