@@ -24,22 +24,25 @@ class Navbar extends Component {
 
               <a href="#" style={(this.state.memberRank!="hr")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Schedule</a>
 
-              <a href="#" style={this.state.hr?{display: 'block'}:{color: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>
+              {/* <a href="#" style={this.state.hr?{display: 'block'}:{color: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a> */}
 
-              <a href="#" style={(this.state.memberRank=="hod")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Courses</a>
+              <a href="#" style={(this.state.memberRank!="hr")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Courses</a>
 
               <a href="#" style={(this.state.memberRank=="hod")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Department staff</a>
 
-              <a href="#" style={(this.state.memberRank=="hod")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Requests</a>
+              <a href="#" style={(this.state.memberRank!="hr")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Requests</a>
 
 
               <a href="#" style={(this.state.memberRank=="instructor")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Courses</a>
 
+              <a href="#" style={(this.state.memberRank=="coordinator")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Slot Linking requests</a>
 
 
 
 
-              <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</a>
+              {/* <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</a> */}
+
+
             </div>
           </div>
         </div>
