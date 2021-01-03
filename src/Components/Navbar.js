@@ -16,6 +16,7 @@ class Navbar extends Component {
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
+              <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
 
               <a href="#" style={(this.state.memberRank=="hr")?{display: 'block'}:{display: 'none'}} className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Add Entity</a>
 
