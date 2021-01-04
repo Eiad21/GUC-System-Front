@@ -10,7 +10,7 @@ import Navbar from './Components/Navbar';
 ReactDOM.render(
   <React.StrictMode>
     <Navbar/>
-    <Dashboard/>
+    <Dashboard name={"Eiad"}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

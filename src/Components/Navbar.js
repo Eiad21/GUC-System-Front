@@ -3,9 +3,11 @@ import './Navbar.css';
 class Navbar extends Component {
   constructor(){
     super();
-    this.state = {memberRank:"hod"}
+    this.state = {memberRank:"hr"}
   }  
-    render() { 
+    render() {
+      let NBclassClicked = "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+      let NBclassNotClicked = "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" 
         return ( 
             <nav className="bg-gray-800">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,26 +18,21 @@ class Navbar extends Component {
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+              <a href="#" class={NBclassClicked}>Dashboard</a>
 
-              <a href="#" style={(this.state.memberRank=="hr")?{display: 'block'}:{display: 'none'}} className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Add Entity</a>
+              <a href="#" style={(this.state.memberRank=="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>Add Entity</a>
+              <a href="#" style={(this.state.memberRank=="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>Staff Attendance</a>
 
-              <a href="#" style={(this.state.memberRank=="hr")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Staff Attendance</a>
+              <a href="#" style={(this.state.memberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Schedule</a>
+              <a href="#" style={(this.state.memberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
+              <a href="#" style={(this.state.memberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Requests</a>
 
-              <a href="#" style={(this.state.memberRank!="hr")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Schedule</a>
-
-              {/* <a href="#" style={this.state.hr?{display: 'block'}:{color: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a> */}
-
-              <a href="#" style={(this.state.memberRank!="hr")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Courses</a>
-
-              <a href="#" style={(this.state.memberRank=="hod")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Department staff</a>
-
-              <a href="#" style={(this.state.memberRank!="hr")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Requests</a>
+              <a href="#" style={(this.state.memberRank=="hod")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Department staff</a>
 
 
-              <a href="#" style={(this.state.memberRank=="instructor")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Courses</a>
+              <a href="#" style={(this.state.memberRank=="instructor")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
 
-              <a href="#" style={(this.state.memberRank=="coordinator")?{display: 'block'}:{display: 'none'}} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Slot Linking requests</a>
+              <a href="#" style={(this.state.memberRank=="coordinator")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>Slot Linking requests</a>
 
 
 
