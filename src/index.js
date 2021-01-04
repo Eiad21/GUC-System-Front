@@ -1,5 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './index.css';
 import App from './App';
 import Login from './Components/Login'
@@ -8,10 +14,21 @@ import Dashboard from './Components/Dashboard'
 import Navbar from './Components/Navbar';
 
 ReactDOM.render(
+  <Router>
+  <Switch>
+  <Route exact path="/">
   <React.StrictMode>
     <Navbar/>
     <Dashboard name={"Eiad"}/>
-  </React.StrictMode>,
+  </React.StrictMode>
+  </Route>
+  <Route exact path="/login">
+  <React.StrictMode>
+    <Login/>
+  </React.StrictMode>
+  </Route>
+  </Switch>
+  </Router>,
   document.getElementById('root')
 );
 
