@@ -1,12 +1,14 @@
 import React from "react";
 import "./style.css";
 
+import axios from 'axios'
+
 //import loginImg from "../../login.svg";
 
 
 
 
-
+const url='mongodb+srv://karimanga:123456abc@cluster0.ecodf.mongodb.net/guc?retryWrites=true'
 
 class Login extends React.Component {
   
@@ -29,8 +31,8 @@ class Login extends React.Component {
   }
 
   handleSubmit(evt) {
+    console.log("click")
     evt.preventDefault();
-
     if (!this.state.username) {
       return this.setState({ error: 'Username is required' });
     }
@@ -39,7 +41,21 @@ class Login extends React.Component {
       return this.setState({ error: 'Password is required' });
     }
 
-    return this.setState({ error: '' });
+    axios.post("localhost:3001/logIn" , {storeInfo})
+        .then((res) => {
+          console.log("about retured Data now");
+          console.log(typeof res.data);
+        //  console.log(autoLoginData);
+          return res.data;
+        })
+        .catch((err)=>{
+          console.log(" ERROR in postStoreInfo_GB");
+          console.log(store_hash);
+          console.log(storeInfo);
+        //   console.log(err);
+          //     Sentry.captureException(error);
+          return null;
+        })
   }
 
   handleUserChange(evt) {
@@ -52,6 +68,13 @@ class Login extends React.Component {
     this.setState({
       password: evt.target.value,
     });
+
+    this.setState((prevState) =>{
+      return{
+        ...prevState,
+        password: evt.target.value
+      }
+    })
   }
 
 
@@ -76,7 +99,7 @@ class Login extends React.Component {
 
           <br></br>
          
-            <a className="submit" align="center">Log in</a>
+            <a className="submit" align="center" onClick={this.handleSubmit}>Log in</a>
             <p className="forgot" align="center"><a href="#">Forgot Password?</a></p>
             
             </form></div>
