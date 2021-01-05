@@ -71,8 +71,8 @@ class Navbar extends Component {
 
                 <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Log out</a>
               </div>}
-            </div>
-          </div>
+            </div> 
+        </div>
         </div>
         <div className="-mr-2 flex md:hidden">
           <button className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">

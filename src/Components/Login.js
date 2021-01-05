@@ -60,6 +60,7 @@ class Login extends React.Component {
       <div className="maindiv">
       
 
+
         <link rel="stylesheet" href="css/style.css" />
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,6 +73,7 @@ class Login extends React.Component {
           <input className="un " type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} placeholder="UserName" />
           <br></br>
           <input className="pass" type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} placeholder="password" />
+
           <br></br>
          
             <a className="submit" align="center">Log in</a>

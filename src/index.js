@@ -22,7 +22,8 @@ ReactDOM.render(
     <Dashboard name={"Eiad"}/>
   </React.StrictMode>
   </Route>
-  <Route path="/login">
+
+  <Route exact path="/login">
   <React.StrictMode>
     <Login/>
   </React.StrictMode>
