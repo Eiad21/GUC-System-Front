@@ -61,7 +61,14 @@ const loginData={
           console.log(" ERROR in login");
          
            console.log(err);
-           
+           const newstate={...state};
+           if(!err || !err.res || !err.res.data){
+            newstate.error='Access denied';
+           }
+           else{
+              newstate.error=err.res.data;
+           }
+          setState(newstate);
         })
    }
 

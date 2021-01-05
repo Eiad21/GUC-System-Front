@@ -8,6 +8,7 @@ import {
 import Login from './Components/Login'
 import Dashboard from './Components/Dashboard'
 import Navbar from './Components/Navbar';
+import CourseCoverage from './Components/CourseCoverage';
 
 function App() {
   const [state, setState] = useState(
@@ -36,6 +37,14 @@ function App() {
     <Login updateUser={updateUser}/>
   </React.StrictMode>
   </Route>
+
+  <Route exact path="/courseCoverage">
+  <React.StrictMode>
+    <Navbar user={state.token}/>
+    <CourseCoverage/>
+  </React.StrictMode>
+  </Route>
+
   </Switch>
   </Router>
   </div>
