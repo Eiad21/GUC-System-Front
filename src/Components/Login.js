@@ -31,7 +31,10 @@ class Login extends React.Component {
   }
 
   handleSubmit(evt) {
+    console.log(this.state.username);
+    console.log(this.state.password);
     console.log("click")
+
     evt.preventDefault();
     if (!this.state.username) {
       return this.setState({ error: 'Username is required' });
@@ -40,41 +43,44 @@ class Login extends React.Component {
     if (!this.state.password) {
       return this.setState({ error: 'Password is required' });
     }
-
-    axios.post("localhost:3001/logIn" , {storeInfo})
+const loginData={
+  email:this.state.username,
+  password:this.state.password
+}
+    axios.post("localhost:3001/logIn" , loginData)
         .then((res) => {
           console.log("about retured Data now");
-          console.log(typeof res.data);
-        //  console.log(autoLoginData);
-          return res.data;
+          console.log(typeof res.header["auth-token"]);
+          console.log( res.header["auth-token"]);
+
+          return res.header["auth-token"];
         })
         .catch((err)=>{
-          console.log(" ERROR in postStoreInfo_GB");
-          console.log(store_hash);
-          console.log(storeInfo);
-        //   console.log(err);
-          //     Sentry.captureException(error);
+          console.log(" ERROR in login");
+         
+           console.log(err);
           return null;
         })
-  }
+   }
 
   handleUserChange(evt) {
-    this.setState({
-      username: evt.target.value,
-    });
+    this.setState((prevState) =>{
+      return{
+        ...prevState,
+        username: evt.target.value
+      }
+   } )
   };
 
   handlePassChange(evt) {
-    this.setState({
-      password: evt.target.value,
-    });
-
+  
+    
     this.setState((prevState) =>{
       return{
         ...prevState,
         password: evt.target.value
       }
-    })
+   } )
   }
 
 
