@@ -16,22 +16,8 @@ import Navbar from './Components/Navbar';
 
 
 ReactDOM.render(
-  <Router>
-  <Switch>
-  <Route exact path="/">
-  <React.StrictMode>
-    <Navbar/>
-    <Dashboard name={"Eiad"}/>
-  </React.StrictMode>
-  </Route>
-
-  <Route exact path="/login">
-  <React.StrictMode>
-    <Login/>
-  </React.StrictMode>
-  </Route>
-  </Switch>
-  </Router>,
+  <App></App>
+  ,
   document.getElementById('root')
 );
 

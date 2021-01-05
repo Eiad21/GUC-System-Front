@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Login from './Components/Login'
+import Dashboard from './Components/Dashboard'
+import Navbar from './Components/Navbar';
 
 function App() {
+  const [state, setState] = useState(
+    {
+      token:{}
+    }
+  );
+  const updateUser=(token)=>{
+    const newstate={...state};
+    newstate.token=token;
+    setState(newstate);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/The_German_University_in_Cairo_Official_logo.jpg" className="App-logo" alt="logo" />
-        <p>
-          Copyright <code>src/App.js</code> GUC 2022©
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GUC System
-        </a>
-      </header>
-    </div>
+    <div>
+    <Router>
+  <Switch>
+  <Route exact path="/">
+  <React.StrictMode>
+    <Navbar user={state.token}/>
+    <Dashboard name={state.token.name} user={state.token}/>
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/login">
+  <React.StrictMode>
+    <Login updateUser={updateUser}/>
+  </React.StrictMode>
+  </Route>
+  </Switch>
+  </Router>
+  </div>
   );
 }
 

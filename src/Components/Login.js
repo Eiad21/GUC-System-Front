@@ -1,58 +1,58 @@
-import React from "react";
+import React,{useState} from 'react'
+import { useHistory } from 'react-router-dom';
 import "./style.css";
 
 import axios from 'axios'
 
 //import loginImg from "../../login.svg";
-
+const jwt= require('jsonwebtoken')
 
 
 
 const url='mongodb+srv://karimanga:123456abc@cluster0.ecodf.mongodb.net/guc?retryWrites=true'
 
-class Login extends React.Component {
-  
-  constructor() {
-    super();
-    this.state = {
+function Login(props) {
+  const history = useHistory();
+  const [state, setState] = useState(
+    {
       username: '',
       password: '',
       error: '',
-    };
+    }
+  );
 
-    this.handlePassChange = this.handlePassChange.bind(this);
-    this.handleUserChange = this.handleUserChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.dismissError = this.dismissError.bind(this);
-  }
 
-  dismissError() {
-    this.setState({ error: '' });
-  }
-
-  handleSubmit(evt) {
-    console.log(this.state.username);
-    console.log(this.state.password);
+  const handleSubmit=(evt)=> {
+    console.log(state.username);
+    console.log(state.password);
     console.log("click")
 
-    evt.preventDefault();
-    if (!this.state.username) {
-      return this.setState({ error: 'Username is required' });
+    if (!state.username) {
+      const newstate={...state};
+      newstate.error='Username is required';
+      setState(newstate);
+      return newstate;
     }
 
-    if (!this.state.password) {
-      return this.setState({ error: 'Password is required' });
+    if (!state.password) {
+      const newstate={...state};
+      newstate.error='Password is required';
+      setState(newstate);
+      return newstate;
     }
 const loginData={
-  email:this.state.username,
-  password:this.state.password
+  email:state.username,
+  password:state.password
 }
 
     axios.post('http://localhost:8080/logIn' , loginData)
         .then((res) => {
-          console.log(res);
-
-          // return res.header["auth-token"];
+          console.log(res.data);
+          const token=res.data;
+          var decodedUser = jwt.verify(token, '25235325');
+          props.updateUser(decodedUser);
+          console.log(decodedUser);
+          history.push("/");
         }) 
         .catch((err)=>{
           console.log(" ERROR in login");
@@ -62,28 +62,34 @@ const loginData={
         })
    }
 
-  handleUserChange(evt) {
-    this.setState((prevState) =>{
-      return{
-        ...prevState,
-        username: evt.target.value
-      }
-   } )
-  };
+  const handleUserChange=(evt)=>{
+  //   setState((prevState) =>{
+  //     return{
+  //       ...prevState,
+  //       username: evt.target.value
+  //     }
+  //  } )
+    const newstate={...state};
+    // console.log(newstate);
+    newstate.username=evt.target.value;
+    setState(newstate);
+  }
 
-  handlePassChange(evt) {
-  
+  const handlePassChange=(evt)=> {
+  //   setState((prevState) =>{
+  //     return{
+  //       ...prevState,
+  //       password: evt.target.value
+  //     }
+  //  } )
+   const newstate={...state};
+  //  console.log(newstate);
+   newstate.password=evt.target.value;
+   setState(newstate);
     
-    this.setState((prevState) =>{
-      return{
-        ...prevState,
-        password: evt.target.value
-      }
-   } )
   }
 
 
-  render() {
     return (
       <div className="maindiv">
       
@@ -98,18 +104,18 @@ const loginData={
           <p className="sign" align="center">Log in</p>
           <form className="form1">
 
-          <input className="un " type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} placeholder="UserName" />
+          <input className="un " type="text" data-test="username" value={state.username} onChange={handleUserChange} placeholder="UserName" />
           <br></br>
-          <input className="pass" type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} placeholder="password" />
+          <input className="pass" type="password" data-test="password" value={state.password} onChange={handlePassChange} placeholder="password" />
 
           <br></br>
          
-            <a className="submit" align="center" onClick={this.handleSubmit}>Log in</a>
+            <a className="submit" align="center" onClick={handleSubmit}>Log in</a>
             <p className="forgot" align="center"><a href="#">Forgot Password?</a></p>
             
             </form></div>
         </div>
     );
   }
-};
+
 export default Login;
