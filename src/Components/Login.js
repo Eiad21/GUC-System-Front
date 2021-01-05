@@ -50,12 +50,10 @@ const loginData={
 
     axios.post('http://localhost:8080/logIn' , loginData)
         .then((res) => {
-          console.log("about retured Data now");
-          console.log(typeof res.header["auth-token"]);
-          console.log( res.header["auth-token"]);
+          console.log(res);
 
-          return res.header["auth-token"];
-        })
+          // return res.header["auth-token"];
+        }) 
         .catch((err)=>{
           console.log(" ERROR in login");
          
