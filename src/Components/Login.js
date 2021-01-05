@@ -40,6 +40,9 @@ function Login(props) {
       setState(newstate);
       return newstate;
     }
+    const newstate={...state};
+      newstate.error='';
+      setState(newstate);
 const loginData={
   email:state.username,
   password:state.password
@@ -58,7 +61,7 @@ const loginData={
           console.log(" ERROR in login");
          
            console.log(err);
-          return null;
+           
         })
    }
 
@@ -112,6 +115,7 @@ const loginData={
          
             <a className="submit" align="center" onClick={handleSubmit}>Log in</a>
             <p className="forgot" align="center"><a href="#">Forgot Password?</a></p>
+            <p className="a" align="center" style={(state.error)?{display: 'block'}:{display: 'none'}}>{state.error}</p>
             
             </form></div>
         </div>
