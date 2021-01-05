@@ -1,6 +1,15 @@
-import React, { Component } from 'react';
+import React from "react";
+import "./style.css";
 
-class Login extends Component {
+//import loginImg from "../../login.svg";
+
+
+
+
+
+
+class Login extends React.Component {
+  
   constructor() {
     super();
     this.state = {
@@ -45,32 +54,32 @@ class Login extends Component {
     });
   }
 
+
   render() {
-    // NOTE: I use data-attributes for easier E2E testing
-    // but you don't need to target those (any css-selector will work)
-
     return (
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          {
-            this.state.error &&
-            <h3 data-test="error" onClick={this.dismissError}>
-              <button onClick={this.dismissError}>✖</button>
-              {this.state.error}
-            </h3>
-          }
-          <label>User Name</label>
-          <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
-          <br></br>
-          <label>Password</label>
-          <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
-          <br></br>
+      <div className="maindiv">
+      
 
-          <input type="submit" value="Log In" data-test="submit" />
-        </form>
-      </div>
+        <link rel="stylesheet" href="css/style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+        <title>Sign in</title>
+        <div className="main">
+          <p className="sign" align="center">Log in</p>
+          <form className="form1">
+
+          <input className="un " type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} placeholder="UserName" />
+          <br></br>
+          <input className="pass" type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} placeholder="password" />
+          <br></br>
+         
+            <a className="submit" align="center">Log in</a>
+            <p className="forgot" align="center"><a href="#">Forgot Password?</a></p>
+            
+            </form></div>
+        </div>
     );
   }
-}
-
+};
 export default Login;

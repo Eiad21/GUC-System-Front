@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
-import './Navbar.css';
+//import  './Navbar.css';
 class Navbar extends Component {
   constructor(){
     super();
-    this.state = {memberRank:"hr"}
+    this.state = {memberRank:"hod",checked:false}
+    this.handlecheckboxChange = this.handlecheckboxChange.bind(this);
   }  
+  handlecheckboxChange()
+  {
+    this.setState({checked:!this.state.checked})
+  }
     render() {
       let NBclassClicked = "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
       let NBclassNotClicked = "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" 
         return ( 
+          <div className="navbar">
             <nav className="bg-gray-800">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex items-center justify-between h-16">
@@ -54,17 +60,17 @@ class Navbar extends Component {
             </button>
 
             <div className="ml-3 relative">
-              <input id="check01" type="checkbox" name="menu" />
-              <label for="check01" className="text-gray-300">
+              <input id="check01"   type="checkbox" style={{display: "none"}} name="menu" onChange={this.handlecheckboxChange} checked={this.state.checked}/>
+              <label id ="label01"for="check01" className="text-gray-300">
                 Menu
               </label>
-              <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 submenu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+              {this.state.checked&&<div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 submenu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                 <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Profile</a>
 
                 <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Attendance</a>
 
                 <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Log out</a>
-              </div>
+              </div>}
             </div>
           </div>
         </div>
@@ -121,6 +127,7 @@ class Navbar extends Component {
       </div>
     </div>
   </nav>
+  </div>
          );
     }
 }
