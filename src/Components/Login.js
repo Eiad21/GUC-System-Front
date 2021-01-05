@@ -47,7 +47,8 @@ const loginData={
   email:this.state.username,
   password:this.state.password
 }
-    axios.post("localhost:3001/logIn" , loginData)
+
+    axios.post('http://localhost:8080/logIn' , loginData)
         .then((res) => {
           console.log("about retured Data now");
           console.log(typeof res.header["auth-token"]);
