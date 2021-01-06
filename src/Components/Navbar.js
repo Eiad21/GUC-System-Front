@@ -1,16 +1,20 @@
-import React, { Component } from 'react';
+import React, { useState,Component } from 'react';
+import HRAddMember from './HRAddMember';
 //import  './Navbar.css';
-class Navbar extends Component {
-  constructor(){
-    super();
-    this.state = {memberRank:"hod",checked:false}
-    this.handlecheckboxChange = this.handlecheckboxChange.bind(this);
-  }  
-  handlecheckboxChange()
-  {
-    this.setState({checked:!this.state.checked})
+function Navbar(props) {
+
+  const [state, setState] = useState(
+    {
+      checked: false
+    }
+  );
+    // this.state = {checked:false}
+    // this.handlecheckboxChange = this.handlecheckboxChange.bind(this);  
+  const handlecheckboxChange=(evt)=>{
+    const newstate={...state};
+    newstate.checked=!state.checked;
+    setState(newstate);
   }
-    render() {
       let NBclassClicked = "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
       let NBclassNotClicked = "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" 
         return ( 
@@ -26,19 +30,19 @@ class Navbar extends Component {
             <div className="ml-10 flex items-baseline space-x-4">
               <a href="#" class={NBclassClicked}>Dashboard</a>
 
-              <a href="#" style={(this.state.memberRank=="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>Add Entity</a>
-              <a href="#" style={(this.state.memberRank=="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>Staff Attendance</a>
+              <a href="#" style={(props.user.MemberRank=="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>Add Entity</a>
+              <a href="#" style={(props.user.MemberRank=="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>Staff Attendance</a>
 
-              <a href="#" style={(this.state.memberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Schedule</a>
-              <a href="#" style={(this.state.memberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
-              <a href="#" style={(this.state.memberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Requests</a>
+              <a href="#" style={(props.user.MemberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Schedule</a>
+              <a href="#" style={(props.user.MemberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
+              <a href="#" style={(props.user.MemberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Requests</a>
 
-              <a href="#" style={(this.state.memberRank=="hod")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Department staff</a>
+              <a href="#" style={(props.user.MemberRank=="hod")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Department staff</a>
 
 
-              <a href="#" style={(this.state.memberRank=="instructor")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
+              <a href="#" style={(props.user.MemberRank=="instructor")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
 
-              <a href="#" style={(this.state.memberRank=="coordinator")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>Slot Linking requests</a>
+              <a href="#" style={(props.user.MemberRank=="coordinator")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>Slot Linking requests</a>
 
 
 
@@ -60,11 +64,11 @@ class Navbar extends Component {
             </button>
 
             <div className="ml-3 relative">
-              <input id="check01"   type="checkbox" style={{display: "none"}} name="menu" onChange={this.handlecheckboxChange} checked={this.state.checked}/>
+              <input id="check01"   type="checkbox" style={{display: "none"}} name="menu" onChange={handlecheckboxChange} checked={state.checked}/>
               <label id ="label01"for="check01" className="text-gray-300">
                 Menu
               </label>
-              {this.state.checked&&<div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 submenu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+              {state.checked&&<div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 submenu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                 <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Profile</a>
 
                 <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Attendance</a>
@@ -128,8 +132,7 @@ class Navbar extends Component {
     </div>
   </nav>
   </div>
-         );
-    }
+         )
 }
  
 export default Navbar;
