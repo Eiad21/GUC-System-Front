@@ -9,17 +9,20 @@ import Login from './Components/Login'
 import Dashboard from './Components/Dashboard'
 import Navbar from './Components/Navbar';
 import CourseCoverage from './Components/CourseCoverage';
+import HRAddMember from './Components/HRAddMember';
 
 function App() {
   const [state, setState] = useState(
     {
-      token:{}
+      token:{},
+      realToken:""
     }
   );
-  const updateUser=(token)=>{
-    const newstate={...state};
-    newstate.token=token;
+  const updateUser=(token2, realToken2)=>{
+    const newstate={token:token2, realToken:realToken2};
+    //newstate.token=token;
     setState(newstate);
+    console.log(newstate)
   }
   return (
     <div>
@@ -28,7 +31,7 @@ function App() {
   <Route exact path="/">
   <React.StrictMode>
     <Navbar user={state.token}/>
-    <Dashboard name={state.token.name} user={state.token}/>
+    <Dashboard user={state.token}/>
   </React.StrictMode>
   </Route>
 
@@ -42,6 +45,16 @@ function App() {
   <React.StrictMode>
     <Navbar user={state.token}/>
     <CourseCoverage/>
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/addEntity">
+  <React.StrictMode>
+    <Navbar user={state.token}/>
+    <HRAddMember user={state.token} realToken={state.realToken}/>
+    <HRAddMember user={state.token}/>
+    <HRAddMember user={state.token}/>
+    <HRAddMember user={state.token}/>
   </React.StrictMode>
   </Route>
 

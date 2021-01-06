@@ -1,8 +1,11 @@
-import React, { useState,Component } from 'react';
+import React, { useState, Component } from 'react';
+import { useHistory } from 'react-router-dom';
 import HRAddMember from './HRAddMember';
 //import  './Navbar.css';
 function Navbar(props) {
-
+  console.log("user")
+  console.log(props.user)
+  const history = useHistory();
   const [state, setState] = useState(
     {
       checked: false
@@ -10,11 +13,24 @@ function Navbar(props) {
   );
     // this.state = {checked:false}
     // this.handlecheckboxChange = this.handlecheckboxChange.bind(this);  
-  const handlecheckboxChange=(evt)=>{
-    const newstate={...state};
-    newstate.checked=!state.checked;
-    setState(newstate);
+  
+    const handlecheckboxChange=(evt)=>{
+      const newstate={...state};
+      newstate.checked=!state.checked;
+      setState(newstate);
   }
+
+  const handleNavClick=(evt)=>{
+    const txt = evt.target.text;
+
+    let path = "";
+    switch(txt){
+      case"Add Entity":path = "/addEntity";break;
+      default: path = "/";
+    }
+    history.push(path);
+  }
+
       let NBclassClicked = "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
       let NBclassNotClicked = "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" 
         return ( 
@@ -28,21 +44,21 @@ function Navbar(props) {
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              <a href="#" class={NBclassClicked}>Dashboard</a>
+              <a style = {{cursor:'pointer'}} className={NBclassClicked}>Dashboard</a>
 
-              <a href="#" style={(props.user.MemberRank=="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>Add Entity</a>
-              <a href="#" style={(props.user.MemberRank=="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>Staff Attendance</a>
+              <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Add Entity</a>
+              <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>Staff Attendance</a>
 
-              <a href="#" style={(props.user.MemberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Schedule</a>
-              <a href="#" style={(props.user.MemberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
-              <a href="#" style={(props.user.MemberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Requests</a>
+              <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Schedule</a>
+              <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
+              <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Requests</a>
 
-              <a href="#" style={(props.user.MemberRank=="hod")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Department staff</a>
+              <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Department staff</a>
 
 
-              <a href="#" style={(props.user.MemberRank=="instructor")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
+              <a style={(props.user.MemberRank=="instructor")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
 
-              <a href="#" style={(props.user.MemberRank=="coordinator")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked}>Slot Linking requests</a>
+              <a style={(props.user.MemberRank=="coordinator")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>Slot Linking requests</a>
 
 
 

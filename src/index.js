@@ -12,7 +12,7 @@ import Login from './Components/Login'
 import reportWebVitals from './reportWebVitals';
 import Dashboard from './Components/Dashboard'
 import Navbar from './Components/Navbar';
-
+import HRAddMember from './Components/HRAddMember';
 
 
 ReactDOM.render(

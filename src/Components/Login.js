@@ -8,9 +8,6 @@ import axios from 'axios'
 const jwt= require('jsonwebtoken')
 
 
-
-const url='mongodb+srv://karimanga:123456abc@cluster0.ecodf.mongodb.net/guc?retryWrites=true'
-
 function Login(props) {
   const history = useHistory();
   const [state, setState] = useState(
@@ -53,8 +50,8 @@ const loginData={
           console.log(res.data);
           const token=res.data;
           var decodedUser = jwt.verify(token, '25235325');
-          props.updateUser(decodedUser);
-          console.log(decodedUser);
+          props.updateUser(decodedUser, token);
+          console.log("ahmed" + decodedUser);
           history.push("/");
         }) 
         .catch((err)=>{
