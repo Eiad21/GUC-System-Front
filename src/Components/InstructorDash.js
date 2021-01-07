@@ -39,6 +39,7 @@ function InstructorDash() {
     const history = useHistory();
     return (
         <div>
+            <Button onClick={()=>{history.push("/ViewCourses")}}>View Courses</Button>
             <Button onClick={()=>{history.push("/courseCoverage")}}>Course Coverage</Button>
      
         </div>

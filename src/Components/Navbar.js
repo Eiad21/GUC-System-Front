@@ -1,5 +1,11 @@
 import React, { useState, Component } from 'react';
-import { useHistory } from 'react-router-dom';
+import {
+  HashRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory
+} from 'react-router-dom';
 import HRAddMember from './HRAddMember';
 //import  './Navbar.css';
 function Navbar(props) {
@@ -44,13 +50,15 @@ function Navbar(props) {
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              <a style = {{cursor:'pointer'}} className={NBclassClicked}>Dashboard</a>
+              <Link style = {{cursor:'pointer'}} class={NBclassClicked} to="/">Dashboard</Link>
+              
+              {/* <a  class={NBclassClicked}>Dashboard</a> */}
 
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Add Entity</a>
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>Staff Attendance</a>
 
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Schedule</a>
-              <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
+              <Link style={(this.state.memberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">My Courses</Link>
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Requests</a>
 
               <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Department staff</a>

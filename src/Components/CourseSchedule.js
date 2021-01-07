@@ -3,12 +3,15 @@ import React, { useState, useEffect } from 'react';
 import "./style.css";
 import BaseTable, { Column } from 'react-base-table'
 import 'react-base-table/styles.css'
+import { useHistory,useParams } from 'react-router-dom';
 
-export default function CourseCoverage(props) {
-    const test=true;
+export default function CourseSchedule(props) {
+    let { courseName } = useParams();
+    const history = useHistory();
+    const test=false;
     const [state, setState] = useState(
         {
-          arr:{}
+          arr:[{}]
         }
       );
     useEffect(async() => {
@@ -23,46 +26,86 @@ export default function CourseCoverage(props) {
             {CourseName:'csen701',Coverage:50},{CourseName:'csen705',Coverage:55},{CourseName:'csen721',Coverage:70},
             {CourseName:'csen701',Coverage:50},{CourseName:'csen705',Coverage:55},{CourseName:'csen721',Coverage:70},
             {CourseName:'csen701',Coverage:50},{CourseName:'csen705',Coverage:55},{CourseName:'csen721',Coverage:70}];
-            const newstate={...state};
-            newstate.arr=data;
-            setState(newstate);
+            return data;
         }
         try {
-            const res = await axios.get('http://localhost:8080/instructorRoutes/viewCoverages');
+            const res = await axios.get(`http://localhost:8080/instructorRoutes/viewOneCourseAssignments/${courseName}`);
             
             const newstate={...state};
             newstate.arr=res.data;
             setState(newstate);
+            console.log(res.data);
           } catch (e) {
             const newstate={...state};
             newstate.arr=e;
             setState(newstate);
+            console.log(e);
           }
-        
-    }, []);
+      }, []);
+    
 
     
       const columns = [
         {
-          key: 'CourseName',
-          title: 'Course Name',
-          dataKey: 'CourseName',
-          width: 150
+          key: 'day',
+          title: 'Day',
+          dataKey: 'day',
+          width: 150,
+          align: Column.Alignment.CENTER
         },
         {
-          key: 'Coverage',
-          title: 'Coverage',
-          dataKey: 'Coverage',
-          width: 100,
-          align: Column.Alignment.CENTER
-        }]
+            key: 'time',
+            title: 'Slot',
+            dataKey: 'time',
+            width: 150,
+            align: Column.Alignment.CENTER
+          },
+          {
+            key: 'location',
+            title: 'Location',
+            dataKey: 'location',
+            width: 150,
+            align: Column.Alignment.CENTER
+          },
+          {
+            key: 'assignedMemberID',
+            title: 'Assigned Member ID',
+            dataKey: 'assignedMemberID',
+            width: 150,
+            align: Column.Alignment.CENTER
+          },
+          {
+            key: 'assignedMemberName',
+            title: 'Assigned Member Name',
+            dataKey: 'assignedMemberName',
+            width: 150,
+            align: Column.Alignment.CENTER
+          },
+        
+        {
+          key: 'action',
+          width: 200,
+          align: Column.Alignment.CENTER,
+          frozen: Column.FrozenDirection.RIGHT,
+          cellRenderer: ({ rowData }) => (
+            <button
+              onClick={() => {
+                history.push(`/CourseSchedule/${rowData.courseName}`);
+              }}
+              className="submit"
+            >
+              Slot Assignments
+            </button>
+          ),
+        }
+    ]
 
     return (
         // !Array.isArray(state.arr)?(<p className="a" align="center">{(!state.arr || !state.arr.res || !state.arr.res.data)?'Access Denied':state.arr.res.data}</p>)
         // :
             <div align="center" /*style={{backgroundColor:'black'}}*/>
-            <BaseTable data={state.arr} width={300} height={600} columns={columns}>
-            
+            <BaseTable data={state.arr} width={800} height={600} columns={columns}>
+
             
             </BaseTable>
              </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import InstructorDash from './InstructorDash';
 
 class Dashboard extends React.Component {
     render() { 
@@ -22,13 +21,6 @@ class Dashboard extends React.Component {
         <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
          
           
-
-         {/* instructor only*/} 
-          <div style={(true/*this.props.MemberRank=='instructor'*/)?{display: 'block'}:{display: 'none'}}>
-          <InstructorDash>
-    
-          </InstructorDash>
-          </div>
 
         </div>
       </div>

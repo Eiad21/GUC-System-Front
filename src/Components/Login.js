@@ -5,7 +5,7 @@ import "./style.css";
 import axios from 'axios'
 
 //import loginImg from "../../login.svg";
-const jwt= require('jsonwebtoken')
+
 
 
 function Login(props) {
@@ -19,7 +19,7 @@ function Login(props) {
   );
 
 
-  const handleSubmit=(evt)=> {
+  async function handleSubmit(evt) {
     console.log(state.username);
     console.log(state.password);
     console.log("click")
