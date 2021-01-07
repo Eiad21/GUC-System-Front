@@ -35,7 +35,7 @@ function App() {
   <Route exact path="/">
   <React.StrictMode>
     <Navbar user={state.token}/>
-    <Dashboard name={state.name} token={state.token}/>
+    <Dashboard name={state.token.name} token={state.token}/>
   </React.StrictMode>
   </Route>
 
@@ -47,28 +47,28 @@ function App() {
 
   <Route exact path="/courseCoverage">
   <React.StrictMode>
-    <Navbar token={state.token}/>
+    <Navbar user={state.token}/>
     <CourseCoverage token={state.token}/>
   </React.StrictMode>
   </Route>
 
   <Route exact path="/MyCourses">
   <React.StrictMode>
-    <Navbar token={state.token}/>
+    <Navbar user={state.token}/>
     <MyCourses token={state.token}/>
   </React.StrictMode>
   </Route>
 
   <Route exact path="/ViewCourses">
   <React.StrictMode>
-    <Navbar token={state.token}/>
+    <Navbar user={state.token}/>
     <ViewCourses token={state.token}/>
   </React.StrictMode>
   </Route>
 
 <Route exact path="/CourseSchedule/:courseName" component={CourseSchedule}>
   <React.StrictMode>
-    <Navbar token={state.token}/>
+    <Navbar user={state.token}/>
     <CourseSchedule token={state.token}/>
   </React.StrictMode>
   </Route>

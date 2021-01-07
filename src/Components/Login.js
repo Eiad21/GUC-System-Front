@@ -1,11 +1,11 @@
 import React,{useState} from 'react'
 import { useHistory } from 'react-router-dom';
 import "./style.css";
-
 import axios from 'axios'
 
 //import loginImg from "../../login.svg";
 
+const jwt= require('jsonwebtoken')
 
 
 function Login(props) {
