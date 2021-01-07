@@ -14,6 +14,9 @@ import HRAddMember from './Components/HRAddMember';
 import MyCourses from './Components/MyCourses';
 import ViewCourses from './Components/ViewCourses';
 import CourseSchedule from './Components/CourseSchedule';
+import StaffDep from './Components/StaffDep';
+import CourseStaff from './Components/CourseStaff';
+
 const jwt= require('jsonwebtoken')
 function App() {
   const [state, setState] = useState(
@@ -58,7 +61,7 @@ function App() {
     <MyCourses token={state.token}/>
   </React.StrictMode>
   </Route>
-
+  
   <Route exact path="/ViewCourses">
   <React.StrictMode>
     <Navbar user={state.token}/>
@@ -66,10 +69,24 @@ function App() {
   </React.StrictMode>
   </Route>
 
+  <Route exact path="/StaffDep">
+  <React.StrictMode>
+    <Navbar user={state.token}/>
+    <StaffDep token={state.token}/>
+  </React.StrictMode>
+  </Route>
+
 <Route exact path="/CourseSchedule/:courseName" component={CourseSchedule}>
   <React.StrictMode>
     <Navbar user={state.token}/>
     <CourseSchedule token={state.token}/>
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/CourseStaff/:courseName" component={CourseStaff}>
+  <React.StrictMode>
+    <Navbar user={state.token}/>
+    <CourseStaff token={state.token}/>
   </React.StrictMode>
   </Route>
 

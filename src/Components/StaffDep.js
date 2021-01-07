@@ -5,7 +5,7 @@ import BaseTable, { Column } from 'react-base-table'
 import 'react-base-table/styles.css'
 import { useHistory } from 'react-router-dom';
 
-export default function ViewCourses(props) {
+export default function StaffDep(props) {
     const history = useHistory();
     const test=false;
     const [state, setState] = useState(
@@ -28,7 +28,7 @@ export default function ViewCourses(props) {
             return data;
         }
         try {
-            const res = await axios.get('http://localhost:8080/instructorRoutes/viewCoursesAssignments');
+            const res = await axios.get('http://localhost:8080/instructorRoutes/viewDepartmentStaff');
             
             const newstate={...state};
             newstate.arr=res.data;
@@ -44,53 +44,47 @@ export default function ViewCourses(props) {
     
       const columns = [
         {
-          key: 'courseName',
-          title: 'Course Name',
-          dataKey: 'courseName',
+          key: 'id',
+          title: 'ID',
+          dataKey: 'id',
           width: 150,
           align: Column.Alignment.CENTER
         },
-        
         {
-          key: 'action',
-          width: 200,
-          align: Column.Alignment.CENTER,
-          frozen: Column.FrozenDirection.RIGHT,
-          cellRenderer: ({ rowData }) => (
-            <button
-              onClick={() => {
-                history.push(`/CourseSchedule/${rowData.courseName}`);
-              }}
-              className="submit"
-            >
-              Slots
-            </button>
-          ),
-        }
-        ,
-        {
-            key: 'action',
-            width: 200,
-            align: Column.Alignment.CENTER,
-            frozen: Column.FrozenDirection.RIGHT,
-            cellRenderer: ({ rowData }) => (
-              <button
-                onClick={() => {
-                  history.push(`/CourseStaff/${rowData.courseName}`);
-                }}
-                className="submit"
-              >
-                Staff
-              </button>
-            ),
-          }
+            key: 'name',
+            title: 'Name',
+            dataKey: 'name',
+            width: 150,
+            align: Column.Alignment.CENTER
+          },
+          {
+            key: 'mail',
+            title: 'Mail',
+            dataKey: 'mail',
+            width: 150,
+            align: Column.Alignment.CENTER
+          },
+          {
+              key: 'office',
+              title: 'Office',
+              dataKey: 'office',
+              width: 150,
+              align: Column.Alignment.CENTER
+            },
+            {
+                key: 'dayoff',
+                title: 'Day off',
+                dataKey: 'dayoff',
+                width: 150,
+                align: Column.Alignment.CENTER
+              }
     ]
 
     return (
         // !Array.isArray(state.arr)?(<p className="a" align="center">{(!state.arr || !state.arr.res || !state.arr.res.data)?'Access Denied':state.arr.res.data}</p>)
         // :
             <div align="center" /*style={{backgroundColor:'black'}}*/>
-            <BaseTable data={state.arr} width={450} height={600} columns={columns}>
+            <BaseTable data={state.arr} width={800} height={600} columns={columns}>
 
             
             </BaseTable>

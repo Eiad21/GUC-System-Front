@@ -5,13 +5,13 @@ import BaseTable, { Column } from 'react-base-table'
 import 'react-base-table/styles.css'
 import { useHistory,useParams } from 'react-router-dom';
 
-export default function CourseSchedule(props) {
+export default function CourseStaff(props) {
     let { courseName } = useParams();
     const history = useHistory();
     const test=false;
     const [state, setState] = useState(
         {
-          arr:[{}]
+          arr:{instructors:[],TAs:[]}
         }
       );
     useEffect(async() => {
@@ -28,7 +28,7 @@ export default function CourseSchedule(props) {
             return;
         }
         try {
-            const res = await axios.get(`http://localhost:8080/instructorRoutes/viewOneCourseAssignments/${courseName}`);
+            const res = await axios.get(`http://localhost:8080/instructorRoutes/viewCourseStaff/${courseName}`);
             
             const newstate={...state};
             newstate.arr=res.data;
@@ -46,68 +46,63 @@ export default function CourseSchedule(props) {
     
       const columns = [
         {
-          key: 'day',
-          title: 'Day',
-          dataKey: 'day',
+          key: 'id',
+          title: 'ID',
+          dataKey: 'id',
           width: 150,
           align: Column.Alignment.CENTER
         },
         {
-            key: 'time',
-            title: 'Slot',
-            dataKey: 'time',
+            key: 'name',
+            title: 'Name',
+            dataKey: 'name',
             width: 150,
             align: Column.Alignment.CENTER
           },
           {
-            key: 'location',
-            title: 'Location',
-            dataKey: 'location',
+            key: 'mail',
+            title: 'Mail',
+            dataKey: 'mail',
             width: 150,
             align: Column.Alignment.CENTER
           },
           {
-            key: 'assignedMemberID',
-            title: 'Assigned Member ID',
-            dataKey: 'assignedMemberID',
-            width: 150,
-            align: Column.Alignment.CENTER
-          },
-          {
-            key: 'assignedMemberName',
-            title: 'Assigned Member Name',
-            dataKey: 'assignedMemberName',
-            width: 150,
-            align: Column.Alignment.CENTER
-          },
-        
-        {
-          key: 'action',
-          width: 200,
-          align: Column.Alignment.CENTER,
-          frozen: Column.FrozenDirection.RIGHT,
-          cellRenderer: ({ rowData }) => (
-            <button
-              onClick={() => {
-                history.push(`/CourseSchedule/${rowData.courseName}`);
-              }}
-              className="submit"
-            >
-              Slot Assignments
-            </button>
-          ),
-        }
+              key: 'office',
+              title: 'Office',
+              dataKey: 'office',
+              width: 150,
+              align: Column.Alignment.CENTER
+            }
     ]
 
     return (
         // !Array.isArray(state.arr)?(<p className="a" align="center">{(!state.arr || !state.arr.res || !state.arr.res.data)?'Access Denied':state.arr.res.data}</p>)
         // :
-            <div align="center">
-            <BaseTable data={state.arr} width={800} height={600} columns={columns}>
+        <div align="center">
+        <div style={{width:1400}}>
+        <div style={{width:600},{float:"left"}}>
+        <pass>
+            Instructors in the course
+        </pass>
+        <BaseTable data={state.arr.instructors} width={500} height={600} columns={columns}>
 
-            
+                    
+        </BaseTable>
+        </div>
+        <div style={{width:600},{float:"right"}}>
+        <pass>
+            TAs in the course
+        </pass>
+        <BaseTable data={state.arr.TAs} width={500} height={600} columns={columns}>
+
+                        
             </BaseTable>
-             </div>
+
+        </div>
+        </div>
+        <div style={{clear: "both"}}></div>
+        </div>
+            
             // ((state.arr).map((todo)=>(
             //     <p className="a">Course {todo.CourseName} has coverage = {todo.Coverage} </p>)
             // ))

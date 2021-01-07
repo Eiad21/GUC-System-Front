@@ -41,6 +41,7 @@ function InstructorDash() {
         <div>
             <Button onClick={()=>{history.push("/ViewCourses")}}>View Courses</Button>
             <Button onClick={()=>{history.push("/courseCoverage")}}>Course Coverage</Button>
+            <Button onClick={()=>{history.push("/StaffDep")}}>Staff in your Department</Button>
      
         </div>
     )
