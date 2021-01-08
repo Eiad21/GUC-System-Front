@@ -3,7 +3,8 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios'
 
 function HRAddMember(props) {
-    
+  const history = useHistory();
+
     const [state, setState] = useState(
         {
           firstName:"",
@@ -27,10 +28,10 @@ function HRAddMember(props) {
         }
         var mailformat = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)+(?:.[a-zA-Z0-9-]+)$/;
     if(state.mail.match(mailformat)){
-        alert("cor")
+       // alert("cor")
     }
     else{
-        alert("wrong")
+      //  alert("wrong")
     }
         if(state.gender == ""){
             alert("Enter gender");
@@ -38,20 +39,41 @@ function HRAddMember(props) {
         }
         const combine = `${state.firstName} ${state.lastName}`
         const memberInfo = {
+          
             MemberRank:state.MemberRank,
             name: combine,
             gender: state.gender,
-            email: state.email
+            email: state.email,
+          
         }
+      
+        
 
-        axios.post('http://localhost:8080/addMember' , memberInfo, state.realToken)
+        axios.post('http://localhost:8080/hr/addMember' , {email:"kimo",password:123456})
+        .then((res) => {
+          console.log(res.data);
+          const token=res.data;
+          
+          history.push("/");
+        }) 
+        .catch((err)=>{
+          console.log(" ERROR in login");
+         
+           console.log(err);
+           const newstate={...state};
+           if(!err || !err.res || !err.res.data){
+            newstate.error='Access denied';
+           }
+           else{
+              newstate.error=err.res.data;
+           }
+          setState(newstate);
+        })
+
+        // axios.post('http://localhost:8080/hr/addMember' , {ahmed:"hla"})
         // .then((res) => {
-        //   console.log(res.data);
-        //   const token=res.data;
-        //   var decodedUser = jwt.verify(token, '25235325');
-        //   props.updateUser(decodedUser);
-        //   console.log(decodedUser);
-        //   //history.push("/");
+        //   console.log(res.data);        
+        //   history.push("/addEntity");
         // }) 
         // .catch((err)=>{
         //   console.log(" ERROR in login");
