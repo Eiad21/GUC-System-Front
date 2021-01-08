@@ -14,7 +14,7 @@ import HRAddFaculty from './Components/HRAddFaculty';
 import HRAddDepartment from './Components/HRAddDepartment';
 import HRAddLocation from './Components/HRAddLocation';
 import HRAddCourse from './Components/HRAddCourse';
-
+import HODRequestContainer from "./Components/HODRequestContainer";
 import MyCourses from './Components/MyCourses';
 import ViewCourses from './Components/ViewCourses';
 import CourseSchedule from './Components/CourseSchedule';
@@ -103,6 +103,14 @@ function App() {
     <HRAddLocation user={state.token} realToken={state.realToken}/>
     <HRAddCourse user={state.token} realToken={state.realToken}/>
 
+  </React.StrictMode>
+  </Route>
+
+
+  <Route exact path="/myRequests">
+  <React.StrictMode>
+    <Navbar user={state.token}/>
+    <HODRequestContainer user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 

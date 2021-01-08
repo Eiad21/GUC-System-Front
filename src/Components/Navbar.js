@@ -32,6 +32,7 @@ function Navbar(props) {
     let path = "";
     switch(txt){
       case"Add Entity":path = "/addEntity";break;
+      case "My Requests":path="/myRequests";break;
       default: path = "/";
     }
     history.push(path);
@@ -59,7 +60,7 @@ function Navbar(props) {
 
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Schedule</a>
               <Link style={(props.user.MemberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">My Courses</Link>
-              <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Requests</a>
+              <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>My Requests</a>
 
               <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Department staff</a>
 
