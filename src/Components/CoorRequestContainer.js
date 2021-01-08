@@ -7,6 +7,7 @@ import CoorRequestItem from './CoorRequestItem';
 import axios  from "axios"
 class CoorRequestContainer extends Component {
     constructor(){
+        super();
         this.state={requests:[]}
     }
     componentDidMount(){
@@ -49,8 +50,9 @@ render(){
         
         </table>
        {requests}
-
-      
+       < CoorRequestItem sender="omar" date ="22-1-2003 "courseName ="acml"/>
+       < CoorRequestItem sender="eiad" date ="22-1-2003 "courseName ="acml"/>
+       < CoorRequestItem sender="karim" date ="22-1-2003 "courseName ="acml"/>
       </div>
     </div>
   </div>
