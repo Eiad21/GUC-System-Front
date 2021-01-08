@@ -10,6 +10,10 @@ import Dashboard from './Components/Dashboard'
 import Navbar from './Components/Navbar';
 import CourseCoverage from './Components/CourseCoverage';
 import HRAddMember from './Components/HRAddMember';
+import HRAddFaculty from './Components/HRAddFaculty';
+import HRAddDepartment from './Components/HRAddDepartment';
+import HRAddLocation from './Components/HRAddLocation';
+import HRAddCourse from './Components/HRAddCourse';
 
 import MyCourses from './Components/MyCourses';
 import ViewCourses from './Components/ViewCourses';
@@ -94,9 +98,11 @@ function App() {
   <React.StrictMode>
     <Navbar user={state.token}/>
     <HRAddMember user={state.token} realToken={state.realToken}/>
-    <HRAddMember user={state.token}/>
-    <HRAddMember user={state.token}/>
-    <HRAddMember user={state.token}/>
+    <HRAddFaculty user={state.token} realToken={state.realToken}/>
+    <HRAddDepartment user={state.token} realToken={state.realToken}/>
+    <HRAddLocation user={state.token} realToken={state.realToken}/>
+    <HRAddCourse user={state.token} realToken={state.realToken}/>
+
   </React.StrictMode>
   </Route>
 
