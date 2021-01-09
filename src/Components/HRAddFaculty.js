@@ -32,13 +32,11 @@ function HRAddFaculty(props) {
           
             facultyName:state.FacultyName,
             deanID: state.DeanId,
-           
-          
         }
       
         
 
-        axios.post('http://localhost:8080/hr/addfaculty' , {email:"kimo",password:123456})
+        axios.post('http://localhost:8080/hr/addfaculty' , FacultyInfo,{params:{token:props.realToken}})
         .then((res) => {
           console.log(res.data);
           const token=res.data;

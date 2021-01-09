@@ -51,7 +51,7 @@ function HRAddDepartment(props) {
       
         
 
-        axios.post('http://localhost:8080/hr/addDepartment' , departmentinfo)
+        axios.post('http://localhost:8080/hr/addDepartment' , departmentinfo, {params:{token:props.realToken}})
         .then((res) => {
           console.log(res.data);
           const token=res.data;

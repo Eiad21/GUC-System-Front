@@ -50,7 +50,7 @@ function HRAddCourse(props) {
       
         
 
-        axios.post('http://localhost:8080/hr/addCourse' , courseinfo)
+        axios.post('http://localhost:8080/hr/addCourse' , courseinfo, {params:{token:props.realToken}})
         .then((res) => {
           console.log(res.data);
           const token=res.data;

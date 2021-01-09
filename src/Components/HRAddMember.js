@@ -43,13 +43,11 @@ function HRAddMember(props) {
             MemberRank:state.MemberRank,
             name: combine,
             gender: state.gender,
-            email: state.email,
-          
+            email: state.mail
         }
       
-        
 
-        axios.post('http://localhost:8080/hr/addMember' , {email:"kimo",password:123456})
+        axios.post('http://localhost:8080/hr/addMember' , memberInfo, {params:{token:props.realToken}})
         .then((res) => {
           console.log(res.data);
           const token=res.data;
