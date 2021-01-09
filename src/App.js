@@ -26,6 +26,7 @@ import CoorAddSlot from './Components/CoorAddSlot';
 import CoorDeleteSlot from './Components/CoorDeleteSlot';
 import CoorUpdateSlot from './Components/CoorUpdateSlot';
 import Schedule from './Components/Schedule';
+import HRMembersContainer from './Components/HRMembersContainer';
 
 const jwt= require('jsonwebtoken')
 function App() {
@@ -151,8 +152,15 @@ function App() {
   </React.StrictMode>
   </Route>
 
+  <Route exact path="/viewMembers">
+  <React.StrictMode>
+    <Navbar user={state.token}/>
+    <HRMembersContainer user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
   </Switch>
-  </Router>
+  </Router>  
   </div>
   );
 }

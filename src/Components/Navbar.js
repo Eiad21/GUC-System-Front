@@ -32,6 +32,7 @@ function Navbar(props) {
     let path = "";
     switch(txt){
       case"Add Entity":path = "/addEntity";break;
+      case"Members":path = "/viewMembers";break;
       case "My Requests":path="/myRequests";break;
       default: path = "/";
     }
@@ -56,6 +57,7 @@ function Navbar(props) {
               {/* <a  class={NBclassClicked}>Dashboard</a> */}
 
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Add Entity</a>
+              <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Members</a>
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>Staff Attendance</a>
 
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Schedule</a>
