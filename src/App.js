@@ -25,6 +25,7 @@ import CoorRequestContainer from './Components/CoorRequestContainer';
 import CoorAddSlot from './Components/CoorAddSlot';
 import CoorDeleteSlot from './Components/CoorDeleteSlot';
 import CoorUpdateSlot from './Components/CoorUpdateSlot';
+import Schedule from './Components/Schedule';
 
 const jwt= require('jsonwebtoken')
 function App() {
@@ -79,6 +80,12 @@ function App() {
   <Route exact path="/coordinator/deleteslot">
   <React.StrictMode>
     <CoorDeleteSlot/>
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/schedule">
+  <React.StrictMode>
+    <Schedule/>
   </React.StrictMode>
   </Route>
 
