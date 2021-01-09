@@ -22,7 +22,9 @@ import CourseSchedule from './Components/CourseSchedule';
 import StaffDep from './Components/StaffDep';
 import CourseStaff from './Components/CourseStaff';
 import CoorRequestContainer from './Components/CoorRequestContainer';
-import CoorAddCourse from './Components/CoorAddCourse';
+import CoorAddSlot from './Components/CoorAddSlot';
+import CoorDeleteSlot from './Components/CoorDeleteSlot';
+import CoorUpdateSlot from './Components/CoorUpdateSlot';
 
 const jwt= require('jsonwebtoken')
 function App() {
@@ -61,9 +63,22 @@ function App() {
   </React.StrictMode>
   </Route>
 
-  <Route exact path="/coordinator/addCourse">
+  <Route exact path="/coordinator/addslot">
   <React.StrictMode>
-    <CoorAddCourse/>
+    <CoorAddSlot/>
+  </React.StrictMode>
+  </Route>
+
+
+  <Route exact path="/coordinator/updateslot">
+  <React.StrictMode>
+    <CoorUpdateSlot/>
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/coordinator/deleteslot">
+  <React.StrictMode>
+    <CoorDeleteSlot/>
   </React.StrictMode>
   </Route>
 

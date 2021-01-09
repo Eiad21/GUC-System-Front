@@ -1,7 +1,7 @@
 import React,{Component} from "react"   
 
 
-class Profile extends Component {
+class CoorAddSlot extends Component {
 render(){
 
     return (
@@ -16,9 +16,9 @@ render(){
 <div className="md:grid md:grid-rows-1 md:gap-6" style = {{marginRight: 150, marginLeft: 150}}>
 <div className="md:col-span-1">
 <div className="px-4 sm:px-0">
-  <h3 className="text-lg font-medium leading-6 text-gray-900">Add Course</h3>
+  <h3 className="text-lg font-medium leading-6 text-gray-900">Add Slot</h3>
   <p className="mt-1 text-sm text-gray-600">
-    Enter the Course information.
+    Enter the Slot information.
   </p>
 </div>
 </div>
@@ -60,7 +60,7 @@ render(){
 {/* onClick={addCourse} */}
     <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
       <button  type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        Save
+        Add
       </button>
     </div>
   </div>
@@ -71,4 +71,4 @@ render(){
     )
     }
 }
-export default Profile
+export default CoorAddSlot
