@@ -1,18 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 import './index.css';
 import App from './App';
-import Login from './Components/Login'
 import reportWebVitals from './reportWebVitals';
-import Dashboard from './Components/Dashboard'
-import Navbar from './Components/Navbar';
-import HRAddMember from './Components/HRAddMember';
 
 
 ReactDOM.render(

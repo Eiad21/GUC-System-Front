@@ -35,7 +35,6 @@ function HRMembersContainer(props) {
       setState(newstate);
       console.log("res.data");
       console.log(res.data);
-      test = true;
     }) 
     .catch((err)=>{
       console.log(" ERROR in login");

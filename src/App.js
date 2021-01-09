@@ -27,6 +27,10 @@ import CoorDeleteSlot from './Components/CoorDeleteSlot';
 import CoorUpdateSlot from './Components/CoorUpdateSlot';
 import Schedule from './Components/Schedule';
 import HRMembersContainer from './Components/HRMembersContainer';
+import HRFacultiesContainer from './Components/HRFacultiesContainer';
+import HRDepartmentsContainer from './Components/HRDepartmentsContainer';
+import HRLocationsContainer from './Components/HRLocationsContainer';
+import HRCoursesContainer from './Components/HRCoursesContainer';
 
 const jwt= require('jsonwebtoken')
 function App() {
@@ -156,6 +160,34 @@ function App() {
   <React.StrictMode>
     <Navbar user={state.token}/>
     <HRMembersContainer user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/viewFaculties">
+  <React.StrictMode>
+    <Navbar user={state.token}/>
+    <HRFacultiesContainer user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/viewDepartments">
+  <React.StrictMode>
+    <Navbar user={state.token}/>
+    <HRDepartmentsContainer user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/viewLocations">
+  <React.StrictMode>
+    <Navbar user={state.token}/>
+    <HRLocationsContainer user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/viewAllCourses">
+  <React.StrictMode>
+    <Navbar user={state.token}/>
+    <HRCoursesContainer user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
