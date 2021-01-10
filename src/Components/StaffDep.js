@@ -1,19 +1,43 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import "./style.css";
-import BaseTable, { Column } from 'react-base-table'
+import Table, { Column } from 'react-base-table'
 import 'react-base-table/styles.css'
-import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 export default function StaffDep(props) {
-    const history = useHistory();
     const test=false;
-    const [state, setState] = useState(
-        {
-          arr:[{}]
-        }
-      );
-    useEffect(async() => {
+    const [state, setState] = useState([]);
+    const [texts, setText] = useState([]);
+    const [error, setError] = useState('Loading');
+    
+    async function handleChange(evt,idx){
+      console.log(texts);
+      console.log(idx);
+      console.log(evt.target.value);
+      console.log(state);
+      texts[idx]=evt.target.value;
+      setText(texts.map((item,index) =>{ 
+        
+        return idx === index 
+        ? evt.target.value 
+        : item }));
+    }
+    async function add(memberID,courseName){
+      console.log(memberID);
+      console.log(courseName);
+      console.log(texts);
+      try {
+        const res = await axios.post('http://localhost:8080/instructorRoutes/courseAcadMember'  ,{courseName:courseName,memberID:memberID},{params:{token:props.realToken}});
+        console.log('d7k');
+        setError('Done Successfully');
+      } catch (e) {
+        console.log("eh");
+        setError('Access Denied');
+      }
+      // console.log(state);
+    }
+      
+    useEffect(() => {
         let data;
         if(test){
             data=[{CourseName:'csen701',Coverage:50},{CourseName:'csen705',Coverage:55},{CourseName:'csen721',Coverage:70},
@@ -28,19 +52,27 @@ export default function StaffDep(props) {
             return data;
         }
         try {
-            const res = await axios.get('http://localhost:8080/instructorRoutes/viewDepartmentStaff');
-            
-            const newstate={...state};
-            newstate.arr=res.data;
-            setState(newstate);
+            const method = async()=>{
+            const res=await axios.get('http://localhost:8080/instructorRoutes/viewDepartmentStaff',{params:{token:props.realToken}});
+            const arr=[];
+            for(var i=0;i<res.data.length;i++){
+              res.data[i].idx=i;
+              arr.push(' ');
+            }
+            setText(arr);
+            setState((prev)=>res.data);
+            setError((prev)=>''); 
+          }
+          method();
+
           } catch (e) {
-            const newstate={...state};
-            newstate.arr=e;
-            setState(newstate);
+            setState([]);
+            setError('Access Denied');
+            setText([]);
           }
       }, []);
     
-
+      
     
       const columns = [
         {
@@ -77,17 +109,44 @@ export default function StaffDep(props) {
                 dataKey: 'dayoff',
                 width: 150,
                 align: Column.Alignment.CENTER
+              },
+        
+              {
+                title: 'Add the Staff member to the Course',
+                key: 'action',
+                width: 400,
+                cellRenderer: ({ rowData }) => (
+                  <button
+                    onClick={() => {
+                      add(rowData.id,texts[rowData.idx]);
+                    }}
+                    className="submit"
+                  >
+                    Add
+                  </button>
+                  
+                )
+              },
+        
+              {
+                title: 'Type the Course Name',
+                key: 'action2',
+                width: 400,
+                cellRenderer: ({ rowData }) => (
+                  
+                <input type="text" data-test="course" placeholder="Course" onChange={(e)=>{handleChange(e,rowData.idx)}}/>
+                  
+                )
               }
     ]
-
+                 
     return (
         // !Array.isArray(state.arr)?(<p className="a" align="center">{(!state.arr || !state.arr.res || !state.arr.res.data)?'Access Denied':state.arr.res.data}</p>)
         // :
             <div align="center" /*style={{backgroundColor:'black'}}*/>
-            <BaseTable data={state.arr} width={800} height={600} columns={columns}>
+        <p className="a" align="center" style={(error)?{display: 'block'}:{display: 'none'}}>{error}</p>
+            <Table data={state} width={800} height={600} columns={columns}/>
 
-            
-            </BaseTable>
              </div>
             // ((state.arr).map((todo)=>(
             //     <p className="a">Course {todo.CourseName} has coverage = {todo.Coverage} </p>)

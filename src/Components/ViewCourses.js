@@ -9,11 +9,38 @@ export default function ViewCourses(props) {
     const history = useHistory();
     const test=false;
     const [state, setState] = useState(
-        {
-          arr:[{}]
-        }
+        []
       );
-    useEffect(async() => {
+      const [texts, setText] = useState(
+        []
+      );
+      const [error, setError] = useState(
+        'Loading'
+      );
+      const handleChange=(evt,idx)=>{
+        console.log(texts);
+        texts[idx]=evt.target.value;
+        setText(texts.map((item,index) =>{ 
+        
+        return idx === index 
+        ? evt.target.value 
+        : item }));
+    }
+      async function assignCoordinator(memberID,courseName){
+        console.log(memberID);
+      console.log(courseName);
+      console.log(texts);
+        try {
+          const res = await axios.put(`http://localhost:8080/instructorRoutes/courseCoordinator`  ,{courseName:courseName,memberID:memberID},{params:{token:props.realToken}});
+          console.log('d7k');
+          setError('Done Successfully');
+      } catch (e) {
+        console.log("eh");
+        setError('Access Denied');
+      }
+        // console.log(state);
+      }
+    useEffect(() => {
         let data;
         if(test){
             data=[{CourseName:'csen701',Coverage:50},{CourseName:'csen705',Coverage:55},{CourseName:'csen721',Coverage:70},
@@ -28,15 +55,23 @@ export default function ViewCourses(props) {
             return data;
         }
         try {
-            const res = await axios.get('http://localhost:8080/instructorRoutes/viewCoursesAssignments');
+          const method = async()=>{
+            const res = await axios.get('http://localhost:8080/instructorRoutes/viewCoursesAssignments',{params:{token:props.realToken}});
+            const arr=[];
+            for(var i=0;i<res.data.length;i++){
+              res.data[i].idx=i;
+              arr.push(' ');
+            }
+            setText(arr);
+            setState((prev)=>res.data);
+            setError((prev)=>''); 
+          }
+          method();
             
-            const newstate={...state};
-            newstate.arr=res.data;
-            setState(newstate);
           } catch (e) {
-            const newstate={...state};
-            newstate.arr=e;
-            setState(newstate);
+            setState([]);
+            setError('Access Denied');
+            setText([]);
           }
       }, []);
     
@@ -52,7 +87,7 @@ export default function ViewCourses(props) {
         },
         
         {
-          key: 'action',
+          key: 'action1',
           width: 200,
           align: Column.Alignment.CENTER,
           frozen: Column.FrozenDirection.RIGHT,
@@ -69,7 +104,7 @@ export default function ViewCourses(props) {
         }
         ,
         {
-            key: 'action',
+            key: 'action2',
             width: 200,
             align: Column.Alignment.CENTER,
             frozen: Column.FrozenDirection.RIGHT,
@@ -83,6 +118,36 @@ export default function ViewCourses(props) {
                 Staff
               </button>
             ),
+          },
+        
+          {
+            title: 'Assign the Staff member to be the Coordinator of the Course',
+            key: 'action',
+            width: 400,
+            cellRenderer: ({ rowData }) => (
+              <button
+                onClick={() => {
+                  assignCoordinator(texts[rowData.idx],rowData.courseName );
+                }}
+                className="submit"
+              >
+                Assign
+              </button>
+              
+            ),
+          },
+    
+          {
+            title: 'Type the TA ID',
+            key: 'action5',
+            width: 400,
+            align: Column.Alignment.CENTER,
+            frozen: Column.FrozenDirection.RIGHT,
+            cellRenderer: ({ rowData }) => (
+              
+            <input type="text" data-test="course" placeholder="Course" onChange={(e)=>{handleChange(e,rowData.idx)}}/>
+              
+            ),
           }
     ]
 
@@ -90,7 +155,9 @@ export default function ViewCourses(props) {
         // !Array.isArray(state.arr)?(<p className="a" align="center">{(!state.arr || !state.arr.res || !state.arr.res.data)?'Access Denied':state.arr.res.data}</p>)
         // :
             <div align="center" /*style={{backgroundColor:'black'}}*/>
-            <BaseTable data={state.arr} width={450} height={600} columns={columns}>
+            <p className="a" align="center" style={(error)?{display: 'block'}:{display: 'none'}}>{error}</p>
+           
+            <BaseTable data={state} width={700} height={600} columns={columns}>
 
             
             </BaseTable>
