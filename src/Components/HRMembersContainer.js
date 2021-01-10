@@ -10,6 +10,7 @@ let realToken;
 function HRMembersContainer(props) {
   const [state, setState] = useState(
     {
+      counter:0,
       arr:[]
     }
   );
@@ -32,10 +33,10 @@ function HRMembersContainer(props) {
     .then((res) => {
       const newstate={...state};
       newstate.arr=res.data;
+      newstate.counter = state.counter+1;
       setState(newstate);
       console.log("res.data");
       console.log(res.data);
-      test = true;
     }) 
     .catch((err)=>{
       console.log(" ERROR in login");
@@ -44,9 +45,8 @@ function HRMembersContainer(props) {
     })
     console.log("after res")
     }
-    if(!test){
-      console.log(test)
-      test = true;
+    if(state.counter %2== 0){
+      console.log("test")
       fetchData();
     }
   });

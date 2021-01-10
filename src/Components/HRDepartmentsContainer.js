@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom';
-import HRMemberItem from "./HRMemberItem"
+import HRDepartmentItem from "./HRDepartmentItem"
 import axios from 'axios'
 import Navbar from './Navbar';
 
 let test = false;
 let realToken;
 
-function HRMembersContainer(props) {
+function HRDepartmentsContainer(props) {
   const [state, setState] = useState(
     {
+      counter:0,
       arr:[]
     }
   );
@@ -28,10 +29,11 @@ function HRMembersContainer(props) {
   useEffect(() => {
     async function fetchData() {
       realToken = props.realToken;
-      await axios.post('http://localhost:8080/hr/viewAllMembers', {} ,{params:{token:props.realToken}})
+      await axios.post('http://localhost:8080/hr/viewAllDepartments', {} ,{params:{token:props.realToken}})
     .then((res) => {
       const newstate={...state};
       newstate.arr=res.data;
+      newstate.counter = state.counter+1;
       setState(newstate);
       console.log("res.data");
       console.log(res.data);
@@ -43,9 +45,8 @@ function HRMembersContainer(props) {
     })
     console.log("after res")
     }
-    if(!test){
-      console.log(test)
-      test = true;
+    if(state.counter %2== 0){
+      console.log("test")
       fetchData();
     }
   });
@@ -58,13 +59,13 @@ function HRMembersContainer(props) {
           <thead class="bg-gray-50">
             <tr>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Name
+                Department Name
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Faculty / Department
+                Head ID
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Job Title
+                Head Name
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Edit
@@ -77,13 +78,11 @@ function HRMembersContainer(props) {
           <tbody class="bg-white divide-y divide-gray-200">
           
         {state.arr.map((item)=>{
-          return <HRMemberItem
-          id = {item.memberId}  
-          name ={item.name} 
-          mail={item.email} 
-          fac={item.FacultyName} 
-          dep = {item.departmentName} 
-          MemberRank = {item.MemberRank}
+          return <HRDepartmentItem
+          departmentName = {item.departmentName}  
+          headID ={item.headID} 
+          headName={item.headName}
+
           deleteMe = {deleteMe}/>
 })}
         </tbody>
@@ -96,4 +95,4 @@ function HRMembersContainer(props) {
         )
 }
 
-export default HRMembersContainer;
+export default HRDepartmentsContainer;
