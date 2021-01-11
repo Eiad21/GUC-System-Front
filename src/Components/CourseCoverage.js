@@ -26,9 +26,10 @@ export default function CourseCoverage(props) {
             const newstate={...state};
             newstate.arr=data;
             setState(newstate);
+            return;
         }
         try {
-            const res = await axios.get('http://localhost:8080/instructorRoutes/viewCoverages');
+            const res = await axios.get('http://localhost:8080/instructorRoutes/viewCoverages',{params:{token:props.realToken}});
             
             const newstate={...state};
             newstate.arr=res.data;
@@ -56,7 +57,6 @@ export default function CourseCoverage(props) {
           width: 100,
           align: Column.Alignment.CENTER
         }]
-
     return (
         // !Array.isArray(state.arr)?(<p className="a" align="center">{(!state.arr || !state.arr.res || !state.arr.res.data)?'Access Denied':state.arr.res.data}</p>)
         // :

@@ -11,9 +11,31 @@ export default function CourseStaff(props) {
     const test=false;
     const [state, setState] = useState(
         {
-          arr:{instructors:[],TAs:[]}
+          arr:{instructors:[],TAs:[]},
+          error:''
         }
       );
+      const [removed, setRemoved] = useState(0);
+      async function removeStaff(memberID){
+        console.log(state);
+        console.log({...state});
+        
+        
+        try {
+          const res = await axios.delete(`http://localhost:8080/instructorRoutes/courseAcadMember/${courseName}/${memberID}`  ,{params:{token:props.realToken}});
+          console.log('hezar');
+          const newstate={...state};
+          newstate.error='Done Successfully';
+          setState(newstate);
+          setRemoved(removed+1);
+        } catch (e) {
+          const newstate={...state};
+          console.log(newstate);
+          newstate.error='Access Denied';
+          setState(newstate);
+        }
+        // console.log(state);
+      }
     useEffect(async() => {
         let data;
         if(test){
@@ -28,23 +50,21 @@ export default function CourseStaff(props) {
             return;
         }
         try {
-            const res = await axios.get(`http://localhost:8080/instructorRoutes/viewCourseStaff/${courseName}`);
+            const res = await axios.get(`http://localhost:8080/instructorRoutes/viewCourseStaff/${courseName}`,{params:{token:props.realToken}});
             
             const newstate={...state};
             newstate.arr=res.data;
+            state.arr=res.data;
             setState(newstate);
-            console.log(res.data);
           } catch (e) {
             const newstate={...state};
             newstate.arr=e;
             setState(newstate);
             console.log(e);
           }
-      }, []);
+      }, [removed]);
     
-
-    
-      const columns = [
+      const columns2 = [
         {
           key: 'id',
           title: 'ID',
@@ -74,17 +94,66 @@ export default function CourseStaff(props) {
               align: Column.Alignment.CENTER
             }
     ]
+    
+      const columns = [
+        {
+          key: 'id',
+          title: 'ID',
+          dataKey: 'id',
+          width: 150,
+          align: Column.Alignment.CENTER
+        },
+        {
+            key: 'name',
+            title: 'Name',
+            dataKey: 'name',
+            width: 150,
+            align: Column.Alignment.CENTER
+          },
+          {
+            key: 'mail',
+            title: 'Mail',
+            dataKey: 'mail',
+            width: 150,
+            align: Column.Alignment.CENTER
+          },
+          {
+              key: 'office',
+              title: 'Office',
+              dataKey: 'office',
+              width: 150,
+              align: Column.Alignment.CENTER
+            },
+        
+            {
+              key: 'action',
+              width: 200,
+              align: Column.Alignment.CENTER,
+              frozen: Column.FrozenDirection.RIGHT,
+              cellRenderer: ({ rowData }) => (
+                <button
+                  onClick={() => {
+                    removeStaff(rowData.id);
+                  }}
+                  className="submit"
+                >
+                  Remove
+                </button>
+              ),
+            }
+    ]
 
     return (
         // !Array.isArray(state.arr)?(<p className="a" align="center">{(!state.arr || !state.arr.res || !state.arr.res.data)?'Access Denied':state.arr.res.data}</p>)
         // :
         <div align="center">
+        <p className="a" align="center" style={(state.error)?{display: 'block'}:{display: 'none'}}>{state.error}</p>
         <div style={{width:1400}}>
         <div style={{width:600},{float:"left"}}>
         <pass>
             Instructors in the course
         </pass>
-        <BaseTable data={state.arr.instructors} width={500} height={600} columns={columns}>
+        <BaseTable data={state.arr.instructors} width={500} height={600} columns={columns2}>
 
                     
         </BaseTable>

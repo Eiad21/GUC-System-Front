@@ -28,7 +28,7 @@ export default function CourseSchedule(props) {
             return;
         }
         try {
-            const res = await axios.get(`http://localhost:8080/instructorRoutes/viewOneCourseAssignments/${courseName}`);
+            const res = await axios.get(`http://localhost:8080/instructorRoutes/viewOneCourseAssignments/${courseName}`,{params:{token:props.realToken}});
             
             const newstate={...state};
             newstate.arr=res.data;

@@ -97,42 +97,42 @@ function App() {
   <Route exact path="/courseCoverage">
   <React.StrictMode>
     <Navbar user={state.token}/>
-    <CourseCoverage token={state.token}/>
+    <CourseCoverage token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
   <Route exact path="/MyCourses">
   <React.StrictMode>
     <Navbar user={state.token}/>
-    <MyCourses token={state.token}/>
+    <MyCourses token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
   
   <Route exact path="/ViewCourses">
   <React.StrictMode>
     <Navbar user={state.token}/>
-    <ViewCourses token={state.token}/>
+    <ViewCourses token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
   <Route exact path="/StaffDep">
   <React.StrictMode>
     <Navbar user={state.token}/>
-    <StaffDep token={state.token}/>
+    <StaffDep token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
 <Route exact path="/CourseSchedule/:courseName" component={CourseSchedule}>
   <React.StrictMode>
     <Navbar user={state.token}/>
-    <CourseSchedule token={state.token}/>
+    <CourseSchedule token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
   <Route exact path="/CourseStaff/:courseName" component={CourseStaff}>
   <React.StrictMode>
     <Navbar user={state.token}/>
-    <CourseStaff token={state.token}/>
+    <CourseStaff token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
