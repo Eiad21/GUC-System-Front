@@ -56,14 +56,12 @@ const loginData={
         }) 
         .catch((err)=>{
           console.log(" ERROR in login");
-         
-           console.log(err);
            const newstate={...state};
-           if(!err || !err.res || !err.res.data){
+           if(!err || !err.response || !err.response.data){
             newstate.error='Access denied';
            }
            else{
-              newstate.error=err.res.data;
+              newstate.error=err.response.data;
            }
           setState(newstate);
         })
@@ -119,7 +117,8 @@ const loginData={
          
             <a className="submit" align="center" onClick={handleSubmit}>Log in</a>
             <p className="forgot" align="center"><a href="#">Forgot Password?</a></p>
-            <p className="a" align="center" style={(state.error)?{display: 'block'}:{display: 'none'}}>{state.error}</p>
+            <br></br>
+            <a align="center" style={(state.error)?{display: 'block'}:{display: 'none'}}>{state.error}</a>
             
             </form></div>
         </div>
