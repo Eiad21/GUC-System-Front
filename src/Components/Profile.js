@@ -1,6 +1,6 @@
 import React,{Component} from "react"   
 import axios from "axios"
-
+import Navbar from './Navbar';
 class Profile extends Component {
 
   constructor(){
@@ -31,10 +31,10 @@ render(){
 
 return(
 <div>
-
+<Navbar user="hr"/>
 <div className="bg-white shadow overflow-hidden sm:rounded-lg">
   <div class="px-4 py-5 sm:px-6">
-    <h3 className="text-lg leading-6 font-large text-gray-900">
+    <h3 className="text-3xl font-bold leading-tight text-gray-900 ">
       Profile
     </h3>
   
@@ -58,6 +58,10 @@ return(
         <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
           Backend Developer
         </dd>
+
+    
+        
+        
       </div>
 
       <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
