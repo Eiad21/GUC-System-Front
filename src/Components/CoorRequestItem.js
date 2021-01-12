@@ -1,10 +1,16 @@
 import React,{Component} from "react"   
-
+import axios from "axios"
 
 class CoorRequestItem extends Component {
 
-
-
+   
+ handleAccept(){
+    axios.get('http://localhost:8080/cooRoutes/acceptSlotLinking')
+    .then(res  => {
+       
+        console.log(res);
+    } ) 
+ }
 
 render(){
 
