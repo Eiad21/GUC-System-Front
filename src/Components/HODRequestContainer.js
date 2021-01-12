@@ -21,7 +21,7 @@ function HODRequestContainer(props) {
         if(state.FacultyName == ""){
             alert("Enter Faculty name");
             return;
-        }
+    }
      
         var DeanFormat = /^[ac]+(?:-[0-9]+)$/;
     if(state.DeanId.match(DeanFormat)){

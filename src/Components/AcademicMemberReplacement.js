@@ -4,24 +4,47 @@ import axios from "axios"
 class AcademicMemberReplacement extends Component {
   constructor(){
     super();
-    this.state={dateYear: "", dateMonth:"" ,dateDay:"" ,reason:"" ,content:"" ,reciever:"" ,comment:"" ,slotId:"" ,slotCourse:""}
-    // this.handleCourseNameChange = this.handleCourseNameChange.bind(this);
-    // this.handleTimeChange = this.handleTimeChange.bind(this);
-    // this.handleDayChange = this.handleDayChange.bind(this);
-    // this.handleLocationChange = this.handleLocationChange.bind(this);
-    // this.handleAdd = this.handleAdd.bind(this);
-
+    this.state={dateYear: "",
+     dateMonth:"" ,
+     dateDay:"" ,
+     reason:"" ,
+     content:"" ,
+     reciever:"" ,
+     comment:"" ,
+     time:"",
+     location:"" ,
+     slotCourse:""
+    }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleYear = this.handleYear.bind(this);
+    this.handleMonth = this.handleMonth.bind(this);
+    this.handleDay = this.handleDay.bind(this);
+    this.handleReason = this.handleReason.bind(this);
+    this.handleContent = this.handleContent.bind(this);
+    this.handleReciever = this.handleReciever.bind(this);
+    this.handleComment = this.handleComment.bind(this);
+    this.handleTime = this.handleTime.bind(this);
+    this.handleLocation = this.handleLocation.bind(this);
+    this.handleSlotCourse = this.handleSlotCourse.bind(this);
 
 }
   // dateYear,dateMonth,dateDay,reason,content,reciever,comment,slotId,slotCourse
 
   handleSubmit(){
-    axios.post('http://localhost:8080/AnyAcademic/replacementReq',{dateYear: this.state.dateYear, dateMonth:this.state.dateMonth ,dateDay:this.state.dateDay ,reason:this.state.reason ,content:this.state.content ,reciever:this.state.reciever ,comment:this.state.comment ,slotId:this.state.slotId ,slotCourse:this.state.slotCourse })
-    .then(res  => {
-       
+    const reqBody = {dateYear: this.state.dateYear,
+       dateMonth:this.state.dateMonth ,dateDay:this.state.dateDay,
+       reason:this.state.reason ,content:this.state.content,
+       reciever:this.state.reciever ,comment:this.state.comment,
+       location:this.state.location, time: this.state.time,
+       slotCourse:this.state.slotCourse
+       };
+    axios.post('http://localhost:8080/AnyAcademic/replacementReq', reqBody , {params:{token:this.props.realToken}})
+    .then(res  => {   
         console.log(res);
     } ) 
  }
+
+
  handleYear =(evt)=>{
      this.setState((prevState) =>{
      
@@ -100,13 +123,22 @@ handleComment =(evt)=>{
 } )
 
 }
-handleSlotId =(evt)=>{
-  this.setState((prevState) =>{
-  
 
+handleTime =(evt)=>{
+  this.setState((prevState) =>{
    return{
      ...prevState,
-     slotId: evt.target.value
+     time: evt.target.value
+   }
+} )
+}
+
+
+handleLocation =(evt)=>{
+  this.setState((prevState) =>{
+   return{
+     ...prevState,
+     location: evt.target.value
    }
 } )
 
@@ -153,7 +185,7 @@ return(
             <div className="col-span-6 sm:col-span-3">
               <label for="first_name" className="block text-sm font-medium text-gray-700">Year</label>
               {/* onChange={handleFacultyName} */}
-              <input  onChange={this.handleYear} type="text" name="first_name" id="first_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+              <input  onChange={this.handleYear} type="text" name="dateYear" id="first_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
             </div>
             <div className="col-span-6 sm:col-span-3">
               <label for="last_name" className="block text-sm font-medium text-gray-700">Month</label>
@@ -170,10 +202,15 @@ return(
               <label for="last_name" className="block text-sm font-medium text-gray-700">Reciever</label>
               <input onChange={this.handleReciever} type="text" name="last_name" id="last_name" autocomplete="family-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
             </div>
+            
+            <div className="col-span-6 sm:col-span-3">
+              <label for="last_name" className="block text-sm font-medium text-gray-700">Time</label>
+              <input  onChange={this.handleTime} type="text" name="last_name" id="last_name" autocomplete="family-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+            </div>
 
             <div className="col-span-6 sm:col-span-3">
               <label for="last_name" className="block text-sm font-medium text-gray-700">Location</label>
-              <input  type="text" name="last_name" id="last_name" autocomplete="family-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+              <input  onChange={this.handleLocation} type="text" name="last_name" id="last_name" autocomplete="family-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
             </div>
 
 
