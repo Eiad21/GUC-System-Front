@@ -15,7 +15,7 @@ class CoorDeleteSlot extends Component {
     }
 
     handleDelete(){
-        axios.post('http://localhost:8080/cooRoutes/courseSlot',{courseName: this.state.courseName, courseSlot:{time:this.state.time,day: this.state.day, location: this.state.location}})
+        axios.delete('http://localhost:8080/cooRoutes/courseSlot',{courseName: this.state.courseName, time:this.state.time,day: this.state.day, location: this.state.location})
         .then(res  => {
            
             console.log(res);
@@ -130,7 +130,7 @@ render(){
 {/* onClick={addCourse} */}
     <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
       <button onClick={this.handleDelete} type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        Add
+        Delete
       </button>
     </div>
   </div>
