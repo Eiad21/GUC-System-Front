@@ -32,7 +32,12 @@ export default function StaffDep(props) {
         setError('Done Successfully');
       } catch (e) {
         console.log("eh");
-        setError('Access Denied');
+        if(e && e.response && e.response.data){
+          setError(e.response.data);
+        }
+        else{
+          setError('Access Denied');
+        }
       }
       // console.log(state);
     }
@@ -67,7 +72,12 @@ export default function StaffDep(props) {
 
           } catch (e) {
             setState([]);
-            setError('Access Denied');
+            if(e && e.response && e.response.data){
+              setError(e.response.data);
+            }
+            else{
+              setError('Access Denied');
+            }
             setText([]);
           }
       }, []);
