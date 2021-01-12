@@ -22,7 +22,7 @@ class CoorRequestContainer extends Component {
 
 render(){
         let requests = this.state.requests.map(req => {
-            < CoorRequestItem sender={req.sender} date ={req.date} courseName ={req.reciever}/>
+            < CoorRequestItem sender={req.sender} date ={req.date} courseName ={req.reciever} id={req._id}/>
         })
     return (
         <div className="flex flex-col">
