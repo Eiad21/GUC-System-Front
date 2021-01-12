@@ -37,6 +37,8 @@ import AcademicMemberReplacement from './Components/AcademicMemberReplacement';
 import AnyAcademicDayOffRequest from './Components/AnyAcademicDayOffRequest';
 import AnyAcademicLeaveRequest from './Components/AnyAcademicLeaveRequest';
 import AnyAcademicSlotLinkingRequest from './Components/AnyAcademicSlotLinkingRequest';
+import Profile from './Components/Profile';
+
 // import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
 // import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
 // import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
@@ -193,7 +195,11 @@ function App() {
   </React.StrictMode>
   </Route>
 
-  
+  <Route exact path="/profile">
+  <React.StrictMode>
+    <Profile />
+  </React.StrictMode>
+  </Route>
 
   {/* test ends  */}
   <Route exact path="/viewMembers">
