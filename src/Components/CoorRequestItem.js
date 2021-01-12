@@ -3,7 +3,13 @@ import axios from "axios"
 
 class CoorRequestItem extends Component {
 
-   
+   constructor(){
+       super();
+       this.handleAccept = this.handleAccept.bind(this);
+       this.handleReject = this.handleReject.bind(this);
+
+
+   }
  handleAccept(){
     axios.post('http://localhost:8080/cooRoutes/acceptSlotLinking', {reqID:this.props.id})
     .then(res  => {

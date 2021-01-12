@@ -50,9 +50,9 @@ render(){
         
         </table>
        {requests}
-       < CoorRequestItem sender="omar" date ="22-1-2003 "courseName ="acml"/>
-       < CoorRequestItem sender="eiad" date ="22-1-2003 "courseName ="acml"/>
-       < CoorRequestItem sender="karim" date ="22-1-2003 "courseName ="acml"/>
+       < CoorRequestItem sender="omar" date ="22-1-2003 "courseName ="acml" id="1"/>
+       < CoorRequestItem sender="eiad" date ="22-1-2003 "courseName ="acml" id="1"/>
+       < CoorRequestItem sender="karim" date ="22-1-2003 "courseName ="acml"id="1"/>
       </div>
     </div>
   </div>
