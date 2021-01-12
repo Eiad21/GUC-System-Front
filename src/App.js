@@ -58,13 +58,18 @@ function App() {
     setState(newstate);
     console.log(newstate)
   }
+  const logOut=()=>{
+    const newstate={token:{}, realToken:""};
+    //newstate.token=token;
+    setState(newstate);
+  }
   return (
     <div>
     <Router>
   <Switch>
   <Route exact path="/">
   <React.StrictMode>
-    <Navbar user={state.token}/>
+    <Navbar user={state.token} logOut={logOut}/>
     <Dashboard name={state.token.name} token={state.token}/>
   </React.StrictMode>
   </Route>
@@ -108,49 +113,49 @@ function App() {
 
   <Route exact path="/courseCoverage">
   <React.StrictMode>
-    <Navbar user={state.token}/>
+    <Navbar user={state.token} logOut={logOut}/>
     <CourseCoverage token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
   <Route exact path="/MyCourses">
   <React.StrictMode>
-    <Navbar user={state.token}/>
+    <Navbar user={state.token} logOut={logOut}/>
     <MyCourses token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
   
   <Route exact path="/ViewCourses">
   <React.StrictMode>
-    <Navbar user={state.token}/>
+    <Navbar user={state.token} logOut={logOut}/>
     <ViewCourses token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
   <Route exact path="/StaffDep">
   <React.StrictMode>
-    <Navbar user={state.token}/>
+    <Navbar user={state.token} logOut={logOut}/>
     <StaffDep token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
 <Route exact path="/CourseSchedule/:courseName" component={CourseSchedule}>
   <React.StrictMode>
-    <Navbar user={state.token}/>
+    <Navbar user={state.token} logOut={logOut}/>
     <CourseSchedule token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
   <Route exact path="/CourseStaff/:courseName" component={CourseStaff}>
   <React.StrictMode>
-    <Navbar user={state.token}/>
+    <Navbar user={state.token} logOut={logOut}/>
     <CourseStaff token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
   <Route exact path="/addEntity">
   <React.StrictMode>
-    <Navbar user={state.token}/>
+    <Navbar user={state.token} logOut={logOut}/>
     <HRAddMember user={state.token} realToken={state.realToken}/>
     <HRAddFaculty user={state.token} realToken={state.realToken}/>
     <HRAddDepartment user={state.token} realToken={state.realToken}/>
@@ -163,7 +168,7 @@ function App() {
 
   <Route exact path="/myRequests">
   <React.StrictMode>
-    <Navbar user={state.token}/>
+    <Navbar user={state.token} logOut={logOut}/>
     <HODRequestContainer user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
@@ -204,35 +209,35 @@ function App() {
   {/* test ends  */}
   <Route exact path="/viewMembers">
   <React.StrictMode>
-    <Navbar user={state.token}/>
+    <Navbar user={state.token} logOut={logOut}/>
     <HRMembersContainer user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
   <Route exact path="/viewFaculties">
   <React.StrictMode>
-    <Navbar user={state.token}/>
+    <Navbar user={state.token} logOut={logOut}/>
     <HRFacultiesContainer user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
   <Route exact path="/viewDepartments">
   <React.StrictMode>
-    <Navbar user={state.token}/>
+    <Navbar user={state.token} logOut={logOut}/>
     <HRDepartmentsContainer user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
   <Route exact path="/viewLocations">
   <React.StrictMode>
-    <Navbar user={state.token}/>
+    <Navbar user={state.token} logOut={logOut}/>
     <HRLocationsContainer user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
   <Route exact path="/viewAllCourses">
   <React.StrictMode>
-    <Navbar user={state.token}/>
+    <Navbar user={state.token} logOut={logOut}/>
     <HRCoursesContainer user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
