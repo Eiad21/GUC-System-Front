@@ -36,7 +36,7 @@ class Profile extends Component {
           bio:res.data.bio,
           email:res.data.email,
           salary:res.data.salary,
-          memeberRank:res.data.memberRank,
+          memeberRank:res.data.MemberRank,
           newBio:""
         })
       })
@@ -59,9 +59,15 @@ handleChangeBio(evt){
 }
 
 handleUpdateBio(){
+  this.setState((preState)=>{
+    return {
+      ...preState,
+      bio:preState.newBio
+    }
+  })
   axios.post('http://localhost:8080/memberRoutes/updateProfile' , {bio:this.state.newBio} ,{params:{token:this.props.realToken}})
   .then(res  => {
-      console.log(res.data);
+      console.log(res.data.bio);
   } )
 }
 
@@ -73,7 +79,7 @@ handleChangePassword(evt){
 }
 
 handleUpdatePassword(){
-  axios.post('http://localhost:8080/memberRoutes/updateProfile' , {passwordOld:this.state.passwordOld, passwordNew: this.state.passwordNew} ,{params:{token:this.props.realToken}})
+  axios.post('http://localhost:8080/memberRoutes/updatePassword' , {passwordOld:this.state.passwordOld, passwordNew: this.state.passwordNew} ,{params:{token:this.props.realToken}})
   .then(res  => {
       console.log(res.data);
   })
