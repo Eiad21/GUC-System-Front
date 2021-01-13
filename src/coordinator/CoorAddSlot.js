@@ -14,10 +14,11 @@ class CoorAddSlot extends Component {
 
 }
   handleAdd(){
+    console.log(this.state)
     axios.post('http://localhost:8080/cooRoutes/courseSlot',{courseName: this.state.courseName, courseSlot:{time:this.state.time,day: this.state.day, location: this.state.location}}, {params:{token:this.props.realToken}})
     .then(res  => {
        
-        console.log(res);
+        console.log(res.data);
     } ) 
  }
  handleCourseNameChange =(evt)=>{
