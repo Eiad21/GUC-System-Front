@@ -35,7 +35,7 @@ function Navbar(props) {
 
   const handleNavClick=(evt)=>{
     const txt = evt.target.text;
-
+    console.log(txt);
     let path = "";
     switch(txt){
       case"Add Entity":path = "/addEntity";break;
@@ -46,6 +46,11 @@ function Navbar(props) {
       case"Courses":path = "/viewAllCourses";break;
       case "My Requests":path="/myRequests";break;
       case "View Staff Info":path="/viewstaffinfo";break; 
+      case "My Profile" : path="/profile";break; 
+      case "Linking Request" : path="/coordinator/requests";break; 
+      case "View Entity Info":path="/viewentityinfo";break; 
+      case "Assign/Delete Staff":path="/manipulatestaff";break
+
       default: path = "/";
     }
     history.push(path);
@@ -75,13 +80,16 @@ function Navbar(props) {
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Locations</a>
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Courses</a>
 
+              {/* coordinator  carentials  */}
+              <a style={(props.user.MemberRank=="coordinator")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Linking Request" onClick={handleNavClick}>Linking Request</a>
+
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>Staff Attendance</a>
 
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Schedule</a>
-              <Link style={(props.user.MemberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">My Courses</Link>
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>My Requests</a>
+              <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Assign/Delete Staff</a>
 
-              <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}}   onClick={handleNavClick} className={NBclassNotClicked}>View Staff Info</a>
+              <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}}   onClick={handleNavClick} className={NBclassNotClicked}>View Entity Info</a>
 
 
               <a style={(props.user.MemberRank=="instructor")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
@@ -113,7 +121,7 @@ function Navbar(props) {
                 Menu
               </label>
               {state.checked&&<div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 submenu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                <button href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Profile</button>
+                <a   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" text ="My Profile"onClick={handleNavClick}>My Profile</a>
 
                 <button href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Attendance</button>
 

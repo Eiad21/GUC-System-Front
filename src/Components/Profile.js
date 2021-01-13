@@ -30,6 +30,7 @@ class Profile extends Component {
   componentDidMount(){
       axios.get('http://localhost:8080/memberRoutes/viewProfile' , {params:{token:this.props.realToken}})
       .then(res =>{
+        console.log(res.data)
         this.setState({
           name:res.data.name,
           memberId:res.data.memberId,
@@ -79,7 +80,10 @@ handleChangePassword(evt){
 }
 
 handleUpdatePassword(){
-  axios.post('http://localhost:8080/memberRoutes/updatePassword' , {passwordOld:this.state.passwordOld, passwordNew: this.state.passwordNew} ,{params:{token:this.props.realToken}})
+  console.log(this.state.passwordOld)
+  console.log(this.state.passwordNew)
+
+  axios.put('http://localhost:8080/memberRoutes/updatePassword' , {passwordOld:this.state.passwordOld, passwordNew: this.state.passwordNew} ,{params:{token:this.props.realToken}})
   .then(res  => {
       console.log(res.data);
   })
@@ -90,7 +94,6 @@ render(){
 
 return(
 <div>
-<Navbar user="hr"/>
 <div className="bg-white shadow overflow-hidden sm:rounded-lg">
   <div class="px-4 py-5 sm:px-6">
     <h3 className="text-3xl font-bold leading-tight text-gray-900 ">

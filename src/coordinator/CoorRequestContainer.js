@@ -11,7 +11,7 @@ class CoorRequestContainer extends Component {
         this.state={requests:[]}
     }
     componentDidMount(){
-        axios.get('http://localhost:8080/cooRoutes/viewSlotLinkingReqs')
+        axios.get('http://localhost:8080/cooRoutes/viewSlotLinkingReqs', {params:{token:this.props.realToken}})
         .then(res  => {
             this.setState(
                 {requests:res}
@@ -50,9 +50,7 @@ render(){
         
         </table>
        {requests}
-       < CoorRequestItem sender="omar" date ="22-1-2003 "courseName ="acml" id="1"/>
-       < CoorRequestItem sender="eiad" date ="22-1-2003 "courseName ="acml" id="1"/>
-       < CoorRequestItem sender="karim" date ="22-1-2003 "courseName ="acml"id="1"/>
+      
       </div>
     </div>
   </div>
