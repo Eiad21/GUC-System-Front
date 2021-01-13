@@ -32,6 +32,9 @@ import HRDepartmentsContainer from './Components/HRDepartmentsContainer';
 import HRLocationsContainer from './Components/HRLocationsContainer';
 import HRCoursesContainer from './Components/HRCoursesContainer';
 import HodStaffinDepartment from './Components/HodStaffinDepartment'
+import HodStaffDayOffview from './Components/HodStaffDayOffview'
+
+
 // testing front end 
 import AcademicMemberReplacement from './Components/AcademicMemberReplacement';
 import AnyAcademicDayOffRequest from './Components/AnyAcademicDayOffRequest';
@@ -175,7 +178,9 @@ function App() {
   <Route exact path="/viewstaffinfo">
   <React.StrictMode>
     <Navbar user={state.token}/>
-    <HodStaffinDepartment/>
+    <HodStaffinDepartment  user={state.token} realToken={state.realToken}/>
+    <HodStaffDayOffview  user={state.token} realToken={state.realToken}/>
+
   </React.StrictMode>
   </Route>
   
