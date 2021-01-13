@@ -7,62 +7,46 @@ import { useHistory,useParams } from 'react-router-dom';
 
 export default function CourseStaff(props) {
     let { courseName } = useParams();
-    const history = useHistory();
-    const test=false;
     const [state, setState] = useState(
         {
-          arr:{instructors:[],TAs:[]},
-          error:''
+          instructors:[],TAs:[]
+          
         }
       );
-      const [removed, setRemoved] = useState(0);
+    const [error, setError] = useState('Loading');
+    const [rerender,setRe]=useState(true);
+
       async function removeStaff(memberID){
-        console.log(state);
-        console.log({...state});
-        
-        
+        setError('Loading');
         try {
           const res = await axios.delete(`http://localhost:8080/instructorRoutes/courseAcadMember/${courseName}/${memberID}`  ,{params:{token:props.realToken}});
-          console.log('hezar');
-          const newstate={...state};
-          newstate.error='Done Successfully';
-          setState(newstate);
-          setRemoved(removed+1);
+          setError('Done Successfully');
+          setRe((prev)=>!prev);
         } catch (e) {
-          const newstate={...state};
-          console.log(newstate);
-          newstate.error='Access Denied';
-          setState(newstate);
+          if(e && e.response && e.response.data){
+            setError(e.response.data);
+          }
+          else{
+            setError('Access Denied');
+          }
         }
         // console.log(state);
       }
     useEffect(async() => {
-        let data;
-        if(test){
-            data=[{day:'MON',time:1,location:"C7.7",assignedMemberID:"4343",assignedMemberName:"omar"},
-            {day:'MON',time:1,location:"C7.7",assignedMemberID:"4343",assignedMemberName:"omar"},
-            {day:'MON',time:1,location:"C7.7"}
-        ];
-            const newstate={...state};
-            newstate.arr=data;
-            setState(newstate);
-
-            return;
-        }
         try {
             const res = await axios.get(`http://localhost:8080/instructorRoutes/viewCourseStaff/${courseName}`,{params:{token:props.realToken}});
-            
-            const newstate={...state};
-            newstate.arr=res.data;
-            state.arr=res.data;
-            setState(newstate);
+            setState(res.data);
+            setError(''); 
           } catch (e) {
-            const newstate={...state};
-            newstate.arr=e;
-            setState(newstate);
-            console.log(e);
+            setState([]);
+          if(e && e.response && e.response.data){
+            setError(e.response.data);
           }
-      }, [removed]);
+          else{
+            setError('Access Denied');
+          }
+          }
+      }, [rerender]);
     
       const columns2 = [
         {
@@ -144,25 +128,26 @@ export default function CourseStaff(props) {
     ]
 
     return (
-        // !Array.isArray(state.arr)?(<p className="a" align="center">{(!state.arr || !state.arr.res || !state.arr.res.data)?'Access Denied':state.arr.res.data}</p>)
-        // :
-        <div align="center">
-        <p className="a" align="center" style={(state.error)?{display: 'block'}:{display: 'none'}}>{state.error}</p>
-        <div style={{width:1400}}>
-        <div style={{width:600},{float:"left"}}>
+      <div className="max-w-7xl mx-auto py-12">
+      <div className="py-20 sm:px-0">
+        <div>
+        <p className="a" align="center" style={(error)?{display: 'block'}:{display: 'none'}}>{error}</p>
+        <div style={{width:1020}}>
+        <div style={{width:500},{float:"left"}}>
         <pass>
             Instructors in the course
         </pass>
-        <BaseTable data={state.arr.instructors} width={500} height={600} columns={columns2}>
+        <BaseTable data={state.instructors} width={500} height={600} columns={columns2}>
 
                     
         </BaseTable>
         </div>
-        <div style={{width:600},{float:"right"}}>
+        
+        <div style={{width:500},{float:"right"}}>
         <pass>
             TAs in the course
         </pass>
-        <BaseTable data={state.arr.TAs} width={500} height={600} columns={columns}>
+        <BaseTable data={state.TAs} width={500} height={600} columns={columns}>
 
                         
             </BaseTable>
@@ -171,10 +156,7 @@ export default function CourseStaff(props) {
         </div>
         <div style={{clear: "both"}}></div>
         </div>
-            
-            // ((state.arr).map((todo)=>(
-            //     <p className="a">Course {todo.CourseName} has coverage = {todo.Coverage} </p>)
-            // ))
-    
+            </div>
+            </div>
     )
 }

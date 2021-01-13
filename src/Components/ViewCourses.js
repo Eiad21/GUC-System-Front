@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom';
 
 export default function ViewCourses(props) {
     const history = useHistory();
-    const test=false;
     const [state, setState] = useState(
         []
       );
@@ -30,6 +29,7 @@ export default function ViewCourses(props) {
         console.log(memberID);
       console.log(courseName);
       console.log(texts);
+      setError('Loading');
         try {
           const res = await axios.put(`http://localhost:8080/instructorRoutes/courseCoordinator`  ,{courseName:courseName,memberID:memberID},{params:{token:props.realToken}});
           console.log('d7k');
@@ -40,22 +40,9 @@ export default function ViewCourses(props) {
       }
         // console.log(state);
       }
-    useEffect(() => {
-        let data;
-        if(test){
-            data=[{CourseName:'csen701',Coverage:50},{CourseName:'csen705',Coverage:55},{CourseName:'csen721',Coverage:70},
-            {CourseName:'csen701',Coverage:50},{CourseName:'csen705',Coverage:55},{CourseName:'csen721',Coverage:70},
-            {CourseName:'csen701',Coverage:50},{CourseName:'csen705',Coverage:55},{CourseName:'csen721',Coverage:70},
-            {CourseName:'csen701',Coverage:50},{CourseName:'csen705',Coverage:55},{CourseName:'csen721',Coverage:70},
-            {CourseName:'csen701',Coverage:50},{CourseName:'csen705',Coverage:55},{CourseName:'csen721',Coverage:70},
-            {CourseName:'csen701',Coverage:50},{CourseName:'csen705',Coverage:55},{CourseName:'csen721',Coverage:70},
-            {CourseName:'csen701',Coverage:50},{CourseName:'csen705',Coverage:55},{CourseName:'csen721',Coverage:70},
-            {CourseName:'csen701',Coverage:50},{CourseName:'csen705',Coverage:55},{CourseName:'csen721',Coverage:70},
-            {CourseName:'csen701',Coverage:50},{CourseName:'csen705',Coverage:55},{CourseName:'csen721',Coverage:70}];
-            return data;
-        }
+    useEffect(async() => {
         try {
-          const method = async()=>{
+          // const method = async()=>{
             const res = await axios.get('http://localhost:8080/instructorRoutes/viewCoursesAssignments',{params:{token:props.realToken}});
             const arr=[];
             for(var i=0;i<res.data.length;i++){
@@ -65,12 +52,17 @@ export default function ViewCourses(props) {
             setText(arr);
             setState((prev)=>res.data);
             setError((prev)=>''); 
-          }
-          method();
+          // }
+          // method();
             
           } catch (e) {
             setState([]);
-            setError('Access Denied');
+            if(e && e.response && e.response.data){
+              setError(e.response.data);
+            }
+            else{
+              setError('Access Denied');
+            }
             setText([]);
           }
       }, []);
@@ -82,13 +74,13 @@ export default function ViewCourses(props) {
           key: 'courseName',
           title: 'Course Name',
           dataKey: 'courseName',
-          width: 150,
+          width: 300,
           align: Column.Alignment.CENTER
         },
         
         {
           key: 'action1',
-          width: 200,
+          width: 370,
           align: Column.Alignment.CENTER,
           frozen: Column.FrozenDirection.RIGHT,
           cellRenderer: ({ rowData }) => (
@@ -105,7 +97,7 @@ export default function ViewCourses(props) {
         ,
         {
             key: 'action2',
-            width: 200,
+            width: 370,
             align: Column.Alignment.CENTER,
             frozen: Column.FrozenDirection.RIGHT,
             cellRenderer: ({ rowData }) => (
@@ -152,19 +144,16 @@ export default function ViewCourses(props) {
     ]
 
     return (
-        // !Array.isArray(state.arr)?(<p className="a" align="center">{(!state.arr || !state.arr.res || !state.arr.res.data)?'Access Denied':state.arr.res.data}</p>)
-        // :
-            <div align="center" /*style={{backgroundColor:'black'}}*/>
+      <div className="max-w-7xl mx-auto py-12 sm:px-4 lg:px-4">
+      <div className="px-2 py-20 sm:px-0">
+         
             <p className="a" align="center" style={(error)?{display: 'block'}:{display: 'none'}}>{error}</p>
            
-            <BaseTable data={state} width={700} height={600} columns={columns}>
+            <BaseTable data={state} width={900} height={600} columns={columns}>
 
             
             </BaseTable>
-             </div>
-            // ((state.arr).map((todo)=>(
-            //     <p className="a">Course {todo.CourseName} has coverage = {todo.Coverage} </p>)
-            // ))
+             </div></div>
     
     )
 }

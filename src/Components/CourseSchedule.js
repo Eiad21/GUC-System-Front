@@ -7,11 +7,11 @@ import { useHistory,useParams } from 'react-router-dom';
 
 export default function CourseSchedule(props) {
     let { courseName } = useParams();
-    const history = useHistory();
-    const test=false;
     const [state, setState] = useState([]);
     const [texts, setText] = useState([]);
     const [error, setError] = useState('Loading');
+    const [rerender,setRe]=useState(true);
+
     async function handleChange(evt,idx){
       texts[idx]=evt.target.value;
       setText(texts.map((item,index) =>{ 
@@ -22,16 +22,13 @@ export default function CourseSchedule(props) {
       
     }
       async function update(memberID,courseName,slotID){
-        console.log(memberID);
-        console.log(courseName);
-        console.log(slotID);
-        console.log(texts);
+        setError('Loading');
         try {
-          const res = await axios.put('http://localhost:8080/instructorRoutes/slotAcadMember'  ,{courseName:courseName,memberID:memberID,slotID:slotID},{params:{token:props.realToken}});
+          await axios.put('http://localhost:8080/instructorRoutes/slotAcadMember'  ,{courseName:courseName,assignedMemberID:memberID,slotID:slotID},{params:{token:props.realToken}});
           console.log('d7k');
           setError('Done Successfully');
+          setRe((prev)=>!prev);
         } catch (e) {
-          console.log(e.response.data);
           if(e && e.response && e.response.data){
             setError(e.response.data);
           }
@@ -43,12 +40,13 @@ export default function CourseSchedule(props) {
       }
 
       async function remove(courseName,slotID){
+        setError('Loading');
         try {
           const res = await axios.delete(`http://localhost:8080/instructorRoutes/slotAcadMember/${courseName}/${slotID}`,{params:{token:props.realToken}});
           console.log('d7k');
           setError('Done Successfully');
+          setRe((prev)=>!prev);
         } catch (e) {
-          console.log(e.response.data);
           if(e && e.response && e.response.data){
             setError(e.response.data);
           }
@@ -60,20 +58,8 @@ export default function CourseSchedule(props) {
       }
 
     useEffect(async() => {
-        let data;
-        if(test){
-            data=[{day:'MON',time:1,location:"C7.7",assignedMemberID:"4343",assignedMemberName:"omar"},
-            {day:'MON',time:1,location:"C7.7",assignedMemberID:"4343",assignedMemberName:"omar"},
-            {day:'MON',time:1,location:"C7.7"}
-        ];
-            const newstate={...state};
-            newstate.arr=data;
-            setState(newstate);
-
-            return;
-        }
         try {
-          const method = async()=>{
+          // const method = async()=>{
           const res = await axios.get(`http://localhost:8080/instructorRoutes/viewOneCourseAssignments/${courseName}`,{params:{token:props.realToken}});
           const arr=[];
           for(var i=0;i<res.data.length;i++){
@@ -83,8 +69,8 @@ export default function CourseSchedule(props) {
           setText(arr);
           setState(res.data);
           setError(''); 
-        }
-        method();
+        // }
+        // method();
 
         } catch (e) {
           setState([]);
@@ -96,7 +82,7 @@ export default function CourseSchedule(props) {
           }
           setText([]);
         }
-      }, []);
+      }, [rerender]);
     
 
     
@@ -140,7 +126,7 @@ export default function CourseSchedule(props) {
         {
           title:' Remove Assignment of the current TA',
           key: 'action',
-          width: 200,
+          width: 400,
           align: Column.Alignment.CENTER,
           frozen: Column.FrozenDirection.RIGHT,
           cellRenderer: ({ rowData }) => (
@@ -186,18 +172,15 @@ export default function CourseSchedule(props) {
     ]
 
     return (
-        // !Array.isArray(state.arr)?(<p className="a" align="center">{(!state.arr || !state.arr.res || !state.arr.res.data)?'Access Denied':state.arr.res.data}</p>)
-        // :
-            <div align="center">
+      <div className="max-w-7xl mx-auto py-12 sm:px-4 lg:px-4">
+      <div className="px-2 py-20 sm:px-0">
             <p className="a" align="center" style={(error)?{display: 'block'}:{display: 'none'}}>{error}</p>
            <BaseTable data={state} width={900} height={600} columns={columns}>
 
             
             </BaseTable>
              </div>
-            // ((state.arr).map((todo)=>(
-            //     <p className="a">Course {todo.CourseName} has coverage = {todo.Coverage} </p>)
-            // ))
+             </div>
     
     )
 }

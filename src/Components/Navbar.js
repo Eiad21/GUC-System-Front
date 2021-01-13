@@ -26,6 +26,13 @@ function Navbar(props) {
       setState(newstate);
   }
 
+  const handlelogout=(evt)=>{
+   
+      props.logOut();
+      history.push("/login");
+  
+}
+
   const handleNavClick=(evt)=>{
     const txt = evt.target.text;
 
@@ -38,6 +45,7 @@ function Navbar(props) {
       case"Locations":path = "/viewLocations";break;
       case"Courses":path = "/viewAllCourses";break;
       case "My Requests":path="/myRequests";break;
+      case "View Staff Info":path="/viewstaffinfo";break; 
       default: path = "/";
     }
     history.push(path);
@@ -73,7 +81,7 @@ function Navbar(props) {
               <Link style={(props.user.MemberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">My Courses</Link>
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>My Requests</a>
 
-              <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Department staff</a>
+              <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}}   onClick={handleNavClick} className={NBclassNotClicked}>View Staff Info</a>
 
 
               <a style={(props.user.MemberRank=="instructor")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
@@ -101,15 +109,15 @@ function Navbar(props) {
 
             <div className="ml-3 relative">
               <input id="check01"   type="checkbox" style={{display: "none"}} name="menu" onChange={handlecheckboxChange} checked={state.checked}/>
-              <label id ="label01"for="check01" className="text-gray-300">
+              <label id ="label01" for="check01" className="text-gray-300">
                 Menu
               </label>
               {state.checked&&<div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 submenu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Profile</a>
+                <button href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Profile</button>
 
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Attendance</a>
+                <button href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Attendance</button>
 
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Log out</a>
+                <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" onClick={handlelogout}>Log out</button>
               </div>}
             </div> 
         </div>
