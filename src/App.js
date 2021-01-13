@@ -25,7 +25,7 @@ import CoorRequestContainer from './Components/CoorRequestContainer';
 import CoorAddSlot from './Components/CoorAddSlot';
 import CoorDeleteSlot from './Components/CoorDeleteSlot';
 import CoorUpdateSlot from './Components/CoorUpdateSlot';
-import Schedule from './Components/Schedule';
+import Schedule from './AnyAcademic/Schedule';
 import HRMembersContainer from './Components/HRMembersContainer';
 import HRFacultiesContainer from './Components/HRFacultiesContainer';
 import HRDepartmentsContainer from './Components/HRDepartmentsContainer';
@@ -36,7 +36,7 @@ import HodStaffDayOffview from './Components/HodStaffDayOffview'
 
 
 // testing front end 
-import AcademicMemberReplacement from './Components/AcademicMemberReplacement';
+import AcademicMemberReplacement from './AnyAcademic/AcademicMemberReplacement';
 import AnyAcademicDayOffRequest from './Components/AnyAcademicDayOffRequest';
 import AnyAcademicLeaveRequest from './Components/AnyAcademicLeaveRequest';
 import AnyAcademicSlotLinkingRequest from './Components/AnyAcademicSlotLinkingRequest';
