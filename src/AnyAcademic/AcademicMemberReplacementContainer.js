@@ -1,6 +1,6 @@
 import React,{Component} from "react"  
 
-import AcademicMemberReplacementItem from '../Components/AcademicMemberReplacementItem';
+import AcademicMemberReplacementItem from './AcademicMemberReplacementItem';
 import axios  from "axios"
 class AcademicMemberReplacementContainer extends Component {
     constructor(){
@@ -79,18 +79,8 @@ render(){
           </thead>
         
         </table>
-       { {requests} }
-       < AcademicMemberReplacementItem 
-                  reqId= {1}
-                  sender="abdallah"
-                  slotDate = "2021/5/8"
-                  reason = "acml"
-                  content = "acml"
-                  comment = "saba7 el d7k"
-                  slotCourse = "microprocessors"
-                  slotTime = "3"
-                  status="pending"
-       />
+       {requests }
+   
       </div>
     </div>
   </div>
