@@ -7,6 +7,9 @@ import { useHistory } from 'react-router-dom';
 
 export default function ViewCourses(props) {
     const history = useHistory();
+    if(!props.realToken){
+      history.push('/login');
+    }
     const [state, setState] = useState(
         []
       );
@@ -35,8 +38,12 @@ export default function ViewCourses(props) {
           console.log('d7k');
           setError('Done Successfully');
       } catch (e) {
-        console.log("eh");
-        setError('Access Denied');
+        if(e && e.response && e.response.data){
+          setError(e.response.data);
+        }
+        else{
+          setError('Access Denied');
+        }
       }
         // console.log(state);
       }

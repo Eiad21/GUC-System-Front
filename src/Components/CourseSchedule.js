@@ -6,6 +6,10 @@ import 'react-base-table/styles.css'
 import { useHistory,useParams } from 'react-router-dom';
 
 export default function CourseSchedule(props) {
+  const history = useHistory();
+    if(!props.realToken){
+      history.push('/login');
+    }
     let { courseName } = useParams();
     const [state, setState] = useState([]);
     const [texts, setText] = useState([]);
