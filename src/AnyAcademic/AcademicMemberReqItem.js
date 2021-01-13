@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 import AcademicMemberReqCell from "./AcademicMemberReqCell";
-
+import axios from "axios";
 class AcademicMemberReqItem extends Component {
 
     constructor(){
@@ -57,4 +57,4 @@ return(
 )
     }
 }
-export default AcademicMemberReplacementItem
+export default AcademicMemberReqItem

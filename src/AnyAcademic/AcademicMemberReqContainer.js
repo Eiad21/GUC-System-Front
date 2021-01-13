@@ -1,6 +1,6 @@
 import React,{Component} from "react"  
 
-import AcademicMemberReqItem from '../Components/AcademicMemberReqItem';
+import AcademicMemberReqItem from '../AnyAcademic/AcademicMemberReqItem';
 import axios  from "axios"
 class AcademicMemberReqContainer extends Component {
     constructor(){

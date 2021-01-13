@@ -80,7 +80,10 @@ handleChangePassword(evt){
 }
 
 handleUpdatePassword(){
-  axios.post('http://localhost:8080/memberRoutes/updatePassword' , {passwordOld:this.state.passwordOld, passwordNew: this.state.passwordNew} ,{params:{token:this.props.realToken}})
+  console.log(this.state.passwordOld)
+  console.log(this.state.passwordNew)
+
+  axios.put('http://localhost:8080/memberRoutes/updatePassword' , {passwordOld:this.state.passwordOld, passwordNew: this.state.passwordNew} ,{params:{token:this.props.realToken}})
   .then(res  => {
       console.log(res.data);
   })

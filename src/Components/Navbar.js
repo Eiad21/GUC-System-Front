@@ -79,7 +79,6 @@ function Navbar(props) {
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>Staff Attendance</a>
 
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Schedule</a>
-              <Link style={(props.user.MemberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">My Courses</Link>
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>My Requests</a>
 
               <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}}   onClick={handleNavClick} className={NBclassNotClicked}>View Staff Info</a>
