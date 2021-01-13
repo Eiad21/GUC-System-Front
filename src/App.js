@@ -218,6 +218,8 @@ function App() {
   </Route>
 
   {/* test ends  */}
+  
+  {/* Hr Routes*/}
   <Route exact path="/viewMembers">
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
@@ -247,6 +249,13 @@ function App() {
   </Route>
 
   <Route exact path="/viewAllCourses">
+  <React.StrictMode>
+    <Navbar user={state.token} logOut={logOut}/>
+    <HRCoursesContainer user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/viewStaffAttendance">
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
     <HRCoursesContainer user={state.token} realToken={state.realToken}/>
