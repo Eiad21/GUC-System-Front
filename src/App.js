@@ -25,7 +25,7 @@ import CoorRequestContainer from './Components/CoorRequestContainer';
 import CoorAddSlot from './Components/CoorAddSlot';
 import CoorDeleteSlot from './Components/CoorDeleteSlot';
 import CoorUpdateSlot from './Components/CoorUpdateSlot';
-import Schedule from './Components/Schedule';
+import Schedule from './AnyAcademic/Schedule';
 import HRMembersContainer from './Components/HRMembersContainer';
 import HRFacultiesContainer from './Components/HRFacultiesContainer';
 import HRDepartmentsContainer from './Components/HRDepartmentsContainer';
@@ -36,7 +36,7 @@ import HodStaffDayOffview from './Components/HodStaffDayOffview'
 
 
 // testing front end 
-import AcademicMemberReplacement from './Components/AcademicMemberReplacement';
+import AcademicMemberReplacement from './AnyAcademic/AcademicMemberReplacement';
 import AnyAcademicDayOffRequest from './Components/AnyAcademicDayOffRequest';
 import AnyAcademicLeaveRequest from './Components/AnyAcademicLeaveRequest';
 import AnyAcademicSlotLinkingRequest from './Components/AnyAcademicSlotLinkingRequest';
@@ -218,6 +218,8 @@ function App() {
   </Route>
 
   {/* test ends  */}
+  
+  {/* Hr Routes*/}
   <Route exact path="/viewMembers">
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
@@ -247,6 +249,13 @@ function App() {
   </Route>
 
   <Route exact path="/viewAllCourses">
+  <React.StrictMode>
+    <Navbar user={state.token} logOut={logOut}/>
+    <HRCoursesContainer user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/viewStaffAttendance">
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
     <HRCoursesContainer user={state.token} realToken={state.realToken}/>

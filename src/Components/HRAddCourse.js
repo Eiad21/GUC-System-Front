@@ -9,15 +9,13 @@ function HRAddCourse(props) {
         {
           FacultyName:"",
           DepartmentName:"",
-          CoordinatorId:"",
-          CoordinatorName:"",
           CourseName:"",
+          CoordinatorId:"",
+          CoordinatorName:""
         }
       );
     
     const addCourse=(evt)=>{
-        console.log("user" + props.user)
-        console.log("token" + props.realToken)
         if(state.FacultyName == ""){
             alert("Enter Faculty name");
             return;
@@ -26,7 +24,10 @@ function HRAddCourse(props) {
             alert("Enter Department name");
             return;
         }
-
+        if(state.CourseName == ""){
+          alert("Enter Coordinator Name");
+          return;
+        }
         if(state.CoordinatorName == ""){
             alert("Enter Coordinator Name");
             return;
@@ -59,36 +60,19 @@ function HRAddCourse(props) {
         }) 
         .catch((err)=>{
           console.log(" ERROR in login");
-         
-           console.log(err);
-           const newstate={...state};
-           if(!err || !err.res || !err.res.data){
+          
+          console.log(err);
+          const newstate={...state};
+          if(!err || !err.res || !err.res.data){
             newstate.error='Access denied';
-           }
+          }
            else{
               newstate.error=err.res.data;
            }
           setState(newstate);
         })
 
-        // axios.post('http://localhost:8080/hr/addMember' , {ahmed:"hla"})
-        // .then((res) => {
-        //   console.log(res.data);        
-        //   history.push("/addEntity");
-        // }) 
-        // .catch((err)=>{
-        //   console.log(" ERROR in login");
-         
-        //    console.log(err);
-        //    const newstate={...state};
-        //    if(!err || !err.res || !err.res.data){
-        //     newstate.error='Access denied';
-        //    }
-        //    else{
-        //       newstate.error=err.res.data;
-        //    }
-        //   setState(newstate);
-        // })
+
     }
     const handleFacultyName=(evt)=> {
         const newstate={...state};

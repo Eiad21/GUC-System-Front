@@ -25,20 +25,17 @@ function HRAddLocation(props) {
             alert("Capacity should be greater than 0");
             return;
         }
-        var DeanFormat = /^[ac]+(?:-[0-9]+)$/;
-    
-     
-        const FacultyInfo = {
-          
-            facultyName:state.FacultyName,
-            deanID: state.DeanId,
-           
+   
+        const LocationInfo = {
+          locationName: state.LocationName,
+          capacity: state.Capacity,
+          locationType: state.LocationType
           
         }
       
         
 
-        axios.post('http://localhost:8080/hr/addfaculty' , {email:"kimo",password:123456})
+        axios.post('http://localhost:8080/hr/addlocation' , LocationInfo,{params:{token:props.realToken}})
         .then((res) => {
           console.log(res.data);
           const token=res.data;
@@ -58,26 +55,8 @@ function HRAddLocation(props) {
            }
           setState(newstate);
         })
-
-        // axios.post('http://localhost:8080/hr/addMember' , {ahmed:"hla"})
-        // .then((res) => {
-        //   console.log(res.data);        
-        //   history.push("/addEntity");
-        // }) 
-        // .catch((err)=>{
-        //   console.log(" ERROR in login");
-         
-        //    console.log(err);
-        //    const newstate={...state};
-        //    if(!err || !err.res || !err.res.data){
-        //     newstate.error='Access denied';
-        //    }
-        //    else{
-        //       newstate.error=err.res.data;
-        //    }
-        //   setState(newstate);
-        // })
     }
+
     const handleLocationName=(evt)=> {
         const newstate={...state};
         newstate.LocationName=evt.target.value;
@@ -96,7 +75,7 @@ function HRAddLocation(props) {
         setState(newstate);
         console.log(newstate)
  
-       }
+      }
 
     return (
             <div>
