@@ -17,6 +17,7 @@ function Schedule(props) {
     
     // component did mount
     useEffect(()=>{
+        console.log("I did mount");
         axios.get("http://localhost:8080/anyAcademic/schedule", {params:{token:this.props.realToken}})
         .then((res)=>{
             console.log(res.data);
@@ -26,30 +27,26 @@ function Schedule(props) {
 
     const daysOfWeek = {sat:0,sun:1,mon:2,tue:3,wed:4,thu:5,fri:6};
     
-    const mapSchedule = ()=>{
-        let schedule =
-        [ 
-            [null,null,null,null,null,null,null],
-            [null,null,null,null,null,null,null],
-            [null,null,null,null,null,null,null],
-            [null,null,null,null,null,null,null],
-            [null,null,null,null,null,null,null]
-        ]
-        state.forEach((courseSlot)=>{
-            let day = courseSlot.day;
-            let time = courseSlot.time;
-            let loc = courseSlot.location;
-            let courseName = courseSlot.courseName;
-            
-            schedule[time-1][daysOfWeek[day]] = {
-                    location: loc,
-                    courseName: courseName
-            }
-        })
-        return schedule;
-    }
+    
+    const schedule =
+    [ 
+        ["empty","empty","empty","empty","empty","empty","empty"],
+        ["empty","empty","empty","empty","empty","empty","empty"],
+        ["empty","empty","empty","empty","empty","empty","empty"],
+        ["empty","empty","empty","empty","empty","empty","empty"],
+        ["empty","empty","empty","empty","empty","empty","empty"]
+    ]
+    state.forEach((courseSlot)=>{
+        let day = courseSlot.day;
+        let time = courseSlot.time;
+        let loc = courseSlot.location;
+        let courseName = courseSlot.courseName;
+           
+        schedule[time-1][daysOfWeek[day]] = `Course name: ${courseName}\nLocation: ${loc}`;
+    })
+     
 
-    /// to be continue
+
 
     return(
     <div>
@@ -79,13 +76,14 @@ function Schedule(props) {
         <div className="py-5 black">
     {/* <div className="border-t border-gray-200"></div> */}
     </div>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 1 </th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 1</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 1</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 1</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 1</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 1 </th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 1</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> </th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[0][0]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[0][1]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[0][2]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[0][3]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[0][4]} </th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[0][5]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[0][6]}</th>
 
     </tr>
 
@@ -94,13 +92,13 @@ function Schedule(props) {
         <div className="py-5 black">
     {/* <div className="border-t border-gray-200"></div> */}
     </div>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 2 </th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 2</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 2</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 2</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 2</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 2 </th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 2</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[1][0]} </th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[1][1]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[1][2]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[1][3]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[1][4]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[1][5]} </th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[1][6]}</th>
 
     </tr>
 
@@ -109,13 +107,13 @@ function Schedule(props) {
         <div className="py-5 black">
     {/* <div className="border-t border-gray-200"></div> */}
     </div>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 3 </th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 3</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 3</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 3</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 3</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 3 </th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 3</th>
+    <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[2][0]} </th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[2][1]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[2][2]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[2][3]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[2][4]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[2][5]} </th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[2][6]}</th>
 
     </tr>
 
@@ -124,13 +122,13 @@ function Schedule(props) {
         <div className="py-5 black">
     {/* <div className="border-t border-gray-200"></div> */}
     </div>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 4 </th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 4</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 4</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 4</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 4</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 4 </th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 4</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[3][0]} </th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[3][1]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[3][2]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[3][3]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[3][4]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[3][5]} </th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[3][6]}</th>
 
     </tr>
 
@@ -139,13 +137,13 @@ function Schedule(props) {
         <div className="py-5 black">
     {/* <div className="border-t border-gray-200"></div> */}
     </div>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 5 </th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 5</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 5</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 5</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 5</th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">row 5 </th>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> row 5</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[4][0]} </th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[4][1]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[4][2]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[4][3]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[4][4]}</th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[4][5]} </th>
+        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[4][6]}</th>
 
     </tr>
 
