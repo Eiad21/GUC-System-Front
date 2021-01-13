@@ -89,9 +89,10 @@ function App() {
   <Route exact path="/coordinator/requests">
   <React.StrictMode>
   <Navbar user={state.token} logOut={logOut}/>
-    <CoorRequestContainer name={state.token.name} token={state.token}/>
-    <CoorAddSlot name={state.token.name} token={state.token}/>
-
+    <CoorRequestContainer user={state.token} realToken={state.realToken}/>
+    <CoorDeleteSlot user={state.token} realToken={state.realToken}/>
+    <CoorAddSlot user={state.token} realToken={state.realToken}/>
+    <CoorUpdateSlot user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
