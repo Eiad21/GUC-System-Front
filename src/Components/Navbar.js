@@ -45,9 +45,15 @@ function Navbar(props) {
       case"Locations":path = "/viewLocations";break;
       case"Courses":path = "/viewAllCourses";break;
       case "My Requests":path="/myRequests";break;
+<<<<<<< HEAD
       case "View Staff Info":path="/viewstaffinfo";break; 
       case "My Profile" : path="/profile";break; 
       case "Linking Request" : path="/coordinator/requests";break; 
+=======
+      case "View Entity Info":path="/viewentityinfo";break; 
+      case "Assign/Delete Staff":path="/manipulatestaff";break
+      case "My Profile" : path="/profile";break;
+>>>>>>> 7dc0ae72226b254dfeafab8873231c37dfcbf55b
 
       default: path = "/";
     }
@@ -85,8 +91,9 @@ function Navbar(props) {
 
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Schedule</a>
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>My Requests</a>
+              <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Assign/Delete Staff</a>
 
-              <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}}   onClick={handleNavClick} className={NBclassNotClicked}>View Staff Info</a>
+              <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}}   onClick={handleNavClick} className={NBclassNotClicked}>View Entity Info</a>
 
 
               <a style={(props.user.MemberRank=="instructor")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
