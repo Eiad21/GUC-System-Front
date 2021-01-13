@@ -44,6 +44,7 @@ function Navbar(props) {
       case"Departments":path = "/viewDepartments";break;
       case"Locations":path = "/viewLocations";break;
       case"Courses":path = "/viewAllCourses";break;
+      case"Staff Attendance":path= "/viewStaffAttendance";break;
       case "My Requests":path="/myRequests";break;
       case "View Staff Info":path="/viewstaffinfo";break; 
       case "My Profile" : path="/profile";break; 
@@ -83,7 +84,7 @@ function Navbar(props) {
               {/* coordinator  carentials  */}
               <a style={(props.user.MemberRank=="coordinator")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Linking Request" onClick={handleNavClick}>Linking Request</a>
 
-              <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>Staff Attendance</a>
+              <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Staff Attendance</a>
 
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Schedule</a>
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>My Requests</a>
