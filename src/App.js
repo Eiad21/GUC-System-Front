@@ -31,7 +31,7 @@ import HRFacultiesContainer from './Components/HRFacultiesContainer';
 import HRDepartmentsContainer from './Components/HRDepartmentsContainer';
 import HRLocationsContainer from './Components/HRLocationsContainer';
 import HRCoursesContainer from './Components/HRCoursesContainer';
-
+import HodStaffinDepartment from './Components/HodStaffinDepartment'
 // testing front end 
 import AcademicMemberReplacement from './Components/AcademicMemberReplacement';
 import AnyAcademicDayOffRequest from './Components/AnyAcademicDayOffRequest';
@@ -165,6 +165,12 @@ function App() {
   <React.StrictMode>
     <Navbar user={state.token}/>
     <HODRequestContainer user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+  <Route exact path="/viewstaffinfo">
+  <React.StrictMode>
+    <Navbar user={state.token}/>
+    <HodStaffinDepartment/>
   </React.StrictMode>
   </Route>
   

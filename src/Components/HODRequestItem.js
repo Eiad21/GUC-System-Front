@@ -179,7 +179,7 @@ function HODRequestItem(props) {
             !(props.comment) &&
 
 
-            <td className="  px-6 py-4 whitespace-nowrap text-xl text-gray-800 ">   
+            <td className="  px-6 py-4 whitespace-nowrap text-xl text-gray-800  ">   
                         <input  onChange={commenthandlder} type="text"  id="last_name" autocomplete="family-name" className=" text-gray-50 bg-gray-500 mt-1 focus:ring-indigo-800 focus:border-indigo-800 block w-2/5 shadow-xl xl:text-xl border-gray-300 rounded-md"/>
                         </td>
         }

@@ -38,6 +38,7 @@ function Navbar(props) {
       case"Locations":path = "/viewLocations";break;
       case"Courses":path = "/viewAllCourses";break;
       case "My Requests":path="/myRequests";break;
+      case "View Staff Info":path="/viewstaffinfo";break; 
       default: path = "/";
     }
     history.push(path);
@@ -73,7 +74,7 @@ function Navbar(props) {
               <Link style={(props.user.MemberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">My Courses</Link>
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>My Requests</a>
 
-              <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Department staff</a>
+              <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}}   onClick={handleNavClick} className={NBclassNotClicked}>View Staff Info</a>
 
 
               <a style={(props.user.MemberRank=="instructor")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Courses</a>
