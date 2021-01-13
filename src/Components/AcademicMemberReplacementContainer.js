@@ -21,9 +21,9 @@ class AcademicMemberReplacementContainer extends Component {
      }
 
 render(){
-        let requests = this.state.requests.map(req => {
-            < CoorRequestItem sender={req.sender} date ={req.date} courseName ={req.reciever}/>
-        })
+        // let requests = this.state.requests.map(req => {
+        //     < CoorRequestItem sender={req.sender} date ={req.date} courseName ={req.reciever}/>
+        // })
     return (
         <div className="flex flex-col">
   <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -62,7 +62,7 @@ render(){
           </thead>
         
         </table>
-       {requests}
+       {/* {requests} */}
        < AcademicMemberReplacementItem sender="omar" date ="22-1-2003 "content ="acml" reason ="acml" comment ="acml" status ="acml"/>
    
       </div>

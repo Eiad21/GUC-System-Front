@@ -1,11 +1,29 @@
 import React,{Component} from "react"   
-
+import axios from "axios"
 
 class CoorRequestItem extends Component {
 
+   constructor(){
+       super();
+       this.handleAccept = this.handleAccept.bind(this);
+       this.handleReject = this.handleReject.bind(this);
 
 
-
+   }
+ handleAccept(){
+    axios.post('http://localhost:8080/cooRoutes/acceptSlotLinking', {reqID:this.props.id})
+    .then(res  => {
+       
+        console.log(res);
+    } ) 
+ }
+ handleReject(){
+    axios.post('http://localhost:8080/cooRoutes/rejectSlotLinking', {reqID:this.props.id})
+    .then(res  => {
+       
+        console.log(res);
+    } ) 
+ }
 render(){
 
     return (
@@ -57,7 +75,7 @@ render(){
                             <div className="flex-shrink-0 h-10 w-10">
                             </div>
                             <div className="ml-4">
-                            <button className="submit">Accept</button>
+                            <button className="submit" onClick={this.handleAccept}>Accept</button>
                               
                             </div>
                         </div>
@@ -70,7 +88,7 @@ render(){
                             <div className="flex-shrink-0 h-10 w-10">
                             </div>
                             <div className="ml-4">
-                            <button className="submit">Reject</button>
+                            <button className="submit" onClick={this.handleReject} >Reject</button>
                               
                             </div>
                         </div>

@@ -32,6 +32,18 @@ import HRDepartmentsContainer from './Components/HRDepartmentsContainer';
 import HRLocationsContainer from './Components/HRLocationsContainer';
 import HRCoursesContainer from './Components/HRCoursesContainer';
 
+// testing front end 
+import AcademicMemberReplacement from './Components/AcademicMemberReplacement';
+import AnyAcademicDayOffRequest from './Components/AnyAcademicDayOffRequest';
+import AnyAcademicLeaveRequest from './Components/AnyAcademicLeaveRequest';
+import AnyAcademicSlotLinkingRequest from './Components/AnyAcademicSlotLinkingRequest';
+import Profile from './Components/Profile';
+
+// import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
+// import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
+// import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
+
+
 const jwt= require('jsonwebtoken')
 function App() {
   const [state, setState] = useState(
@@ -155,7 +167,41 @@ function App() {
     <HODRequestContainer user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
+  
 
+  {/* test  */}
+  <Route exact path="/AcademicMemberReplacement">
+  <React.StrictMode>
+    <AcademicMemberReplacement />
+  </React.StrictMode>
+  </Route>
+  
+
+  <Route exact path="/AnyAcademicSlotLinkingRequest">
+  <React.StrictMode>
+    <AnyAcademicSlotLinkingRequest />
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/AnyAcademicDayOffRequest">
+  <React.StrictMode>
+    <AnyAcademicDayOffRequest />
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/AnyAcademicLeaveRequest">
+  <React.StrictMode>
+    <AnyAcademicLeaveRequest />
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/profile">
+  <React.StrictMode>
+    <Profile />
+  </React.StrictMode>
+  </Route>
+
+  {/* test ends  */}
   <Route exact path="/viewMembers">
   <React.StrictMode>
     <Navbar user={state.token}/>
