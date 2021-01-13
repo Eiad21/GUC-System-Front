@@ -3,8 +3,13 @@ import "./style.css";
 import Table, { Column } from 'react-base-table'
 import 'react-base-table/styles.css'
 import axios from 'axios';
+import { useHistory} from 'react-router-dom';
 
 export default function StaffDep(props) {
+  const history = useHistory();
+    if(!props.realToken){
+      history.push('/login');
+    }
     const test=false;
     const [state, setState] = useState([]);
     const [texts, setText] = useState([]);
