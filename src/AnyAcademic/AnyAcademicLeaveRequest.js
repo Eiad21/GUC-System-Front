@@ -2,19 +2,19 @@
 
 import React,{Component} from "react"   
 
-
+import axios from "axios"
 class AnyAcademicLeaveRequest extends Component {
   // {dateYear,dateMonth,dateDay,reason,content,comment,type}
   constructor(){
     super()
     this.state={
-      dateYear="",
-      dateMonth="",
-      dateDay="",
-      reason="",
-      content="",
-      comment="",
-      type=""
+      dateYear:"",
+      dateMonth:"",
+      dateDay:"",
+      reason:"",
+      content:"",
+      comment:"",
+      type:""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

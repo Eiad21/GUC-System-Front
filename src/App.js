@@ -21,10 +21,7 @@ import ViewCourses from './Components/ViewCourses';
 import CourseSchedule from './Components/CourseSchedule';
 import StaffDep from './Components/StaffDep';
 import CourseStaff from './Components/CourseStaff';
-import CoorRequestContainer from './Components/CoorRequestContainer';
-import CoorAddSlot from './Components/CoorAddSlot';
-import CoorDeleteSlot from './Components/CoorDeleteSlot';
-import CoorUpdateSlot from './Components/CoorUpdateSlot';
+
 import Schedule from './AnyAcademic/Schedule';
 import HRMembersContainer from './Components/HRMembersContainer';
 import HRFacultiesContainer from './Components/HRFacultiesContainer';
@@ -36,10 +33,14 @@ import HodStaffDayOffview from './Components/HodStaffDayOffview'
 
 
 // testing front end 
+import CoorRequestContainer from './Components/CoorRequestContainer';
+import CoorAddSlot from './Components/CoorAddSlot';
+import CoorDeleteSlot from './Components/CoorDeleteSlot';
+import CoorUpdateSlot from './Components/CoorUpdateSlot';
 import AcademicMemberReplacement from './AnyAcademic/AcademicMemberReplacement';
-import AnyAcademicDayOffRequest from './Components/AnyAcademicDayOffRequest';
-import AnyAcademicLeaveRequest from './Components/AnyAcademicLeaveRequest';
-import AnyAcademicSlotLinkingRequest from './Components/AnyAcademicSlotLinkingRequest';
+import AnyAcademicDayOffRequest from './AnyAcademic/AnyAcademicDayOffRequest';
+import AnyAcademicLeaveRequest from './AnyAcademic/AnyAcademicLeaveRequest';
+import AnyAcademicSlotLinkingRequest from './AnyAcademic/AnyAcademicSlotLinkingRequest';
 import Profile from './Components/Profile';
 
 // import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
@@ -208,12 +209,14 @@ function App() {
   <Route exact path="/AnyAcademicLeaveRequest">
   <React.StrictMode>
     <AnyAcademicLeaveRequest />
+ 
   </React.StrictMode>
   </Route>
 
   <Route exact path="/profile">
   <React.StrictMode>
-    <Profile />
+    <Navbar user={state.token} logOut={logOut}/>
+    <Profile token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
