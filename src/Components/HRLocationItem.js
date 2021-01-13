@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'
 
-function HRFacultyItem(props) {
+function HRLocationItem(props) {
     const [state, setState] = useState(
         {
           FacultyName:"",
@@ -12,13 +12,13 @@ function HRFacultyItem(props) {
      return (
                 <tr>
               <td class="px-6 py-4 whitespace-nowrap">
-                {props.facultyName}
+                {props.locationName}
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                {props.deanID}
+                {props.locationType}
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                  {props.deanName}
+                  {props.capacity}
               </td>
               
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -26,11 +26,11 @@ function HRFacultyItem(props) {
               </td>
 
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-              <a style={{color: "red"}} class="text-indigo-600 hover:text-indigo-900" onClick={()=>{props.deleteMe(props.facultyName)}}>Delete</a>
+              <a style={{color: "red"}} class="text-indigo-600 hover:text-indigo-900" onClick={()=>{props.deleteMe(props.locationName)}}>Delete</a>
               </td>
             </tr>
           
         )
 }
 
-export default HRFacultyItem;
+export default HRLocationItem;

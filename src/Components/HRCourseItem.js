@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'
 
-function HRDepartmentItem(props) {
+function HRCourseItem(props) {
     const [state, setState] = useState(
         {
           DepartmentName:"",
@@ -11,6 +11,15 @@ function HRDepartmentItem(props) {
       )
      return (
                 <tr>
+              
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="ml-4">
+                  <div class="text-md font-medium text-gray-900">
+                      {props.courseName}
+                    </div>
+                </div>
+              </td>
+
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="ml-4">
@@ -23,17 +32,11 @@ function HRDepartmentItem(props) {
                   </div>
                 </div>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="ml-4">
-                  <div class="text-md font-medium text-gray-900">
-                      {props.headID}
-                    </div>
-                </div>
-              </td>
+              
               <td class="px-6 py-4 whitespace-nowrap">
               <div class="ml-4">
                   <div class="text-md font-medium text-gray-900">
-                      {props.headName}
+                      {props.assignedCount}
                     </div>
                 </div>
               </td>
@@ -50,4 +53,4 @@ function HRDepartmentItem(props) {
         )
 }
 
-export default HRDepartmentItem;
+export default HRCourseItem;

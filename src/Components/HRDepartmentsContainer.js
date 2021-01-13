@@ -14,13 +14,13 @@ function HRDepartmentsContainer(props) {
       arr:[]
     }
   );
-  const deleteMe = (id)=>{
-    console.log(id)
-    axios.post('http://localhost:8080/hr/deleteMemberDepartment', {memberId:id} ,{params:{token:realToken}})
+  const deleteMe = (mFacultyName, mDepartmentName)=>{
+    axios.post('http://localhost:8080/hr/deleteDepartment', 
+        {facultyName:mFacultyName, departmentName: mDepartmentName} ,{params:{token:realToken}})
     
     const newstate={...state};
     newstate.arr= newstate.arr.filter((item)=>{
-      return item.memberId != id;
+      return (item.facultyName != mFacultyName || item.departmentName != mDepartmentName);
     })
     setState(newstate);
   }
@@ -79,7 +79,8 @@ function HRDepartmentsContainer(props) {
           
         {state.arr.map((item)=>{
           return <HRDepartmentItem
-          departmentName = {item.departmentName}  
+          departmentName = {item.departmentName}
+          facultyName = {item.facultyName}  
           headID ={item.headID} 
           headName={item.headName}
 
