@@ -68,7 +68,7 @@ handleUpdateBio(){
   })
   axios.post('http://localhost:8080/memberRoutes/updateProfile' , {bio:this.state.newBio} ,{params:{token:this.props.realToken}})
   .then(res  => {
-      console.log(res.data);
+      console.log(res.data.bio);
   } )
 }
 
