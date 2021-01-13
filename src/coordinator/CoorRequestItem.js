@@ -11,14 +11,14 @@ class CoorRequestItem extends Component {
 
    }
  handleAccept(){
-    axios.post('http://localhost:8080/cooRoutes/acceptSlotLinking', {reqID:this.props.id})
+    axios.post('http://localhost:8080/cooRoutes/acceptSlotLinking', {reqID:this.props.id}, {params:{token:this.props.realToken}})
     .then(res  => {
        
         console.log(res);
     } ) 
  }
  handleReject(){
-    axios.post('http://localhost:8080/cooRoutes/rejectSlotLinking', {reqID:this.props.id})
+    axios.post('http://localhost:8080/cooRoutes/rejectSlotLinking', {reqID:this.props.id}, {params:{token:this.props.realToken}})
     .then(res  => {
        
         console.log(res);

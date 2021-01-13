@@ -33,10 +33,10 @@ import HodStaffDayOffview from './Components/HodStaffDayOffview'
 
 
 // testing front end 
-import CoorRequestContainer from './Components/CoorRequestContainer';
-import CoorAddSlot from './Components/CoorAddSlot';
-import CoorDeleteSlot from './Components/CoorDeleteSlot';
-import CoorUpdateSlot from './Components/CoorUpdateSlot';
+import CoorRequestContainer from './coordinator/CoorRequestContainer';
+import CoorAddSlot from './coordinator/CoorAddSlot';
+import CoorDeleteSlot from './coordinator/CoorDeleteSlot';
+import CoorUpdateSlot from './coordinator/CoorUpdateSlot';
 import AcademicMemberReplacement from './AnyAcademic/AcademicMemberReplacement';
 import AnyAcademicDayOffRequest from './AnyAcademic/AnyAcademicDayOffRequest';
 import AnyAcademicLeaveRequest from './AnyAcademic/AnyAcademicLeaveRequest';
@@ -84,10 +84,13 @@ function App() {
     <Login updateUser={updateUser}/>
   </React.StrictMode>
   </Route>
-
+{/* ent a  wa2ef hena  */}
   <Route exact path="/coordinator/requests">
   <React.StrictMode>
-    <CoorRequestContainer/>
+  <Navbar user={state.token} logOut={logOut}/>
+    <CoorRequestContainer name={state.token.name} token={state.token}/>
+    <CoorAddSlot name={state.token.name} token={state.token}/>
+
   </React.StrictMode>
   </Route>
 
@@ -188,6 +191,15 @@ function App() {
   
 
   {/* test  */}
+
+  <Route exact path="/coorrequestcontainer">
+  <React.StrictMode>
+
+    <CoorRequestContainer />
+  </React.StrictMode>
+  </Route>
+
+
   <Route exact path="/AcademicMemberReplacement">
   <React.StrictMode>
     <AcademicMemberReplacement />
