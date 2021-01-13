@@ -46,6 +46,8 @@ import AnyAcademicSlotLinkingRequest from './AnyAcademic/AnyAcademicSlotLinkingR
 import Profile from './Components/Profile';
 import AcademicMemberReqContainer from './AnyAcademic/AcademicMemberReqContainer';
 
+import AcademicMemberReplacementContainer from './AnyAcademic/AcademicMemberReplacementContainer';
+
 // import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
 // import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
 // import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
@@ -97,30 +99,28 @@ function App() {
   </React.StrictMode>
   </Route>
 
-  <Route exact path="/coordinator/addslot">
+  {/* hena bardo  */}
+  <Route exact path="/AcademicMemberReplacement">
   <React.StrictMode>
-    <CoorAddSlot/>
+
+  <Navbar user={state.token} logOut={logOut}/>
+  <AcademicMemberReplacement user={state.token} realToken={state.realToken}/>
+  <  AcademicMemberReplacementContainer user={state.token} realToken={state.realToken}/>
+
   </React.StrictMode>
   </Route>
-
-
-  <Route exact path="/coordinator/updateslot">
-  <React.StrictMode>
-    <CoorUpdateSlot/>
-  </React.StrictMode>
-  </Route>
-
-  <Route exact path="/coordinator/deleteslot">
-  <React.StrictMode>
-    <CoorDeleteSlot/>
-  </React.StrictMode>
-  </Route>
-
   <Route exact path="/schedule">
   <React.StrictMode>
-    <Schedule/>
+  <Navbar user={state.token} logOut={logOut}/>
+  <Schedule user={state.token} realToken={state.realToken}/>
+  
+
+  
+
   </React.StrictMode>
   </Route>
+
+ 
 
   <Route exact path="/courseCoverage">
   <React.StrictMode>
@@ -214,11 +214,7 @@ function App() {
   </Route>
 
 
-  <Route exact path="/AcademicMemberReplacement">
-  <React.StrictMode>
-    <AcademicMemberReplacement />
-  </React.StrictMode>
-  </Route>
+  
   
 
   <Route exact path="/AnyAcademicSlotLinkingRequest">

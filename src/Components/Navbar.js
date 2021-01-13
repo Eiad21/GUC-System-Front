@@ -51,6 +51,8 @@ function Navbar(props) {
       case "Linking Request" : path="/coordinator/requests";break; 
       case "View Entity Info":path="/viewentityinfo";break; 
       case "Assign/Delete Staff":path="/manipulatestaff";break
+      case "Schedule":path="/schedule";break
+      case "Replacement Requests":path="/AcademicMemberReplacement";break
 
       default: path = "/";
     }
@@ -80,13 +82,17 @@ function Navbar(props) {
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Departments</a>
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Locations</a>
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Courses</a>
+              <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor"||props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Schedule" onClick={handleNavClick}>Schedule</a>
+              <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor"||props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Replacement Requests" onClick={handleNavClick}>Replacement Requests</a>
 
               {/* coordinator  carentials  */}
               <a style={(props.user.MemberRank=="coordinator")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Linking Request" onClick={handleNavClick}>Linking Request</a>
 
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Staff Attendance</a>
 
-              <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>My Schedule</a>
+
+
+
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>My Requests</a>
               <a style={(props.user.MemberRank!="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Assign/Delete Staff</a>
 

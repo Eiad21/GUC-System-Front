@@ -15,13 +15,15 @@ class CoorDeleteSlot extends Component {
     }
 
     handleDelete(){
-      console.log(this.state.realToken)
         axios.delete('http://localhost:8080/cooRoutes/courseSlot',{courseName: this.state.courseName, time:this.state.time,day: this.state.day, location: this.state.location}, {params:{token:this.props.realToken}})
         .then(res  => {
-           
+           console.log("1233141341351351341242412413413513413414134hhhhhhhhhhhhhhhh")
             console.log(res);
         } ) 
      }
+  
+
+
      handleCourseNameChange =(evt)=>{
          this.setState((prevState) =>{
          
