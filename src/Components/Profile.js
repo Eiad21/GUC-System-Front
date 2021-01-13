@@ -12,12 +12,18 @@ class Profile extends Component {
       bio:"",
       email:"",
       salary:"",
-      memeberRank:""
+      memeberRank:"",
+      newBio: "",
+      passwordOld:"",
+      passwordNew:""
     }
 
     this.handleSignOut = this.handleSignOut.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
-  
+    this.handleChangeBio = this.handleChangeBio.bind(this);
+    this.handleUpdateBio = this.handleUpdateBio.bind(this);
+    this.handleChangePassword = this.handleChangePassword.bind(this);
+    this.handleUpdatePassword = this.handleUpdatePassword.bind(this);
 
 }
 
@@ -30,7 +36,8 @@ class Profile extends Component {
           bio:res.data.bio,
           email:res.data.email,
           salary:res.data.salary,
-          memeberRank:res.data.memberRank
+          memeberRank:res.data.memberRank,
+          newBio:""
         })
       })
   }
@@ -38,16 +45,41 @@ class Profile extends Component {
   handleSignIn(){
     axios.post('http://localhost:8080/memberRoutes/signIn' , {} ,{params:{token:this.props.realToken}})
     .then(res  => {
-        console.log(res);
+        console.log(res.data);
     } ) 
  }
  handleSignOut(){
   axios.post('http://localhost:8080/memberRoutes/signOut' , {} ,{params:{token:this.props.realToken}})
   .then(res  => {
-      console.log(res);
-  } ) 
+      console.log(res.data);
+  } )
 }
-  
+handleChangeBio(evt){
+  this.setState({newBio:evt.target.value})
+}
+
+handleUpdateBio(){
+  axios.post('http://localhost:8080/memberRoutes/updateProfile' , {bio:this.state.newBio} ,{params:{token:this.props.realToken}})
+  .then(res  => {
+      console.log(res.data);
+  } )
+}
+
+handleChangePassword(evt){
+    const {name, value } = evt.target;
+    this.setState({
+      [name]: value
+    })      
+}
+
+handleUpdatePassword(){
+  axios.post('http://localhost:8080/memberRoutes/updateProfile' , {passwordOld:this.state.passwordOld, passwordNew: this.state.passwordNew} ,{params:{token:this.props.realToken}})
+  .then(res  => {
+      console.log(res.data);
+  })
+}
+
+
 render(){
 
 return(
@@ -125,12 +157,41 @@ return(
 <div className="py-5 black">
 {/* <div className="border-t border-gray-200"></div> */}
 </div>
+{/* sin in & out */}
 <div>
   <button className="submit" onClick={this.handleSignIn}>
     Sign In 
   </button>
   <button className="submit" onClick={this.handleSignOut}>
     Sign Out 
+  </button>
+</div>
+<br></br>
+{/* Bio updating */}
+<div>
+  <div className="col-span-6 sm:col-span-3">
+  <label for="bio" className="block text-sm font-medium text-gray-700">New Bio</label>
+  <input onChange={this.handleChangeBio}  type="text" name="bio" id="bio" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+  </div>
+  <button className="submit" onClick={this.handleUpdateBio}>
+    Update Bio 
+  </button>
+</div>
+<br></br>
+{/* update password */}
+<div>
+  <div className="col-span-6 sm:col-span-3">
+  <label for="passwordOld" className="block text-sm font-medium text-gray-700">old password</label>
+  <input onChange={this.handleChangePassword}  type="text" name="passwordOld" id="passwordOld" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+  </div>
+  <br></br>
+  <div className="col-span-6 sm:col-span-3">
+  <label for="passwordNew" className="block text-sm font-medium text-gray-700">new password</label>
+  <input onChange={this.handleChangePassword}  type="text" name="passwordNew" id="passwordNew" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+  </div>
+  <br></br>
+  <button className="submit" onClick={this.handleUpdatePassword}>
+    Change Password 
   </button>
 </div>
 </div>
