@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useEffect,useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import HODRequestItem from "./HODRequestItem"
 import axios from 'axios'
@@ -11,56 +11,34 @@ function HODRequestContainer(props) {
           FacultyName:"",
           DeanId:"",
 
-          array1:[1,2,3]
+          array1:[]
         }
-      );
+      )
     
-    const addFaculty=(evt)=>{
-        console.log("user" + props.user)
-        console.log("token" + props.realToken)
-        if(state.FacultyName == ""){
-            alert("Enter Faculty name");
-            return;
-        }
-     
-        var DeanFormat = /^[ac]+(?:-[0-9]+)$/;
-    if(state.DeanId.match(DeanFormat)){
-       alert("cor")
-    }
-    else{
-       alert("wrong")
-    }
-     
-        const FacultyInfo = {
-          
-            facultyName:state.FacultyName,
-            deanID: state.DeanId,
-           
-          
-        }
+  
       
         
 
-        axios.post('http://localhost:8080/hr/addfaculty' , {email:"kimo",password:123456})
-        .then((res) => {
-          console.log(res.data);
-          const token=res.data;
+        // axios.post('http://localhost:8080/hr/addfaculty' , {email:"kimo",password:123456})
+        // .then((res) => {
+        //   console.log(res.data);
+        //   const token=res.data;
           
-          history.push("/");
-        }) 
-        .catch((err)=>{
-          console.log(" ERROR in login");
+        //   history.push("/");
+        // }) 
+        // .catch((err)=>{
+        //   console.log(" ERROR in login");
          
-           console.log(err);
-           const newstate={...state};
-           if(!err || !err.res || !err.res.data){
-            newstate.error='Access denied';
-           }
-           else{
-              newstate.error=err.res.data;
-           }
-          setState(newstate);
-        })
+        //    console.log(err);
+        //    const newstate={...state};
+        //    if(!err || !err.res || !err.res.data){
+        //     newstate.error='Access denied';
+        //    }
+        //    else{
+        //       newstate.error=err.res.data;
+        //    }
+        //   setState(newstate);
+        // })
 
         // axios.post('http://localhost:8080/hr/addMember' , {ahmed:"hla"})
         // .then((res) => {
@@ -80,45 +58,93 @@ function HODRequestContainer(props) {
         //    }
         //   setState(newstate);
         // })
-    }
+
+        useEffect(()=>{
+          axios.get('http://localhost:8080/hod/Requests',{params:{token:props.realToken}})
+          .then (res=>{
+            console.log(res.data)
+              const newstate={...state};
+              newstate.array1=res.data;
+              
+              setState(newstate);
+              
+            console.log(state.array1);
+
+          }).catch((err)=>{console.log(err)})
+          
+        },[]);
+
+    
   
      
 
     return (
-        <div className="flex flex-col">
-  <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-      <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+     
+    <div className=" py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div className=" shadow overflow-hidden border-b border-gray-2  00 sm:rounded-lg">
+        <table className=" min-w-full divide-y divide-gray-100">
+          <thead className="bg-gray-800">
             <tr>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" className="px-6 py-3 text-left text-lg font-medium text-gray-50 uppercase tracking-wider">
+                Request Date
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-lg font-medium text-gray-50 uppercase tracking-wider">
                 Name
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Title
+              <th scope="col" className="px-6 py-3 text-left text-lg font-medium text-gray-50 uppercase tracking-wider">
+                Request Type
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Status
+
+              <th scope="col" className="px-6 py-3 text-left text-lg font-medium text-gray-50 uppercase tracking-wider">
+                newDayOff
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Role
+
+              <th scope="col" className="px-6 py-3 text-left text-lg font-medium text-gray-50 uppercase tracking-wider">
+                Leaving Date
               </th>
-              <th scope="col" className="relative px-6 py-3">
-                <span className="sr-only">Edit</span>
+              <th scope="col" className="px-6 py-3 text-left text-lg font-medium text-gray-50 uppercase tracking-wider">
+                reason
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-lg font-medium text-gray-50 uppercase tracking-wider">
+                ROLE
+              </th>
+             
+              <th scope="col" className="px-6 py-3 text-left text-lg font-medium text-gray-50 uppercase tracking-wider">
+                STATUS
+              </th>
+
+              <th scope="col" className="px-6 py-3 text-left text-lg font-medium text-gray-50 uppercase tracking-wider">
+                Comment
+              </th>
+
+              <th scope="col" className="px-6 py-3 text-left text-lg font-medium text-gray-50 uppercase tracking-wider">
+                ACCEPT/REJECT
               </th>
             </tr>
           </thead>
         
-        </table>
 
-      {state.array1.map(()=>{return <HODRequestItem/>
-})}
-      
+          <tbody className="bg-white divide-y divide-gray-200">
+          {state.array1.map((item)=>{return <HODRequestItem 
+          leavingDate= {item.leavingDate}
+          date= {item.date}
+          newDayoff ={item.newDayOff}
+          realToken={props.realToken}
+          department={item.reciever}
+          id={item._id}
+          name ={item.sender} 
+          type={item.type} item
+          reason = {item.reason} 
+          status = {item.status}
+          comment = {item.comment}/>
+          })}
+        </tbody>
+        </table>
+     
+
       </div>
     </div>
-  </div>
-</div>
+  
           
         )
 }
