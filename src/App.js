@@ -30,8 +30,9 @@ import HRLocationsContainer from './Components/HRLocationsContainer';
 import HRCoursesContainer from './Components/HRCoursesContainer';
 import HodStaffinDepartment from './Components/HodStaffinDepartment'
 import HodStaffDayOffview from './Components/HodStaffDayOffview'
-
-
+import HodViewCoverageOfCourses from './Components/HodViewCoverageOfCourses'
+import HodViewTeachingAssignment from './Components/HodViewTeachingAssignment'
+import HODAssignStaffToCourse from "./Components/HODAssignStaffToCourse"
 // testing front end 
 import CoorRequestContainer from './coordinator/CoorRequestContainer';
 import CoorAddSlot from './coordinator/CoorAddSlot';
@@ -180,14 +181,25 @@ function App() {
     <HODRequestContainer user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
-  <Route exact path="/viewstaffinfo">
+  <Route exact path="/viewentityinfo">
   <React.StrictMode>
-    <Navbar user={state.token}/>
-    <HodStaffinDepartment  user={state.token} realToken={state.realToken}/>
-    <HodStaffDayOffview  user={state.token} realToken={state.realToken}/>
-
+  <Navbar user={state.token} logOut={logOut}/>
+    <HodStaffinDepartment user={state.token} realToken={state.realToken}/>
+    <HodStaffDayOffview user={state.token} realToken={state.realToken}/>
+    <HodViewCoverageOfCourses user={state.token} realToken={state.realToken}/>
+    <HodViewTeachingAssignment user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
+
+
+  <Route exact path="/manipulatestaff">
+  <React.StrictMode>
+  <Navbar user={state.token} logOut={logOut}/>
+    <HODAssignStaffToCourse user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
+  HODAssignStaffToCourse
   
 
   {/* test  */}
