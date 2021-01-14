@@ -1,41 +1,47 @@
 import React, {useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom';
-import HRMemberItem from "./HRMemberItem"
+import HRCourseItem from "./HRCourseItem"
 import axios from 'axios'
-import Navbar from './Navbar';
+import Navbar from '../Components/Navbar';
 
 let test = false;
 let realToken;
 
-function HRMembersContainer(props) {
+function HRCourseContainer(props) {
   const [state, setState] = useState(
     {
       counter:0,
-      arr:[],
-      viewingList:true
+      arr:[]
     }
   );
-  const deleteMe = (id)=>{
-    console.log(id)
-    axios.post('http://localhost:8080/hr/deleteMemberDepartment', {memberId:id} ,{params:{token:realToken}})
+  const deleteMe = (mFacultyName, mDepartmentName, mCourseName)=>{
+    console.log("fac " +mFacultyName)
+    console.log("dep "+ mDepartmentName)
+    console.log("course "+ mCourseName)
+    axios.post('http://localhost:8080/hr/deleteCourse', 
+    {facultyName:mFacultyName, departmentName: mDepartmentName, courseName: mCourseName} ,{params:{token:realToken}})
     
     const newstate={...state};
     newstate.arr= newstate.arr.filter((item)=>{
-      return item.memberId != id;
+      return (item.facultyName != mFacultyName || item.departmentName != mDepartmentName || item.courseName != mCourseName);    
     })
     setState(newstate);
   }
 
-  const showMyAttendance = async (id)=>{
-    const myAtt = await axios.post('http://localhost:8080/hr/viewStaffAttendance', {memberId:id} ,{params:{token:realToken}})
-    console.log(myAtt);
+  const updateMe = async (updateObj)=>{
+
+    await axios.post('http://localhost:8080/hr/updateCourse', updateObj ,{params:{token:realToken}})
+    
+    const newstate={...state};
+    newstate.counter= state.counter+1;
+    setState(newstate);
   }
 
   const history = useHistory();
   useEffect(() => {
     async function fetchData() {
       realToken = props.realToken;
-      await axios.post('http://localhost:8080/hr/viewAllMembers', {} ,{params:{token:props.realToken}})
+      await axios.post('http://localhost:8080/hr/viewAllCourses', {} ,{params:{token:props.realToken}})
     .then((res) => {
       const newstate={...state};
       newstate.arr=res.data;
@@ -58,24 +64,20 @@ function HRMembersContainer(props) {
   });
 
     return (
-    
+
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-      {state.viewingList?
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Name
+                Course Name
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Faculty / Department
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Job Title
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                
+                Assinged Staff
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Edit
@@ -88,28 +90,22 @@ function HRMembersContainer(props) {
           <tbody class="bg-white divide-y divide-gray-200">
           
         {state.arr.map((item)=>{
-          return <HRMemberItem
-          id = {item.memberId}  
-          name ={item.name} 
-          mail={item.email} 
-          fac={item.FacultyName} 
-          dep = {item.departmentName} 
-          MemberRank = {item.MemberRank}
-          showMyAttendance={showMyAttendance}
-
+          return <HRCourseItem
+          courseName = {item.courseName}  
+          facultyName ={item.facultyName} 
+          departmentName={item.departmentName} 
+          assignedCount={item.assignedCount}
+          updateMe = {updateMe}
           deleteMe = {deleteMe}/>
 })}
         </tbody>
         </table>
       
       </div>
-      :
-      <h1>Hi</h1>
-      }
 </div>
 
           
         )
 }
 
-export default HRMembersContainer;
+export default HRCourseContainer;

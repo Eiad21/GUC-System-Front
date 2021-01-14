@@ -1,39 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom';
-import HRCourseItem from "./HRCourseItem"
+import HRFacultyItem from "./HRFacultyItem"
 import axios from 'axios'
-import Navbar from './Navbar';
+import Navbar from '../Components/Navbar';
 
 let test = false;
 let realToken;
 
-function HRCourseContainer(props) {
+function HRFacultiesContainer(props) {
   const [state, setState] = useState(
     {
       counter:0,
       arr:[]
     }
   );
-  const deleteMe = (mFacultyName, mDepartmentName, mCourseName)=>{
-    console.log("fac " +mFacultyName)
-    console.log("dep "+ mDepartmentName)
-    console.log("course "+ mCourseName)
-    axios.post('http://localhost:8080/hr/deleteCourse', 
-    {facultyName:mFacultyName, departmentName: mDepartmentName, courseName: mCourseName} ,{params:{token:realToken}})
+  const deleteMe = (mFacultyName)=>{
+    axios.post('http://localhost:8080/hr/deleteFaculty', {facultyName:mFacultyName} ,{params:{token:realToken}})
     
     const newstate={...state};
     newstate.arr= newstate.arr.filter((item)=>{
-      return (item.facultyName != mFacultyName || item.departmentName != mDepartmentName || item.courseName != mCourseName);    
+      return item.facultyName != mFacultyName;
     })
-    setState(newstate);
-  }
-
-  const updateMe = async (updateObj)=>{
-
-    await axios.post('http://localhost:8080/hr/updateCourse', updateObj ,{params:{token:realToken}})
-    
-    const newstate={...state};
-    newstate.counter= state.counter+1;
     setState(newstate);
   }
 
@@ -41,7 +28,7 @@ function HRCourseContainer(props) {
   useEffect(() => {
     async function fetchData() {
       realToken = props.realToken;
-      await axios.post('http://localhost:8080/hr/viewAllCourses', {} ,{params:{token:props.realToken}})
+      await axios.post('http://localhost:8080/hr/viewAllFaculties', {} ,{params:{token:props.realToken}})
     .then((res) => {
       const newstate={...state};
       newstate.arr=res.data;
@@ -71,13 +58,13 @@ function HRCourseContainer(props) {
           <thead class="bg-gray-50">
             <tr>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Course Name
+                Faculty Name
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Faculty / Department
+                Dean ID
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Assinged Staff
+                Dean Name
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Edit
@@ -90,12 +77,11 @@ function HRCourseContainer(props) {
           <tbody class="bg-white divide-y divide-gray-200">
           
         {state.arr.map((item)=>{
-          return <HRCourseItem
-          courseName = {item.courseName}  
-          facultyName ={item.facultyName} 
-          departmentName={item.departmentName} 
-          assignedCount={item.assignedCount}
-          updateMe = {updateMe}
+          return <HRFacultyItem
+          facultyName = {item.facultyName}  
+          deanID = {item.deanID} 
+          deanName = {item.deanName}
+
           deleteMe = {deleteMe}/>
 })}
         </tbody>
@@ -108,4 +94,4 @@ function HRCourseContainer(props) {
         )
 }
 
-export default HRCourseContainer;
+export default HRFacultiesContainer;
