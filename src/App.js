@@ -28,6 +28,7 @@ import HRFacultiesContainer from './Components/HRFacultiesContainer';
 import HRDepartmentsContainer from './Components/HRDepartmentsContainer';
 import HRLocationsContainer from './Components/HRLocationsContainer';
 import HRCoursesContainer from './Components/HRCoursesContainer';
+import HRStaffAttendance from './Components/HRStaffAttendance';
 import HodStaffinDepartment from './Components/HodStaffinDepartment'
 import HodStaffDayOffview from './Components/HodStaffDayOffview'
 import HodViewCoverageOfCourses from './Components/HodViewCoverageOfCourses'
@@ -44,6 +45,8 @@ import AnyAcademicLeaveRequest from './AnyAcademic/AnyAcademicLeaveRequest';
 import AnyAcademicSlotLinkingRequest from './AnyAcademic/AnyAcademicSlotLinkingRequest';
 import Profile from './Components/Profile';
 import AcademicMemberReqContainer from './AnyAcademic/AcademicMemberReqContainer';
+
+import AcademicMemberReplacementContainer from './AnyAcademic/AcademicMemberReplacementContainer';
 
 // import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
 // import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
@@ -76,7 +79,8 @@ function App() {
   <Route exact path="/">
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
-    <Dashboard name={state.token.name} token={state.token}/>
+    <Dashboard name={state.token.name} token={state.token} realToken={state.realToken}/>
+    
   </React.StrictMode>
   </Route>
 
@@ -85,7 +89,17 @@ function App() {
     <Login updateUser={updateUser}/>
   </React.StrictMode>
   </Route>
+
+  {/* AcademicMemberReqContainer */}
 {/* ent a  wa2ef hena  */}
+
+<Route exact path="/AcademicMemberReqContainer">
+  <React.StrictMode>
+  <Navbar user={state.token} logOut={logOut}/>
+    <AcademicMemberReqContainer user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
   <Route exact path="/coordinator/requests">
   <React.StrictMode>
   <Navbar user={state.token} logOut={logOut}/>
@@ -95,31 +109,38 @@ function App() {
     <CoorUpdateSlot user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
+{/* AcademicMemberReqContainer */}
+  {/* hena bardo  */}
 
-  <Route exact path="/coordinator/addslot">
+  <Route exact path="/AnyAcademicLeaveRequest">
   <React.StrictMode>
-    <CoorAddSlot/>
+    <Navbar user={state.token} logOut={logOut}/>
+
+<  AnyAcademicLeaveRequest user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
 
-  <Route exact path="/coordinator/updateslot">
+  <Route exact path="/AnyAcademicDayOffRequest">
   <React.StrictMode>
-    <CoorUpdateSlot/>
+  <Navbar user={state.token} logOut={logOut}/>
+
+  <  AnyAcademicDayOffRequest user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
-  <Route exact path="/coordinator/deleteslot">
+  <Route exact path="/AcademicMemberReplacement">
   <React.StrictMode>
-    <CoorDeleteSlot/>
+
+  <Navbar user={state.token} logOut={logOut}/>
+  <AcademicMemberReplacement user={state.token} realToken={state.realToken}/>
+  <  AcademicMemberReplacementContainer user={state.token} realToken={state.realToken}/>
+
   </React.StrictMode>
   </Route>
 
-  <Route exact path="/schedule">
-  <React.StrictMode>
-    <Schedule/>
-  </React.StrictMode>
-  </Route>
+
+ 
 
   <Route exact path="/courseCoverage">
   <React.StrictMode>
@@ -213,11 +234,7 @@ function App() {
   </Route>
 
 
-  <Route exact path="/AcademicMemberReplacement">
-  <React.StrictMode>
-    <AcademicMemberReplacement />
-  </React.StrictMode>
-  </Route>
+  
   
 
   <Route exact path="/AnyAcademicSlotLinkingRequest">
@@ -226,18 +243,9 @@ function App() {
   </React.StrictMode>
   </Route>
 
-  <Route exact path="/AnyAcademicDayOffRequest">
-  <React.StrictMode>
-    <AnyAcademicDayOffRequest />
-  </React.StrictMode>
-  </Route>
+  
 
-  <Route exact path="/AnyAcademicLeaveRequest">
-  <React.StrictMode>
-    <AnyAcademicLeaveRequest />
  
-  </React.StrictMode>
-  </Route>
 
   <Route exact path="/profile">
   <React.StrictMode>
@@ -287,7 +295,7 @@ function App() {
   <Route exact path="/viewStaffAttendance">
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
-    <HRCoursesContainer user={state.token} realToken={state.realToken}/>
+    <HRStaffAttendance user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
