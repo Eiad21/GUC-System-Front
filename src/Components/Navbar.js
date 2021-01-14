@@ -6,7 +6,7 @@ import {
   Link,
   useHistory
 } from 'react-router-dom';
-import HRAddMember from './HRAddMember';
+import HRAddMember from '../HR/HRAddMember';
 //import  './Navbar.css';
 function Navbar(props) {
   console.log("user")
