@@ -239,7 +239,16 @@ return(
 </div>
 <br></br>
 {/* update password */}
+
+
 <div>
+{/* <div class="px-4 py-5 sm:px-6">
+    <h3 className="text-3xl font-bold leading-tight text-gray-900 ">
+      Profile
+    </h3>
+  
+  </div> */}
+
   <div className="col-span-6 sm:col-span-3">
   <label for="passwordOld" className="block text-sm font-medium text-gray-700">old password</label>
   <input onChange={this.handleChangePassword}  type="text" name="passwordOld" id="passwordOld" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
@@ -255,6 +264,9 @@ return(
   </button>
   <a align="center" style={(this.state.passwordMessage)?{display: 'block'}:{display: 'none'}}>{this.state.passwordMessage}</a>
 </div>
+
+
+
 </div>
 )
     }

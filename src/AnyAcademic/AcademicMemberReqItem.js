@@ -24,7 +24,7 @@ return(
         <tr>
 
            
-        <td className="px-6 py-4 whitespace-nowrap">
+        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                         </div>
@@ -32,18 +32,18 @@ return(
                         <AcademicMemberReqCell data={this.props.type}/>       
                          </div>
                     </div>
-                </td>
+                </th>
             
-                <td className="px-6 py-4 whitespace-nowrap">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                         </div>
                         <div className="ml-4">
                         <AcademicMemberReqCell data={this.props.reciever}/>                         </div>
                     </div>
-                </td>
+                </th>
 
-                <td className="px-6 py-4 whitespace-nowrap">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                         </div>
@@ -51,36 +51,36 @@ return(
                          <AcademicMemberReqCell data={this.props.reason}/>
                          </div>
                     </div>
-                </td>
+                </th>
 
-                <td className="px-6 py-4 whitespace-nowrap">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                         </div>
                         <div className="ml-4">
                         <AcademicMemberReqCell data={this.props.content}/>                         </div>
                     </div>
-                </td>
+                </th>
 
-                <td className="px-6 py-4 whitespace-nowrap">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                         </div>
                         <div className="ml-4">
                         <AcademicMemberReqCell data={this.props.comment}/>                         </div>
                     </div>
-                </td>
+                </th>
 
-                <td className="px-6 py-4 whitespace-nowrap">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                         </div>
                         <div className="ml-4">
-                        <AcademicMemberReqCell data={this.props.slotDate}/>                         </div>
+                        <AcademicMemberReqCell data={this.props.slothate}/>                         </div>
                     </div>
-                </td>
+                </th>
 
-                <td className="px-6 py-4 whitespace-nowrap">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                         </div>
@@ -88,9 +88,9 @@ return(
                         <AcademicMemberReqCell data={this.props.slotCourse}/>
                          </div>
                     </div>
-                </td>
+                </th>
 
-                <td className="px-6 py-4 whitespace-nowrap">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                         </div>
@@ -98,9 +98,9 @@ return(
                         <AcademicMemberReqCell data={this.props.leavingDate}/>
                          </div>
                     </div>
-                </td>
+                </th>
 
-                <td className="px-6 py-4 whitespace-nowrap">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                         </div>
@@ -108,9 +108,9 @@ return(
                         <AcademicMemberReqCell data={this.props.newDayOff}/>
                          </div>
                     </div>
-                </td>
+                </th>
 
-                <td className="px-6 py-4 whitespace-nowrap">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                         </div>
@@ -118,9 +118,9 @@ return(
                         <AcademicMemberReqCell data={this.props.slotTime}/>
                          </div>
                     </div>
-                </td>
+                </th>
 
-                <td className="px-6 py-4 whitespace-nowrap">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                         </div>
@@ -128,12 +128,12 @@ return(
                         <AcademicMemberReqCell data={this.props.status}/>
                          </div>
                     </div>
-                </td>
+                </th>
 
             {
                 this.props.status==="pending"
                 &&
-                <td className="px-6 py-4 whitespace-nowrap">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                         </div>
@@ -141,7 +141,7 @@ return(
                         <button onChange={this.handleCancel} className="submit">Cancel</button>
                         </div>
                     </div>
-                </td>
+                </th>
             }
         </tr>
 
