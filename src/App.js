@@ -79,7 +79,8 @@ function App() {
   <Route exact path="/">
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
-    <Dashboard name={state.token.name} token={state.token}/>
+    <Dashboard name={state.token.name} token={state.token} realToken={state.realToken}/>
+    
   </React.StrictMode>
   </Route>
 
@@ -137,16 +138,7 @@ function App() {
 
   </React.StrictMode>
   </Route>
-  <Route exact path="/schedule">
-  <React.StrictMode>
-  <Navbar user={state.token} logOut={logOut}/>
-  <Schedule user={state.token} realToken={state.realToken}/>
-  
 
-  
-
-  </React.StrictMode>
-  </Route>
 
  
 
