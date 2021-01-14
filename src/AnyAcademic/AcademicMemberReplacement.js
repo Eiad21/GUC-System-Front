@@ -4,7 +4,8 @@ import axios from "axios"
 class AcademicMemberReplacement extends Component {
   constructor(){
     super();
-    this.state={dateYear: "",
+    this.state={
+     dateYear: "",
      dateMonth:"" ,
      dateDay:"" ,
      reason:"" ,

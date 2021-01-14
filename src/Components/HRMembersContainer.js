@@ -11,7 +11,8 @@ function HRMembersContainer(props) {
   const [state, setState] = useState(
     {
       counter:0,
-      arr:[]
+      arr:[],
+      viewingList:true
     }
   );
   const deleteMe = (id)=>{
@@ -23,6 +24,11 @@ function HRMembersContainer(props) {
       return item.memberId != id;
     })
     setState(newstate);
+  }
+
+  const showMyAttendance = async (id)=>{
+    const myAtt = await axios.post('http://localhost:8080/hr/viewStaffAttendance', {memberId:id} ,{params:{token:realToken}})
+    console.log(myAtt);
   }
 
   const history = useHistory();
@@ -52,8 +58,9 @@ function HRMembersContainer(props) {
   });
 
     return (
-
+    
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      {state.viewingList?
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
@@ -66,6 +73,9 @@ function HRMembersContainer(props) {
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Job Title
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Edit
@@ -85,12 +95,17 @@ function HRMembersContainer(props) {
           fac={item.FacultyName} 
           dep = {item.departmentName} 
           MemberRank = {item.MemberRank}
+          showMyAttendance={showMyAttendance}
+
           deleteMe = {deleteMe}/>
 })}
         </tbody>
         </table>
       
       </div>
+      :
+      <h1>Hi</h1>
+      }
 </div>
 
           
