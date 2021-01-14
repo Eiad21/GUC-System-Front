@@ -18,7 +18,7 @@ function Schedule(props) {
     // component did mount
     useEffect(()=>{
         console.log("I did mount");
-        axios.get("http://localhost:8080/anyAcademic/schedule", {params:{token:this.props.realToken}})
+        axios.get("http://localhost:8080/anyAcademic/schedule", {params:{token:props.realToken}})
         .then((res)=>{
             console.log(res.data);
             setState({schedule:res.data})
@@ -36,7 +36,7 @@ function Schedule(props) {
         ["empty","empty","empty","empty","empty","empty","empty"],
         ["empty","empty","empty","empty","empty","empty","empty"]
     ]
-    state.forEach((courseSlot)=>{
+    state.schedule.forEach((courseSlot)=>{
         let day = courseSlot.day;
         let time = courseSlot.time;
         let loc = courseSlot.location;
@@ -76,7 +76,6 @@ function Schedule(props) {
         <div className="py-5 black">
     {/* <div className="border-t border-gray-200"></div> */}
     </div>
-        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> </th>
         <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{schedule[0][0]}</th>
         <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[0][1]}</th>
         <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {schedule[0][2]}</th>

@@ -97,8 +97,8 @@ render(){
           </thead>
         
         </table>
-       { {requests} }
-       < AcademicMemberReqItem
+       {requests} 
+       {/* < AcademicMemberReqItem
                   reqId={2} 
                   sender="abdallah"
                   slotDate = "2021/5/8"
@@ -108,7 +108,7 @@ render(){
                   slotCourse = "microprocessors"
                   slotTime = "3"
                   status="pending"
-       />
+       /> */}
       </div>
     </div>
   </div>

@@ -28,22 +28,25 @@ import HRFacultiesContainer from './Components/HRFacultiesContainer';
 import HRDepartmentsContainer from './Components/HRDepartmentsContainer';
 import HRLocationsContainer from './Components/HRLocationsContainer';
 import HRCoursesContainer from './Components/HRCoursesContainer';
+import HRStaffAttendance from './Components/HRStaffAttendance';
 import HodStaffinDepartment from './Components/HodStaffinDepartment'
 import HodStaffDayOffview from './Components/HodStaffDayOffview'
 import HodViewCoverageOfCourses from './Components/HodViewCoverageOfCourses'
 import HodViewTeachingAssignment from './Components/HodViewTeachingAssignment'
 import HODAssignStaffToCourse from "./Components/HODAssignStaffToCourse"
 // testing front end 
-import CoorRequestContainer from './Components/CoorRequestContainer';
-import CoorAddSlot from './Components/CoorAddSlot';
-import CoorDeleteSlot from './Components/CoorDeleteSlot';
-import CoorUpdateSlot from './Components/CoorUpdateSlot';
+import CoorRequestContainer from './coordinator/CoorRequestContainer';
+import CoorAddSlot from './coordinator/CoorAddSlot';
+import CoorDeleteSlot from './coordinator/CoorDeleteSlot';
+import CoorUpdateSlot from './coordinator/CoorUpdateSlot';
 import AcademicMemberReplacement from './AnyAcademic/AcademicMemberReplacement';
 import AnyAcademicDayOffRequest from './AnyAcademic/AnyAcademicDayOffRequest';
 import AnyAcademicLeaveRequest from './AnyAcademic/AnyAcademicLeaveRequest';
 import AnyAcademicSlotLinkingRequest from './AnyAcademic/AnyAcademicSlotLinkingRequest';
 import Profile from './Components/Profile';
 import AcademicMemberReqContainer from './AnyAcademic/AcademicMemberReqContainer';
+
+import AcademicMemberReplacementContainer from './AnyAcademic/AcademicMemberReplacementContainer';
 
 // import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
 // import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
@@ -86,36 +89,66 @@ function App() {
   </React.StrictMode>
   </Route>
 
+  {/* AcademicMemberReqContainer */}
+{/* ent a  wa2ef hena  */}
+
+<Route exact path="/AcademicMemberReqContainer">
+  <React.StrictMode>
+  <Navbar user={state.token} logOut={logOut}/>
+    <AcademicMemberReqContainer user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
   <Route exact path="/coordinator/requests">
   <React.StrictMode>
-    <CoorRequestContainer/>
+  <Navbar user={state.token} logOut={logOut}/>
+    <CoorRequestContainer user={state.token} realToken={state.realToken}/>
+    <CoorDeleteSlot user={state.token} realToken={state.realToken}/>
+    <CoorAddSlot user={state.token} realToken={state.realToken}/>
+    <CoorUpdateSlot user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
+{/* AcademicMemberReqContainer */}
+  {/* hena bardo  */}
 
-  <Route exact path="/coordinator/addslot">
+  <Route exact path="/AnyAcademicLeaveRequest">
   <React.StrictMode>
-    <CoorAddSlot/>
+    <Navbar user={state.token} logOut={logOut}/>
+
+<  AnyAcademicLeaveRequest user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
 
-  <Route exact path="/coordinator/updateslot">
+  <Route exact path="/AnyAcademicDayOffRequest">
   <React.StrictMode>
-    <CoorUpdateSlot/>
+  <Navbar user={state.token} logOut={logOut}/>
+
+  <  AnyAcademicDayOffRequest user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
-  <Route exact path="/coordinator/deleteslot">
+  <Route exact path="/AcademicMemberReplacement">
   <React.StrictMode>
-    <CoorDeleteSlot/>
+
+  <Navbar user={state.token} logOut={logOut}/>
+  <AcademicMemberReplacement user={state.token} realToken={state.realToken}/>
+  <  AcademicMemberReplacementContainer user={state.token} realToken={state.realToken}/>
+
   </React.StrictMode>
   </Route>
-
   <Route exact path="/schedule">
   <React.StrictMode>
-    <Schedule/>
+  <Navbar user={state.token} logOut={logOut}/>
+  <Schedule user={state.token} realToken={state.realToken}/>
+  
+
+  
+
   </React.StrictMode>
   </Route>
+
+ 
 
   <Route exact path="/courseCoverage">
   <React.StrictMode>
@@ -200,11 +233,16 @@ function App() {
   
 
   {/* test  */}
-  <Route exact path="/AcademicMemberReplacement">
+
+  <Route exact path="/coorrequestcontainer">
   <React.StrictMode>
-    <AcademicMemberReplacement />
+
+    <CoorRequestContainer />
   </React.StrictMode>
   </Route>
+
+
+  
   
 
   <Route exact path="/AnyAcademicSlotLinkingRequest">
@@ -213,18 +251,9 @@ function App() {
   </React.StrictMode>
   </Route>
 
-  <Route exact path="/AnyAcademicDayOffRequest">
-  <React.StrictMode>
-    <AnyAcademicDayOffRequest />
-  </React.StrictMode>
-  </Route>
+  
 
-  <Route exact path="/AnyAcademicLeaveRequest">
-  <React.StrictMode>
-    <AnyAcademicLeaveRequest />
  
-  </React.StrictMode>
-  </Route>
 
   <Route exact path="/profile">
   <React.StrictMode>
@@ -274,7 +303,7 @@ function App() {
   <Route exact path="/viewStaffAttendance">
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
-    <HRCoursesContainer user={state.token} realToken={state.realToken}/>
+    <HRStaffAttendance user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 

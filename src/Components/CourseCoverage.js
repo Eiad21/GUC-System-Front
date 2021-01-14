@@ -3,8 +3,13 @@ import React, { useState, useEffect } from 'react';
 import "./style.css";
 import BaseTable, { Column } from 'react-base-table'
 import 'react-base-table/styles.css'
+import { useHistory} from 'react-router-dom';
 
 export default function CourseCoverage(props) {
+  const history = useHistory();
+    if(!props.realToken){
+      history.push('/login');
+    }
     const [state, setState] = useState([]);
     const [error, setError] = useState('Loading');
     useEffect(async() => {
