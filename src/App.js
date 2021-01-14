@@ -10,11 +10,11 @@ import Login from './Components/Login'
 import Dashboard from './Components/Dashboard'
 import Navbar from './Components/Navbar';
 import CourseCoverage from './Components/CourseCoverage';
-import HRAddMember from './Components/HRAddMember';
-import HRAddFaculty from './Components/HRAddFaculty';
-import HRAddDepartment from './Components/HRAddDepartment';
-import HRAddLocation from './Components/HRAddLocation';
-import HRAddCourse from './Components/HRAddCourse';
+import HRAddMember from './HR/HRAddMember';
+import HRAddFaculty from './HR/HRAddFaculty';
+import HRAddDepartment from './HR/HRAddDepartment';
+import HRAddLocation from './HR/HRAddLocation';
+import HRAddCourse from './HR/HRAddCourse';
 import HODRequestContainer from "./Components/HODRequestContainer";
 import MyCourses from './Components/MyCourses';
 import ViewCourses from './Components/ViewCourses';
@@ -23,12 +23,12 @@ import StaffDep from './Components/StaffDep';
 import CourseStaff from './Components/CourseStaff';
 
 
-import HRMembersContainer from './Components/HRMembersContainer';
-import HRFacultiesContainer from './Components/HRFacultiesContainer';
-import HRDepartmentsContainer from './Components/HRDepartmentsContainer';
-import HRLocationsContainer from './Components/HRLocationsContainer';
-import HRCoursesContainer from './Components/HRCoursesContainer';
-import HRStaffAttendance from './Components/HRStaffAttendance';
+import HRMembersContainer from './HR/HRMembersContainer';
+import HRFacultiesContainer from './HR/HRFacultiesContainer';
+import HRDepartmentsContainer from './HR/HRDepartmentsContainer';
+import HRLocationsContainer from './HR/HRLocationsContainer';
+import HRCoursesContainer from './HR/HRCoursesContainer';
+import HRStaffAttendance from './HR/HRStaffAttendance';
 import HodStaffinDepartment from './Components/HodStaffinDepartment'
 import HodStaffDayOffview from './Components/HodStaffDayOffview'
 import HodViewCoverageOfCourses from './Components/HodViewCoverageOfCourses'
