@@ -12,6 +12,10 @@ class AcademicMemberReplacementItem extends Component {
         this.handleReject = this.handleReject.bind(this);
     }
 
+    componentDidMount(){
+        console.log("rep Item did mount")
+    }
+
     handleAccept(){
         axios.post('http://localhost:8080/memberRoutes/acceptReplacementReq' , {repId:this.props.repId} ,{params:{token:this.props.realToken}})
         .then(res  => {

@@ -9,7 +9,7 @@ class AcademicMemberReplacementContainer extends Component {
     }
     componentDidMount(){
         console.log("AcademicMemberReplacementContainer Did mount");
-        axios.get('http://localhost:8080/anyAcademic/replacementReq', {params:{token:this.props.realToken}})
+        axios.get('http://localhost:8080/anyAcademic/recievedReplacementReq', {params:{token:this.props.realToken}})
         .then(res  => {
           console.log(res.data);
           console.log("in view replacement in academic member")
@@ -80,7 +80,18 @@ render(){
         
         </table>
        {requests }
-   
+       < AcademicMemberReplacementItem
+                  repId="1"
+                  sender="req.sender"
+                  slotDate = "req.date"
+                  reason = "req.reason"
+                  content = "req.content"
+                  comment = "req.comment"
+                  slotCourse = "req.slotCourse"
+                  slotTime = "req.slotTime"
+                  status="req.status"
+                  realToken={this.props.realToken}
+        />
       </div>
     </div>
   </div>

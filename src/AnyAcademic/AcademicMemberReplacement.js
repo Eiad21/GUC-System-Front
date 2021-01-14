@@ -14,7 +14,8 @@ class AcademicMemberReplacement extends Component {
      comment:"" ,
      time:"",
      location:"" ,
-     slotCourse:""
+     slotCourse:"",
+     error:""
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleYear = this.handleYear.bind(this);
@@ -42,7 +43,23 @@ class AcademicMemberReplacement extends Component {
     axios.post('http://localhost:8080/AnyAcademic/replacementReq', reqBody , {params:{token:this.props.realToken}})
     .then(res  => {   
         console.log(res);
-    } ) 
+    } ).catch((err)=>{
+      console.log(" ERROR in send replacement request");
+       if(!err || !err.response || !err.response.data){
+          this.setState((preState)=>{
+               return {
+                 ...preState,
+                 error:'invalid data'}
+          })
+       }
+       else{
+          this.setState((preState)=>{
+            return {
+              ...preState,
+              error:err.response.data}
+          })
+       }
+    })
  }
 
 
@@ -252,6 +269,8 @@ return(
             Submit
           </button>
         </div>
+        <br></br>
+        <a align="center" style={(this.state.error)?{display: 'block'}:{display: 'none'}}>{this.state.error}</a>
       </div>
     </div>
     </div>

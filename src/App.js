@@ -100,13 +100,22 @@ function App() {
   </React.StrictMode>
   </Route>
 
+
+
+  <Route exact path="/coordinator/courseManagement">
+  <React.StrictMode>
+  <Navbar user={state.token} logOut={logOut}/>
+    <CoorDeleteSlot user={state.token} realToken={state.realToken}/>
+    <CoorAddSlot user={state.token} realToken={state.realToken}/>
+    <CoorUpdateSlot user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
+
   <Route exact path="/coordinator/requests">
   <React.StrictMode>
   <Navbar user={state.token} logOut={logOut}/>
     <CoorRequestContainer user={state.token} realToken={state.realToken}/>
-    <CoorDeleteSlot user={state.token} realToken={state.realToken}/>
-    <CoorAddSlot user={state.token} realToken={state.realToken}/>
-    <CoorUpdateSlot user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 {/* AcademicMemberReqContainer */}
@@ -239,7 +248,8 @@ function App() {
 
   <Route exact path="/AnyAcademicSlotLinkingRequest">
   <React.StrictMode>
-    <AnyAcademicSlotLinkingRequest />
+    <Navbar user={state.token} logOut={logOut}/>
+    <AnyAcademicSlotLinkingRequest  user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
