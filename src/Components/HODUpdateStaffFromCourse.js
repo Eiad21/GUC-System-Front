@@ -2,7 +2,7 @@ import React, {useEffect,useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'
 
-function HODAssignStaffToCourse(props) {
+function HODUpdateStaffFromCourse(props) {
   const history = useHistory();
 
     const [state, setState] = useState(
@@ -10,7 +10,8 @@ function HODAssignStaffToCourse(props) {
             CourseArray:[],
             courseName:"",
             InstructorsArray:[],
-            Instructors:""
+            InstructorsToAssign:"",
+            InstructorToDelete:""
         }
       );
     
@@ -23,21 +24,28 @@ function HODAssignStaffToCourse(props) {
         setState(newstate);
         console.log(newstate)
         }
-        const handleAssign=(()=>{
-
-          if(state.Instructors==="Choo"|| !state.Instructors ){return alert("You Should Choose an Instructor")}
+        const handleUpdate=(()=>{
+            if(state.InstructorsToAssign==="Choo"|| !state.InstructorsToAssign ){return alert("You Should Choose an Instructor")}
           if(state.courseName==="Choose here" || !state.courseName ){return alert("You should Choose a Course")}
-            const body = {memberId:state.Instructors , courseName:state.courseName}
-            axios.post("http://localhost:8080/hod/AssignCourseInstructor",body,{params:{token:props.realToken}}).then(res=>{
-                alert("Added Successfully")
-            }).catch(err=>{console.log(err);alert("Could not add this Staff to Course ")})
+            const body = {memberIdtodelete:state.InstructorToDelete ,memberIdtoAssign:state.InstructorsToAssign, courseName:state.courseName}
+            axios.put(`http://localhost:8080/hod/AssignCourseInstructor`,body,{params:{token:props.realToken}}).then(res=>{
+                alert("Updated Successfully")
+            }).catch(err=>{console.log(err);alert("Updating Staff Failed ")})
 
 
         })
-        const handeleInstructorid=(evt)=>
+        const handeleInstructortobeAssignedid=(evt)=>
         {
             const newstate={...state};
-            newstate.Instructors=evt.target.value.substring(4,evt.target.value.indexOf(",")-1);;
+            newstate.InstructorsToAssign=evt.target.value.substring(4,evt.target.value.indexOf(",")-1);;
+            setState(newstate);
+            console.log(newstate)  
+        }
+
+        const handeleInstructortobeDeletedid=(evt)=>
+        {
+            const newstate={...state};
+            newstate.InstructorToDelete=evt.target.value.substring(4,evt.target.value.indexOf(",")-1);;
             setState(newstate);
             console.log(newstate)  
         }
@@ -70,9 +78,9 @@ function HODAssignStaffToCourse(props) {
 <div className="md:grid md:grid-rows-1 md:gap-6" style = {{marginRight: 150, marginLeft: 150}}>
   <div className="md:col-span-1">
     <div className="px-4 sm:px-0">
-      <h3 className="text-lg font-medium leading-6 text-gray-900">Assign Instructor to Course</h3>
+      <h3 className="text-lg font-medium leading-6 text-gray-900">update Instructor From Course</h3>
       <p className="mt-1 text-sm text-gray-600">
-        Enter the Course and Instructor information.
+        Enter the Course , InstructorTo be Assigned and Instructor to be Deleted information.
       </p>
     </div>
   </div>
@@ -83,8 +91,8 @@ function HODAssignStaffToCourse(props) {
             
 
             <div className="col-span-6 sm:col-span-3">
-              <label for="country" className="block text-sm font-medium text-gray-700">Instructor ID</label>
-              <select onChange={handeleInstructorid} id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg">
+              <label for="country" className="block text-sm font-medium text-gray-700">Instructor to be assigned ID</label>
+              <select onChange={handeleInstructortobeAssignedid} id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg">
               <option selected= "disabled">Choose here</option>
 
               { state.InstructorsArray.map((element)=>{return <option>ID: {element.id}  ,  Name: {element.name}</option>})}
@@ -94,6 +102,21 @@ function HODAssignStaffToCourse(props) {
 
 
             <div className="col-span-6 sm:col-span-3">
+              <label for="country" className="block text-sm font-medium text-gray-700">Instructor to be deleted ID</label>
+              <select onChange={handeleInstructortobeDeletedid} id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg">
+              <option selected= "disabled">Choose here</option>
+
+              { state.InstructorsArray.map((element)=>{return <option>ID: {element.id}  ,  Name: {element.name}</option>})}
+
+              </select>
+            </div>
+
+
+            
+          </div>
+        
+
+          <div className="col-span-6 sm:col-span-3">
               <label for="country" className="block text-sm font-medium text-gray-700">Course Name</label>
               <select onChange={handleCourseName} id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg">
               <option selected= "disabled">Choose here</option>
@@ -102,8 +125,6 @@ function HODAssignStaffToCourse(props) {
 
               </select>
             </div>
-          </div>
-        
             <br></br>
           
         
@@ -113,8 +134,8 @@ function HODAssignStaffToCourse(props) {
 
 
         <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-          <button onClick={handleAssign} type="Assign" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Assign
+          <button onClick={handleUpdate} type="Assign" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Update
           </button>
         </div>
       </div>
@@ -125,4 +146,4 @@ function HODAssignStaffToCourse(props) {
         )
 }
 
-export default HODAssignStaffToCourse;
+export default HODUpdateStaffFromCourse;

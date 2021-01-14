@@ -34,6 +34,8 @@ import HodStaffDayOffview from './Components/HodStaffDayOffview'
 import HodViewCoverageOfCourses from './Components/HodViewCoverageOfCourses'
 import HodViewTeachingAssignment from './Components/HodViewTeachingAssignment'
 import HODAssignStaffToCourse from "./Components/HODAssignStaffToCourse"
+import HODDeleteStaffFromCourse from "./Components/HODDeleteStaffFromCourse"
+import HODUpdateStaffFromCourse from "./Components/HODUpdateStaffFromCourse"
 // testing front end 
 import CoorRequestContainer from './Coordinator/CoorRequestContainer';
 import CoorAddSlot from './Coordinator/CoorAddSlot';
@@ -218,10 +220,12 @@ function App() {
   <React.StrictMode>
   <Navbar user={state.token} logOut={logOut}/>
     <HODAssignStaffToCourse user={state.token} realToken={state.realToken}/>
+    <HODDeleteStaffFromCourse user={state.token} realToken={state.realToken}/>
+    <HODUpdateStaffFromCourse user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
-  HODAssignStaffToCourse
+  
   
 
   {/* test  */}
