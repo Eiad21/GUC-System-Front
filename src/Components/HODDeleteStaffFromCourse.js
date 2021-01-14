@@ -2,7 +2,7 @@ import React, {useEffect,useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'
 
-function HODAssignStaffToCourse(props) {
+function HODDeleteStaffFromCourse(props) {
   const history = useHistory();
 
     const [state, setState] = useState(
@@ -23,14 +23,13 @@ function HODAssignStaffToCourse(props) {
         setState(newstate);
         console.log(newstate)
         }
-        const handleAssign=(()=>{
-
-          if(state.Instructors==="Choo"|| !state.Instructors ){return alert("You Should Choose an Instructor")}
+        const handleDelete=(()=>{
+            if(state.Instructors==="Choo"|| !state.Instructors ){return alert("You Should Choose an Instructor")}
           if(state.courseName==="Choose here" || !state.courseName ){return alert("You should Choose a Course")}
             const body = {memberId:state.Instructors , courseName:state.courseName}
-            axios.post("http://localhost:8080/hod/AssignCourseInstructor",body,{params:{token:props.realToken}}).then(res=>{
-                alert("Added Successfully")
-            }).catch(err=>{console.log(err);alert("Could not add this Staff to Course ")})
+            axios.delete(`http://localhost:8080/hod/AssignCourseInstructor`,{params:{token:props.realToken},data:body}).then(res=>{
+                alert("Deleted Successfully")
+            }).catch(err=>{console.log(err);alert("Could not delete this Staff from Course ")})
 
 
         })
@@ -70,7 +69,7 @@ function HODAssignStaffToCourse(props) {
 <div className="md:grid md:grid-rows-1 md:gap-6" style = {{marginRight: 150, marginLeft: 150}}>
   <div className="md:col-span-1">
     <div className="px-4 sm:px-0">
-      <h3 className="text-lg font-medium leading-6 text-gray-900">Assign Instructor to Course</h3>
+      <h3 className="text-lg font-medium leading-6 text-gray-900">Delete Instructor From Course</h3>
       <p className="mt-1 text-sm text-gray-600">
         Enter the Course and Instructor information.
       </p>
@@ -113,8 +112,8 @@ function HODAssignStaffToCourse(props) {
 
 
         <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-          <button onClick={handleAssign} type="Assign" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Assign
+          <button onClick={handleDelete} type="Assign" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Delete
           </button>
         </div>
       </div>
@@ -125,4 +124,4 @@ function HODAssignStaffToCourse(props) {
         )
 }
 
-export default HODAssignStaffToCourse;
+export default HODDeleteStaffFromCourse;

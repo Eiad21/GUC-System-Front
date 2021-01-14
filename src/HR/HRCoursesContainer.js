@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import HRCourseItem from "./HRCourseItem"
 import axios from 'axios'
-import Navbar from './Navbar';
+import Navbar from '../Components/Navbar';
 
 let test = false;
 let realToken;

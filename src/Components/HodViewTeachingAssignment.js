@@ -91,8 +91,8 @@ import  '../Components/Navbar.css';
                      
                       <div>
     
-        { state.isViewed&&
-         <table className="table-fixed w-5/6">
+        { state.isViewed&& <div>
+         <table >
              
                     {state.schedule.map(element=>{return (
                         <div>
@@ -107,18 +107,18 @@ import  '../Components/Navbar.css';
                             <div className="py-5 black">
                         {/* <div className="border-t border-gray-200"></div> */}
                         </div >
-                            <th  className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider ">Saturday </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider">Sunday </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider"> Monday</th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider"> Tuesday</th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider"> Wednesday</th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider">Thursday </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider"> Friday</th>
+                            <th  className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest ">Saturday </th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest">Sunday </th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Monday</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Tuesday</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Wednesday</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest">Thursday </th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Friday</th>
                         
                         </tr>
                         </thead>
                         <hr></hr>
-                        <tbody>
+                        <tbody >
                         <div className=" black">
                         {/* <div className="border-t border-gray-200"></div> */}
                           </div>
@@ -1036,8 +1036,9 @@ import  '../Components/Navbar.css';
                         </div>)
         }
     )
-    }
+    }   
         </table>
+        </div>
         }
     
     </div>
