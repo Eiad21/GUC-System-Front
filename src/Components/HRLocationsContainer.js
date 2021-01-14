@@ -24,6 +24,16 @@ function HRLocationsContainer(props) {
     setState(newstate);
   }
 
+  const updateMe = async (updateObj)=>{
+
+    console.log("going to update")
+    await axios.post('http://localhost:8080/hr/updateLocation', updateObj ,{params:{token:realToken}})
+    console.log("done update")
+    const newstate={...state};
+    newstate.counter= state.counter+1;
+    setState(newstate);
+  }
+
   const history = useHistory();
   useEffect(() => {
     async function fetchData() {
@@ -81,7 +91,7 @@ function HRLocationsContainer(props) {
           locationName = {item.locationName}  
           locationType ={item.locationType} 
           capacity={item.capacity} 
-
+          updateMe = {updateMe}
           deleteMe = {deleteMe}/>
 })}
         </tbody>

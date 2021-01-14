@@ -5,8 +5,6 @@ import axios from 'axios'
 function HRCourseItem(props) {
     const [state, setState] = useState(
         {
-          FacultyName:"",
-          DepartmentName:"",
           CourseName:"",
           CoordinatorName:"",
           CoordinatorId:"",
@@ -21,14 +19,13 @@ function HRCourseItem(props) {
         if(state.CourseName != ""){
           updateObj.courseNameNew = state.CourseName
         }
-        if(state.CoordinatorId != ""){
+        if(state.CoordinatorName != ""){
           updateObj.coordinatorName = state.CoordinatorName
         }
         if(state.CoordinatorId != ""){
           updateObj.coordiantorID = state.CoordinatorId
         }
         console.log(updateObj);
-
         props.updateMe(updateObj);
       }
       const showMyEdit = ()=>{

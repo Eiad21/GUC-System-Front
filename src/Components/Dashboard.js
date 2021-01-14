@@ -19,7 +19,7 @@ class Dashboard extends React.Component {
             <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
       <div className="px-4 py-6 sm:px-0">
         <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
-        <Schedule user={this.props.token} realToken={this.props.realToken}/>
+        {/* <Schedule user={this.props.token} realToken={this.props.realToken}/> */}
 
           
 
