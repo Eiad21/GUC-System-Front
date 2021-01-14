@@ -9,13 +9,16 @@ class Profile extends Component {
     this.state = {
       name:"",
       memberId:"",
+      facultyName:"",
+      departmentName:"",
       bio:"",
       email:"",
       salary:"",
       memeberRank:"",
       newBio: "",
       passwordOld:"",
-      passwordNew:""
+      passwordNew:"",
+      passwordMessage:""
     }
 
     this.handleSignOut = this.handleSignOut.bind(this);
@@ -28,12 +31,15 @@ class Profile extends Component {
 }
 
   componentDidMount(){
+      console.log("profile did mount");
       axios.get('http://localhost:8080/memberRoutes/viewProfile' , {params:{token:this.props.realToken}})
       .then(res =>{
         console.log(res.data)
         this.setState({
           name:res.data.name,
           memberId:res.data.memberId,
+          facultyName:res.data.FacultyName,
+          departmentName:res.data.departmentName,
           bio:res.data.bio,
           email:res.data.email,
           salary:res.data.salary,
@@ -86,6 +92,27 @@ handleUpdatePassword(){
   axios.put('http://localhost:8080/memberRoutes/updatePassword' , {passwordOld:this.state.passwordOld, passwordNew: this.state.passwordNew} ,{params:{token:this.props.realToken}})
   .then(res  => {
       console.log(res.data);
+      this.setState((preState)=>{
+        return {
+          ...preState,
+          passwordMessage:'Password changed'}
+   })
+  }).catch((err)=>{
+    console.log(" ERROR in change password");
+     if(!err || !err.response || !err.response.data){
+        this.setState((preState)=>{
+             return {
+               ...preState,
+               passwordMessage:'incorrect password'}
+        })
+     }
+     else{
+        this.setState((preState)=>{
+          return {
+            ...preState,
+            passwordMessage:err.response.data}
+        })
+     }
   })
 }
 
@@ -122,6 +149,30 @@ return(
         </dd>
       </div>
 
+      {
+        this.props.token.MemberRank !== 'hr' &&
+      <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt className="text-sm font-medium text-gray-500">
+          Faculty
+        </dt>
+        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          {this.state.facultyName}
+        </dd>
+      </div>
+      }
+
+      {
+        this.props.token.MemberRank !== 'hr' &&
+      <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt className="text-sm font-medium text-gray-500">
+          Department
+        </dt>
+        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          {this.state.departmentName}
+        </dd>
+      </div>
+      }
+      
       <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt className="text-sm font-medium text-gray-500">
           Bio
@@ -202,6 +253,7 @@ return(
   <button className="submit" onClick={this.handleUpdatePassword}>
     Change Password 
   </button>
+  <a align="center" style={(this.state.passwordMessage)?{display: 'block'}:{display: 'none'}}>{this.state.passwordMessage}</a>
 </div>
 </div>
 )

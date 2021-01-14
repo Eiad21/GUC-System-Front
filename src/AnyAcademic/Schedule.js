@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from "react";
 import { useHistory } from 'react-router-dom';   
 import axios from "axios";
-import  '../Components/Navbar.css';
+
 
 
 
@@ -17,7 +17,7 @@ function Schedule(props) {
     
     // component did mount
     useEffect(()=>{
-        console.log("I did mount");
+        console.log("schedule did mount");
         axios.get("http://localhost:8080/anyAcademic/schedule", {params:{token:props.realToken}})
         .then((res)=>{
             console.log(res.data);
@@ -38,6 +38,8 @@ function Schedule(props) {
     ]
     state.schedule.forEach((courseSlot)=>{
         let day = courseSlot.day;
+        day = day.substring(0,3);
+        day = day.toLowerCase();
         let time = courseSlot.time;
         let loc = courseSlot.location;
         let courseName = courseSlot.courseName;

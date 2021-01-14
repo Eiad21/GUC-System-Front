@@ -22,7 +22,7 @@ import CourseSchedule from './Components/CourseSchedule';
 import StaffDep from './Components/StaffDep';
 import CourseStaff from './Components/CourseStaff';
 
-import Schedule from './AnyAcademic/Schedule';
+
 import HRMembersContainer from './Components/HRMembersContainer';
 import HRFacultiesContainer from './Components/HRFacultiesContainer';
 import HRDepartmentsContainer from './Components/HRDepartmentsContainer';
@@ -35,10 +35,10 @@ import HodViewCoverageOfCourses from './Components/HodViewCoverageOfCourses'
 import HodViewTeachingAssignment from './Components/HodViewTeachingAssignment'
 import HODAssignStaffToCourse from "./Components/HODAssignStaffToCourse"
 // testing front end 
-import CoorRequestContainer from './coordinator/CoorRequestContainer';
-import CoorAddSlot from './coordinator/CoorAddSlot';
-import CoorDeleteSlot from './coordinator/CoorDeleteSlot';
-import CoorUpdateSlot from './coordinator/CoorUpdateSlot';
+import CoorRequestContainer from './Coordinator/CoorRequestContainer';
+import CoorAddSlot from './Coordinator/CoorAddSlot';
+import CoorDeleteSlot from './Coordinator/CoorDeleteSlot';
+import CoorUpdateSlot from './Coordinator/CoorUpdateSlot';
 import AcademicMemberReplacement from './AnyAcademic/AcademicMemberReplacement';
 import AnyAcademicDayOffRequest from './AnyAcademic/AnyAcademicDayOffRequest';
 import AnyAcademicLeaveRequest from './AnyAcademic/AnyAcademicLeaveRequest';
@@ -76,7 +76,7 @@ function App() {
     <div>
     <Router>
   <Switch>
-  <Route exact path="/">
+  <Route exact path="/">    {/* Dashboard */}
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
     <Dashboard name={state.token.name} token={state.token} realToken={state.realToken}/>
@@ -84,7 +84,7 @@ function App() {
   </React.StrictMode>
   </Route>
 
-  <Route exact path="/login">
+  <Route exact path="/login"> 
   <React.StrictMode>
     <Login updateUser={updateUser}/>
   </React.StrictMode>
