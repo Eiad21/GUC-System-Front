@@ -42,8 +42,7 @@ class AcademicMemberReplacementItem extends Component {
 
             <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10">
-                        </div>
+                     
                         <div className="ml-4">
                         <AcademicMemberReplacementCell data={this.props.sender}/>
                         </div>
@@ -53,27 +52,41 @@ class AcademicMemberReplacementItem extends Component {
 
                 <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10">
+                        <div className="flex-shrink-0 h-5 w-5">
                         </div>
                         <div className="ml-4">
                         <AcademicMemberReplacementCell data={this.props.slotDate}/>
                         </div>
                     </div>
                 </td>
-
                 <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10">
+                        <div className="flex-shrink-0 h-5 w-5">
+                        </div>
+                        <div className="ml-4">
+                        </div>
+                    </div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0 h-5 w-5">
                         </div>
                         <div className="ml-4">
                         <AcademicMemberReplacementCell data={this.props.reason}/>
                         </div>
                     </div>
                 </td>
-
                 <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10">
+                        <div className="flex-shrink-0 h-5 w-5">
+                        </div>
+                        <div className="ml-4">
+                        </div>
+                    </div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0 h-5 w-5">
                         </div>
                         <div className="ml-4">
                         <AcademicMemberReplacementCell data={this.props.content}/>
@@ -83,16 +96,22 @@ class AcademicMemberReplacementItem extends Component {
 
                 <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10">
+                        <div className="flex-shrink-0 h-5 w-5">
                         </div>
                         <div className="ml-4">
                         <AcademicMemberReplacementCell data={this.props.comment}/>
                         </div>
                     </div>
                 </td>
+
+                   
+                     
+                 
+                 
+                
                 <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10">
+                        <div className="flex-shrink-0 h-5 w-5">
                         </div>
                         <div className="ml-4">
                         <AcademicMemberReplacementCell data={this.props.slotCourse}/>
@@ -102,7 +121,7 @@ class AcademicMemberReplacementItem extends Component {
 
                 <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10">
+                        <div className="flex-shrink-0 h-5 w-5">
                         </div>
                         <div className="ml-4">
                         <AcademicMemberReplacementCell data={this.props.slotTime}/>
@@ -112,7 +131,7 @@ class AcademicMemberReplacementItem extends Component {
 
                 <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10">
+                        <div className="flex-shrink-0 h-5 w-5">
                         </div>
                         <div className="ml-4">
                         <AcademicMemberReplacementCell data={this.props.status}/>
@@ -123,7 +142,7 @@ class AcademicMemberReplacementItem extends Component {
                 {/* accept button */}
                 <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10">
+                        <div className="flex-shrink-0 h-5 w-5">
                         </div>
                         <div className="ml-4">
                         <button onClick={this.handleAccept} className="submit">Accept</button>                  
@@ -134,7 +153,7 @@ class AcademicMemberReplacementItem extends Component {
                 {/* reject button */}
                 <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10">
+                        <div className="flex-shrink-0 h-5 w-5">
                         </div>
                         <div className="ml-4">
                         <button onClick={this.handleReject} className="submit">Reject</button>
@@ -142,6 +161,40 @@ class AcademicMemberReplacementItem extends Component {
                     </div>
                 </td>
             </tr>
+
+            {/* <tr>
+              <td scope="col" className="px-6 py-4 whitespace-nowrap">
+                Sender
+              </td>
+              <td scope="col" className="px-6 py-4 whitespace-nowrap">
+                Slot Date
+              </td>
+             
+              <td scope="col" className="relative px-6 py-3">
+                <span className="sr-only">Reason</span>
+              </td>
+
+
+              <td scope="col" className="relative px-6 py-3">
+                <span className="sr-only">Content</span>
+              </td>
+
+              <td scope="col" className="relative px-6 py-3">
+                <span className="sr-only">Comment</span>
+              </td>
+
+              <td scope="col" className="px-6 py-4 whitespace-nowrap">
+                Course Name
+              </td>
+              <td scope="col" className="px-6 py-4 whitespace-nowrap">
+                Slot Time
+              </td>
+              
+              <td scope="col" className="px-6 py-4 whitespace-nowrap">
+                Status
+              </td>
+
+            </tr> */}
 
     </tbody>
     </div>

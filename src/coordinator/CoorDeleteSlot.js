@@ -20,12 +20,15 @@ class CoorDeleteSlot extends Component {
         axios.post('http://localhost:8080/cooRoutes/deleteSlot',{courseName: this.state.courseName, time:this.state.time,day: this.state.day, location: this.state.location} ,{params:{token:this.props.realToken}})
         // 
         .then(res  => {
-           console.log("1233141341351351341242412413413513413414134hhhhhhhhhhhhhhhh")
+          alert("Done Successfully")
+
             console.log(res);
-        } ) 
+        } )      .catch(err=>{console.log(err);alert("Updating Failed ")}) 
+
      }
   
-
+    
+    
 
      handleCourseNameChange =(evt)=>{
          this.setState((prevState) =>{
