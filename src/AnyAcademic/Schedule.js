@@ -52,7 +52,7 @@ function Schedule(props) {
     <div>
 
     <table>
-    <tr className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider">
+    <tr className=" bg-gray-800 px-6 py-3 text-left text-xs font-medium text-gray-50 uppercase tracking-wider">
         <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider">slot\day</th>
         <div className="py-5 black">
     {/* <div className="border-t border-gray-200"></div> */}

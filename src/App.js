@@ -79,7 +79,8 @@ function App() {
   <Route exact path="/">
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
-    <Dashboard name={state.token.name} token={state.token}/>
+    <Dashboard name={state.token.name} token={state.token} realToken={state.realToken}/>
+    
   </React.StrictMode>
   </Route>
 
@@ -88,7 +89,17 @@ function App() {
     <Login updateUser={updateUser}/>
   </React.StrictMode>
   </Route>
+
+  {/* AcademicMemberReqContainer */}
 {/* ent a  wa2ef hena  */}
+
+<Route exact path="/AcademicMemberReqContainer">
+  <React.StrictMode>
+  <Navbar user={state.token} logOut={logOut}/>
+    <AcademicMemberReqContainer user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
   <Route exact path="/coordinator/requests">
   <React.StrictMode>
   <Navbar user={state.token} logOut={logOut}/>
@@ -98,8 +109,26 @@ function App() {
     <CoorUpdateSlot user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
-
+{/* AcademicMemberReqContainer */}
   {/* hena bardo  */}
+
+  <Route exact path="/AnyAcademicLeaveRequest">
+  <React.StrictMode>
+    <Navbar user={state.token} logOut={logOut}/>
+
+<  AnyAcademicLeaveRequest user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
+
+  <Route exact path="/AnyAcademicDayOffRequest">
+  <React.StrictMode>
+  <Navbar user={state.token} logOut={logOut}/>
+
+  <  AnyAcademicDayOffRequest user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
   <Route exact path="/AcademicMemberReplacement">
   <React.StrictMode>
 
@@ -109,16 +138,7 @@ function App() {
 
   </React.StrictMode>
   </Route>
-  <Route exact path="/schedule">
-  <React.StrictMode>
-  <Navbar user={state.token} logOut={logOut}/>
-  <Schedule user={state.token} realToken={state.realToken}/>
-  
 
-  
-
-  </React.StrictMode>
-  </Route>
 
  
 
@@ -223,18 +243,9 @@ function App() {
   </React.StrictMode>
   </Route>
 
-  <Route exact path="/AnyAcademicDayOffRequest">
-  <React.StrictMode>
-    <AnyAcademicDayOffRequest />
-  </React.StrictMode>
-  </Route>
+  
 
-  <Route exact path="/AnyAcademicLeaveRequest">
-  <React.StrictMode>
-    <AnyAcademicLeaveRequest />
  
-  </React.StrictMode>
-  </Route>
 
   <Route exact path="/profile">
   <React.StrictMode>
