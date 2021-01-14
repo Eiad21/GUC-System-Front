@@ -9,6 +9,7 @@ function HRAddFaculty(props) {
         {
           FacultyName:"",
           DeanId:"",
+          DeanName:""
         }
       );
     
@@ -19,19 +20,24 @@ function HRAddFaculty(props) {
             alert("Enter Faculty name");
             return;
         }
+        if(state.DeanName == ""){
+          alert("Enter Dean name");
+          return;
+      }
      
         var DeanFormat = /^[ac]+(?:-[0-9]+)$/;
     if(state.DeanId.match(DeanFormat)){
-       alert("cor")
+       console.log("cor")
     }
     else{
-       alert("wrong")
+       console.log("wrong")
     }
      
         const FacultyInfo = {
           
             facultyName:state.FacultyName,
             deanID: state.DeanId,
+            deanName: state.DeanName
         }
       
         
@@ -87,6 +93,12 @@ function HRAddFaculty(props) {
        setState(newstate);
        console.log(newstate)
       }
+      const handleDeanName=(evt)=> {
+        const newstate={...state};
+        newstate.DeanName=evt.target.value;
+        setState(newstate);
+        console.log(newstate)
+       }
      
 
     return (
@@ -111,9 +123,16 @@ function HRAddFaculty(props) {
       <div className="shadow overflow-hidden sm:rounded-md">
         <div className="px-4 py-5 bg-white sm:p-6">
           <div className="grid grid-cols-6 gap-6">
+            
+            
             <div className="col-span-6 sm:col-span-3">
               <label for="first_name" className="block text-sm font-medium text-gray-700">Faculty name</label>
               <input onChange={handleFacultyName} type="text" name="first_name" id="first_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+            </div>
+
+            <div className="col-span-6 sm:col-span-3">
+              <label for="dean_name" className="block text-sm font-medium text-gray-700">Dean Name</label>
+              <input onChange={handleDeanName} type="text" name="dean_name" id="dean_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
             </div>
 
             <div className="col-span-6 sm:col-span-3">
@@ -122,8 +141,6 @@ function HRAddFaculty(props) {
             </div>
 
            
-
-       
           </div>
         
         </div>

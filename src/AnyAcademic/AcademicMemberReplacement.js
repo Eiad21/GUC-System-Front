@@ -216,24 +216,24 @@ return(
 
             <div className="col-span-6 sm:col-span-3">
               <label for="last_name" className="block text-sm font-medium text-gray-700">Course Name</label>
-              <input  type="text" name="last_name" id="last_name" autocomplete="family-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+              <input onChange={this.handleSlotCourse}  type="text" name="last_name" id="last_name" autocomplete="family-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
             </div>
 
 
                 {/* onChange={handleCoordinatorName} */}
             <div className="col-span-6 sm:col-span-3">
               <label for="first_name" className="block text-sm font-medium text-gray-700">Reason</label>
-              <input  type="text" name="first_name" id="first_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+              <input onChange={this.handleReason}  type="text" name="first_name" id="first_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
             </div>
 
             <div className="col-span-6 sm:col-span-3">
               <label for="first_name" className="block text-sm font-medium text-gray-700">content</label>
-              <input  type="text" name="first_name" id="first_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+              <input onChange={this.handleContent} type="text" name="first_name" id="first_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
             </div>
 
             <div className="col-span-6 sm:col-span-3">
               <label for="first_name" className="block text-sm font-medium text-gray-700">comment</label>
-              <input  type="text" name="first_name" id="first_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+              <input onChange={this.handleComment} type="text" name="first_name" id="first_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
             </div>
           
             

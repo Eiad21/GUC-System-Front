@@ -1,18 +1,18 @@
 import React,{Component} from "react"  
 
-import AcademicMemberReplacementItem from '../Components/AcademicMemberReplacementItem';
+import AcademicMemberReqItem from '../AnyAcademic/AcademicMemberReqItem';
 import axios  from "axios"
-class AcademicMemberReplacementContainer extends Component {
+class AcademicMemberReqContainer extends Component {
     constructor(){
         super();
         this.state={requests:[]}
     }
     componentDidMount(){
-        console.log("AcademicMemberReplacementContainer Did mount");
-        axios.get('http://localhost:8080/anyAcademic/replacementReq', {params:{token:this.props.realToken}})
+        console.log("AcademicMemberReqContainer Did mount");
+        axios.get('http://localhost:8080/anyAcademic/sentRequests', {params:{token:this.props.realToken}})
         .then(res  => {
           console.log(res.data);
-          console.log("in view replacement in academic member")
+          console.log("in view requests in academic member")
           this.setState(
                 {requests:res.data}
           );
@@ -23,19 +23,24 @@ class AcademicMemberReplacementContainer extends Component {
 render(){  
         let requests = this.state.requests.map(req => {
              return (
-                < AcademicMemberReplacementItem
-                  repId={req._id}
-                  sender={req.sender}
-                  slotDate = {req.date}
+                < AcademicMemberReqItem
+                  reqId={req._id}                  
+                  type={req.type}
+                  reciever = {req.reciever}
                   reason = {req.reason}
                   content = {req.content}
                   comment = {req.comment}
+                  slotDate = {req.date}
                   slotCourse = {req.slotCourse}
+                  leavingDate = {req.leavingDate}
+                  newDayOff= {req.newDayOff}
                   slotTime = {req.slotTime}
                   status={req.status}
                 />
              )
         })
+    // Type - Recieving Entity - Reason - Content - Comment - Slot Date - Course Name -  Leaving Date
+    // New Dayoff - status - slotTime
     return (
         <div className="flex flex-col">
   <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -45,10 +50,10 @@ render(){
           <thead className="bg-gray-50">
             <tr>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Sender
+                Type
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Slot Date
+                Recieving Entity
               </th>
              
               <th scope="col" className="relative px-6 py-3">
@@ -65,8 +70,21 @@ render(){
               </th>
 
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Slot Date
+              </th>
+
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Course Name
               </th>
+
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Leaving Date
+              </th>
+
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                New Dayoff
+              </th>
+
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Slot Time
               </th>
@@ -80,8 +98,8 @@ render(){
         
         </table>
        { {requests} }
-       < AcademicMemberReplacementItem 
-                  reqId= {1}
+       < AcademicMemberReqItem
+                  reqId={2} 
                   sender="abdallah"
                   slotDate = "2021/5/8"
                   reason = "acml"
@@ -100,4 +118,4 @@ render(){
 
     }
 }
-export default AcademicMemberReplacementContainer
+export default AcademicMemberReqContainer

@@ -21,10 +21,7 @@ import ViewCourses from './Components/ViewCourses';
 import CourseSchedule from './Components/CourseSchedule';
 import StaffDep from './Components/StaffDep';
 import CourseStaff from './Components/CourseStaff';
-import CoorRequestContainer from './Components/CoorRequestContainer';
-import CoorAddSlot from './Components/CoorAddSlot';
-import CoorDeleteSlot from './Components/CoorDeleteSlot';
-import CoorUpdateSlot from './Components/CoorUpdateSlot';
+
 import Schedule from './AnyAcademic/Schedule';
 import HRMembersContainer from './Components/HRMembersContainer';
 import HRFacultiesContainer from './Components/HRFacultiesContainer';
@@ -37,11 +34,16 @@ import HodViewCoverageOfCourses from './Components/HodViewCoverageOfCourses'
 import HodViewTeachingAssignment from './Components/HodViewTeachingAssignment'
 import HODAssignStaffToCourse from "./Components/HODAssignStaffToCourse"
 // testing front end 
+import CoorRequestContainer from './Components/CoorRequestContainer';
+import CoorAddSlot from './Components/CoorAddSlot';
+import CoorDeleteSlot from './Components/CoorDeleteSlot';
+import CoorUpdateSlot from './Components/CoorUpdateSlot';
 import AcademicMemberReplacement from './AnyAcademic/AcademicMemberReplacement';
-import AnyAcademicDayOffRequest from './Components/AnyAcademicDayOffRequest';
-import AnyAcademicLeaveRequest from './Components/AnyAcademicLeaveRequest';
-import AnyAcademicSlotLinkingRequest from './Components/AnyAcademicSlotLinkingRequest';
+import AnyAcademicDayOffRequest from './AnyAcademic/AnyAcademicDayOffRequest';
+import AnyAcademicLeaveRequest from './AnyAcademic/AnyAcademicLeaveRequest';
+import AnyAcademicSlotLinkingRequest from './AnyAcademic/AnyAcademicSlotLinkingRequest';
 import Profile from './Components/Profile';
+import AcademicMemberReqContainer from './AnyAcademic/AcademicMemberReqContainer';
 
 // import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
 // import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
@@ -220,16 +222,20 @@ function App() {
   <Route exact path="/AnyAcademicLeaveRequest">
   <React.StrictMode>
     <AnyAcademicLeaveRequest />
+ 
   </React.StrictMode>
   </Route>
 
   <Route exact path="/profile">
   <React.StrictMode>
-    <Profile />
+    <Navbar user={state.token} logOut={logOut}/>
+    <Profile token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
   {/* test ends  */}
+  
+  {/* Hr Routes*/}
   <Route exact path="/viewMembers">
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
@@ -259,6 +265,13 @@ function App() {
   </Route>
 
   <Route exact path="/viewAllCourses">
+  <React.StrictMode>
+    <Navbar user={state.token} logOut={logOut}/>
+    <HRCoursesContainer user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/viewStaffAttendance">
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
     <HRCoursesContainer user={state.token} realToken={state.realToken}/>

@@ -11,7 +11,8 @@ function HRAddMember(props) {
           lastName:"",
           mail:"",
           MemberRank:"instructor",
-          gender: ""
+          gender: "",
+          office:""
         }
       );
     
@@ -31,7 +32,8 @@ function HRAddMember(props) {
        // alert("cor")
     }
     else{
-      //  alert("wrong")
+        alert("wrong")
+        return;
     }
         if(state.gender == ""){
             alert("Enter gender");
@@ -43,7 +45,8 @@ function HRAddMember(props) {
             MemberRank:state.MemberRank,
             name: combine,
             gender: state.gender,
-            email: state.mail
+            email: state.mail,
+            office: state.office
         }
       
 
@@ -119,6 +122,12 @@ function HRAddMember(props) {
         console.log(newstate)
 
        }
+      const handleOffice=(evt)=> {
+        const newstate={...state};
+        newstate.office=evt.target.value;
+        setState(newstate);
+        console.log(newstate)
+     }
 
     return (
             <div>
@@ -155,6 +164,11 @@ function HRAddMember(props) {
             <div className="col-span-6 sm:col-span-4">
               <label for="email_address" className="block text-sm font-medium text-gray-700">Email address</label>
               <input onChange={handleEmailAddress} type="text" name="email_address" id="email_address" autocomplete="email" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+            </div>
+
+            <div className="col-span-6 sm:col-span-4">
+              <label for="office_loc" className="block text-sm font-medium text-gray-700">Office location</label>
+              <input onChange={handleOffice} type="text" name="office_loc" id="office_loc" autocomplete="email" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
             </div>
 
             <div className="col-span-6 sm:col-span-3">

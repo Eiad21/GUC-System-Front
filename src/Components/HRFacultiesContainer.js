@@ -14,13 +14,12 @@ function HRFacultiesContainer(props) {
       arr:[]
     }
   );
-  const deleteMe = (id)=>{
-    console.log(id)
-    axios.post('http://localhost:8080/hr/deleteFaculty', {memberId:id} ,{params:{token:realToken}})
+  const deleteMe = (mFacultyName)=>{
+    axios.post('http://localhost:8080/hr/deleteFaculty', {facultyName:mFacultyName} ,{params:{token:realToken}})
     
     const newstate={...state};
     newstate.arr= newstate.arr.filter((item)=>{
-      return item.memberId != id;
+      return item.facultyName != mFacultyName;
     })
     setState(newstate);
   }
