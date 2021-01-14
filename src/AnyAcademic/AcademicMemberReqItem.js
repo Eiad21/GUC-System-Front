@@ -22,21 +22,114 @@ return(
     <div >
     <tbody className="bg-white divide-y divide-gray-200">
         <tr>
-            <AcademicMemberReqCell data={this.props.type}/>
-            <AcademicMemberReqCell data={this.props.reciever}/>
-            <AcademicMemberReqCell data={this.props.reason}/>
-            <AcademicMemberReqCell data={this.props.content}/>
-            <AcademicMemberReqCell data={this.props.comment}/>
-            <AcademicMemberReqCell data={this.props.slotDate}/>
-            <AcademicMemberReqCell data={this.props.slotCourse}/>
-            <AcademicMemberReqCell data={this.props.leavingDate}/>
-            <AcademicMemberReqCell data={this.props.newDayOff}/>
-            <AcademicMemberReqCell data={this.props.slotTime}/>
-            <AcademicMemberReqCell data={this.props.status}/>
 
            
-            {/* cancel button */}
+        <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10">
+                        </div>
+                        <div className="ml-4">
+                        <AcademicMemberReqCell data={this.props.type}/>       
+                         </div>
+                    </div>
+                </td>
             
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10">
+                        </div>
+                        <div className="ml-4">
+                        <AcademicMemberReqCell data={this.props.reciever}/>                         </div>
+                    </div>
+                </td>
+
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10">
+                        </div>
+                        <div className="ml-4">
+                         <AcademicMemberReqCell data={this.props.reason}/>
+                         </div>
+                    </div>
+                </td>
+
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10">
+                        </div>
+                        <div className="ml-4">
+                        <AcademicMemberReqCell data={this.props.content}/>                         </div>
+                    </div>
+                </td>
+
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10">
+                        </div>
+                        <div className="ml-4">
+                        <AcademicMemberReqCell data={this.props.comment}/>                         </div>
+                    </div>
+                </td>
+
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10">
+                        </div>
+                        <div className="ml-4">
+                        <AcademicMemberReqCell data={this.props.slotDate}/>                         </div>
+                    </div>
+                </td>
+
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10">
+                        </div>
+                        <div className="ml-4">
+                        <AcademicMemberReqCell data={this.props.slotCourse}/>
+                         </div>
+                    </div>
+                </td>
+
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10">
+                        </div>
+                        <div className="ml-4">
+                        <AcademicMemberReqCell data={this.props.leavingDate}/>
+                         </div>
+                    </div>
+                </td>
+
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10">
+                        </div>
+                        <div className="ml-4">
+                        <AcademicMemberReqCell data={this.props.newDayOff}/>
+                         </div>
+                    </div>
+                </td>
+
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10">
+                        </div>
+                        <div className="ml-4">
+                        <AcademicMemberReqCell data={this.props.slotTime}/>
+                         </div>
+                    </div>
+                </td>
+
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0 h-10 w-10">
+                        </div>
+                        <div className="ml-4">
+                        <AcademicMemberReqCell data={this.props.status}/>
+                         </div>
+                    </div>
+                </td>
+
             {
                 this.props.status==="pending"
                 &&
@@ -58,3 +151,6 @@ return(
     }
 }
 export default AcademicMemberReqItem
+
+
+
