@@ -52,6 +52,7 @@ class Profile extends Component {
   handleSignIn(){
     axios.post('http://localhost:8080/memberRoutes/signIn' , {} ,{params:{token:this.props.realToken}})
     .then(res  => {
+      alert("Done Successfully")
         console.log(res.data);
     } ) 
  }
