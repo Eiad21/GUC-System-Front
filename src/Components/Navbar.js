@@ -45,7 +45,7 @@ function Navbar(props) {
       case"Locations":path = "/viewLocations";break;
       case"Courses":path = "/viewAllCourses";break;
       case"Staff Attendance":path= "/viewStaffAttendance";break;
-      case "My Requests":path="/myRequests";break;
+      case "Accept/Reject Requests":path="/Requeststoview";break;
       case "View Staff Info":path="/viewstaffinfo";break; 
       case "My Profile" : path="/profile";break; 
       case "Linking Request" : path="/coordinator/requests";break; 
@@ -71,7 +71,7 @@ function Navbar(props) {
       <div className="flex items-center justify-between h-16">
         <div className="flex items-center">
           <div className="flex-shrink-0">
-            <img className="h-8 w-8" src={"https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"} />
+            <img className="h-8 w-8" src={"https://lh6.ggpht.com/gNy40q6S_519oQZ_AE9sGypZ-Z94zDy2Xpm5Tg5mYf8yVOSLAxAhEatKLn0vJDyFErE=w300"} />
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
@@ -88,7 +88,7 @@ function Navbar(props) {
               <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor"||props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Replacement Requests" onClick={handleNavClick}>Replacement</a>
               <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor"||props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Change Day off" onClick={handleNavClick}>Change Day off</a>
               <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor"||props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Leave Request" onClick={handleNavClick}>Leave Request</a>
-              <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Requests" onClick={handleNavClick}>Requests</a>
+              <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor") || props.user.MemberRank=="hod"?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Requests" onClick={handleNavClick}>Requests</a>
 
               {/* coordinator  carentials  */}
               <a style={(props.user.MemberRank=="coordinator")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Linking Request" onClick={handleNavClick}>Linking Request</a>
@@ -97,14 +97,14 @@ function Navbar(props) {
 
 
 
-              <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>My Requests</a>
+              <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Accept/Reject Requests</a>
 
               <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Assign/Delete Staff</a>
 
               <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}}   onClick={handleNavClick} className={NBclassNotClicked}>View Entity Info</a>
 
 
-              <Link style={(props.user.MemberRank!="hr")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">Courses</Link>
+              <Link style={(props.user.MemberRank!="hr" && props.user.MemberRank!="hod")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">Courses</Link>
               
               <a style={(props.user.MemberRank=="coordinator")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>Slot Linking requests</a>
 

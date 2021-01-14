@@ -199,7 +199,7 @@ function App() {
   </Route>
 
 
-  <Route exact path="/myRequests">
+  <Route exact path="/Requeststoview">
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
     <HODRequestContainer user={state.token} realToken={state.realToken}/>
