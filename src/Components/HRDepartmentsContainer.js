@@ -25,6 +25,15 @@ function HRDepartmentsContainer(props) {
     setState(newstate);
   }
 
+  const updateMe = async (updateObj)=>{
+
+    await axios.post('http://localhost:8080/hr/updateDepartment', updateObj ,{params:{token:realToken}})
+    
+    const newstate={...state};
+    newstate.counter= state.counter+1;
+    setState(newstate);
+  }
+
   const history = useHistory();
   useEffect(() => {
     async function fetchData() {
@@ -83,7 +92,7 @@ function HRDepartmentsContainer(props) {
           facultyName = {item.facultyName}  
           headID ={item.headID} 
           headName={item.headName}
-
+          updateMe = {updateMe}
           deleteMe = {deleteMe}/>
 })}
         </tbody>

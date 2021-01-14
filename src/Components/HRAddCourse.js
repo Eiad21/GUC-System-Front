@@ -158,7 +158,6 @@ function HRAddCourse(props) {
             
           </div>
         
-          
         
         </div>
 
