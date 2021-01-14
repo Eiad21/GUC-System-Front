@@ -110,7 +110,7 @@ function Navbar(props) {
               <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}}   onClick={handleNavClick} className={NBclassNotClicked}>View Entity Info</a>
 
 
-              <Link style={(props.user.MemberRank=="instructor")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">Courses</Link>
+              <Link style={(props.user.MemberRank=="instructor" || props.user.MemberRank=="hod")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">Courses</Link>
               
               
 
