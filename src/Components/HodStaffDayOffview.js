@@ -151,10 +151,10 @@ function HodStaffDayOffview(props) {
   <div className="md:col-span-1">
     <div className="px-4 sm:px-0">
       <h3 className="text-3xl font-medium leading-6 text-gray-900">view staff's DayOff</h3>
-      <p className="px-10 mt-1 text-xl text-gray-600">
+      <p className="px-10 py-2 mt-1 text-xl text-gray-600">
         Enter the Staff ID  if you want to view This staff Day off .
       </p>
-      <p className="px-10 mt-1 text-lg text-gray-600">
+      <p className="px-10 py-2 mt-1 text-lg text-gray-600">
         if Null Display Day off all Staff
       </p>
     </div>

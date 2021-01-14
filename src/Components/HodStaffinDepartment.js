@@ -246,10 +246,10 @@ function HodStaffinDepartment(props) {
   <div className="md:col-span-1">
     <div className="px-4 sm:px-0">
       <h3 className="text-3xl font-medium leading-6 text-gray-900">view staff Member</h3>
-      <p className="px-10 mt-1 text-xl text-gray-600">
+      <p className="px-10 py-2 mt-1 text-xl text-gray-600">
         Enter the Course Name if you want to view staff in this course .
       </p>
-      <p className="px-10 mt-1 text-lg text-gray-600">
+      <p className="px-10 py-2 mt-1 text-lg text-gray-600">
         if Null Display all Staff in your Department
       </p>
     </div>
