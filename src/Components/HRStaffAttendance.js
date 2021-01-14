@@ -11,7 +11,7 @@ function HRStaffAttendance(props) {
   {
     counter:0,
     arr:[],
-    testBool:false
+    viewingSingleMember:false
   }
   );
   const setID = ()=>{
@@ -24,7 +24,7 @@ function HRStaffAttendance(props) {
   useEffect(() => {
     async function fetchData() {
       realToken = props.realToken;
-       await axios.post('http://localhost:8080/hr/viewAllLocations', {} ,{params:{token:props.realToken}})
+       await axios.post('http://localhost:8080/hr/viewAllStaffAttendance', {} ,{params:{token:props.realToken}})
     .then((res) => {
       const newstate={...state};
       newstate.arr=res.data;
@@ -51,6 +51,9 @@ function HRStaffAttendance(props) {
           <button onClick={setID} type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Save
           </button>
+          {state.testBool &&
+            <h1>Hello</h1>
+          }
         </div>
         )
 }

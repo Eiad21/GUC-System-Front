@@ -14,14 +14,26 @@ function HRCourseContainer(props) {
       arr:[]
     }
   );
-  const deleteMe = (id)=>{
-    console.log(id)
-    axios.post('http://localhost:8080/hr/deleteCourse', {memberId:id} ,{params:{token:realToken}})
+  const deleteMe = (mFacultyName, mDepartmentName, mCourseName)=>{
+    console.log("fac " +mFacultyName)
+    console.log("dep "+ mDepartmentName)
+    console.log("course "+ mCourseName)
+    axios.post('http://localhost:8080/hr/deleteCourse', 
+    {facultyName:mFacultyName, departmentName: mDepartmentName, courseName: mCourseName} ,{params:{token:realToken}})
     
     const newstate={...state};
     newstate.arr= newstate.arr.filter((item)=>{
-      return item.memberId != id;
+      return (item.facultyName != mFacultyName || item.departmentName != mDepartmentName || item.courseName != mCourseName);    
     })
+    setState(newstate);
+  }
+
+  const updateMe = async (updateObj)=>{
+
+    await axios.post('http://localhost:8080/hr/updateCourse', updateObj ,{params:{token:realToken}})
+    
+    const newstate={...state};
+    newstate.counter= state.counter+1;
     setState(newstate);
   }
 
@@ -83,7 +95,7 @@ function HRCourseContainer(props) {
           facultyName ={item.facultyName} 
           departmentName={item.departmentName} 
           assignedCount={item.assignedCount}
-
+          updateMe = {updateMe}
           deleteMe = {deleteMe}/>
 })}
         </tbody>
