@@ -56,6 +56,9 @@ function Navbar(props) {
       case "Leave Request":path="/AnyAcademicLeaveRequest";break
       case "Requests":path="/AcademicMemberReqContainer";break
       case "Manage Courses":path="/coordinator/courseManagement";break;
+      
+      case "Send Linking Request":path="/AnyAcademicSlotLinkingRequest";break;
+
 {/* AcademicMemberReqContainer */}
       default: path = "/";
     }
@@ -88,12 +91,10 @@ function Navbar(props) {
               <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor"||props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Replacement Requests" onClick={handleNavClick}>Replacement Requests</a>
               <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor"||props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Change Day off" onClick={handleNavClick}>Change Day off</a>
               <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor"||props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Leave Request" onClick={handleNavClick}>Leave Request</a>
-<<<<<<< HEAD
+              <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor"||props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Send Linking Request" onClick={handleNavClick}>Send Linking Request</a>
+
               <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Requests" onClick={handleNavClick}>Requests</a>
               <a style={(props.user.MemberRank=="coordinator")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Manage Courses" onClick={handleNavClick}>Manage Courses</a>
-=======
-              <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor") || props.user.MemberRank=="hod"?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Requests" onClick={handleNavClick}>Requests</a>
->>>>>>> 7d47c0449507ea4ae405274e33e7a4b58d7965f7
 
               {/* coordinator  carentials  */}
               <a style={(props.user.MemberRank=="coordinator")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Recieved Linking Requests" onClick={handleNavClick}>Recieved Linking Requests</a>
@@ -109,12 +110,8 @@ function Navbar(props) {
               <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}}   onClick={handleNavClick} className={NBclassNotClicked}>View Entity Info</a>
 
 
-<<<<<<< HEAD
               <Link style={(props.user.MemberRank=="instructor")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">Courses</Link>
               
-=======
-              <Link style={(props.user.MemberRank!="hr" && props.user.MemberRank!="hod")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">Courses</Link>
->>>>>>> 7d47c0449507ea4ae405274e33e7a4b58d7965f7
               
 
 
@@ -122,7 +119,7 @@ function Navbar(props) {
 
               {/* <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</a> */}
 
-
+              
             </div>
           </div>
         </div>

@@ -109,7 +109,6 @@ function App() {
   <Navbar user={state.token} logOut={logOut}/>
     <CoorDeleteSlot user={state.token} realToken={state.realToken}/>
     <CoorAddSlot user={state.token} realToken={state.realToken}/>
-    <CoorUpdateSlot user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 
