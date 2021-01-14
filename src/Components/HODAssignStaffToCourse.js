@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect,useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'
 
@@ -7,118 +7,53 @@ function HODAssignStaffToCourse(props) {
 
     const [state, setState] = useState(
         {
-          firstName:"",
-          lastName:"",
-          mail:"",
-          MemberRank:"instructor",
-          gender: ""
+            CourseArray:[],
+            courseName:"",
+            InstructorsArray:[],
+            Instructors:""
         }
       );
     
-    const addMember=(evt)=>{
-        console.log("user" + props.user)
-        console.log("token" + props.realToken)
-        if(state.firstName == ""){
-            alert("Enter first name");
-            return;
+    
+   
+    
+      const handleCourseName=(evt)=> {
+        const newstate={...state};
+        newstate.courseName=evt.target.value
+        setState(newstate);
+        console.log(newstate)
         }
-        if(state.lastName == ""){
-            alert("Enter last name");
-            return;
-        }
-        var mailformat = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)+(?:.[a-zA-Z0-9-]+)$/;
-    if(state.mail.match(mailformat)){
-       // alert("cor")
-    }
-    else{
-      //  alert("wrong")
-    }
-        if(state.gender == ""){
-            alert("Enter gender");
-            return;
-        }
-        const combine = `${state.firstName} ${state.lastName}`
-        const memberInfo = {
-          
-            MemberRank:state.MemberRank,
-            name: combine,
-            gender: state.gender,
-            email: state.mail
-        }
-      
+        const handleAssign=(()=>{
+            const body = {memberId:state.Instructors , courseName:state.courseName}
+            axios.post("http://localhost:8080/hod/AssignCourseInstructor",body,{params:{token:props.realToken}}).then(res=>{
+                alert("Added Successfully")
+            }).catch(err=>{console.log(err);alert("Could not add this Staff to Course ")})
 
-        axios.post('http://localhost:8080/hr/addMember' , memberInfo, {params:{token:props.realToken}})
-        .then((res) => {
-          console.log(res.data);
-          const token=res.data;
-          
-          history.push("/");
-        }) 
-        .catch((err)=>{
-          console.log(" ERROR in login");
-         
-           console.log(err);
-           const newstate={...state};
-           if(!err || !err.res || !err.res.data){
-            newstate.error='Access denied';
-           }
-           else{
-              newstate.error=err.res.data;
-           }
-          setState(newstate);
+
         })
+        const handeleInstructorid=(evt)=>
+        {
+            const newstate={...state};
+            newstate.Instructors=evt.target.value.substring(4,evt.target.value.indexOf(",")-1);;
+            setState(newstate);
+            console.log(newstate)  
+        }
 
-        // axios.post('http://localhost:8080/hr/addMember' , {ahmed:"hla"})
-        // .then((res) => {
-        //   console.log(res.data);        
-        //   history.push("/addEntity");
-        // }) 
-        // .catch((err)=>{
-        //   console.log(" ERROR in login");
-         
-        //    console.log(err);
-        //    const newstate={...state};
-        //    if(!err || !err.res || !err.res.data){
-        //     newstate.error='Access denied';
-        //    }
-        //    else{
-        //       newstate.error=err.res.data;
-        //    }
-        //   setState(newstate);
-        // })
-    }
-    const handleFirstName=(evt)=> {
-        const newstate={...state};
-        newstate.firstName=evt.target.value;
-        setState(newstate);
-        console.log(newstate)
-     }
-     const handleLastName=(evt)=> {
-       const newstate={...state};
-       newstate.lastName=evt.target.value;
-       setState(newstate);
-       console.log(newstate)
-      }
-      const handleEmailAddress=(evt)=> {
-       const newstate={...state};
-       newstate.mail=evt.target.value;
-       setState(newstate);
-       console.log(newstate)
-      }
-      const handleMemberRank=(evt)=> {
-       const newstate={...state};
-       newstate.MemberRank=evt.target.value.toLowerCase();
-       setState(newstate);
-       console.log(newstate)
+        useEffect(()=>{
+            axios.get('http://localhost:8080/hod/viewallCourse' , {params:{token:props.realToken}}).then(res=>{
+            const newstate={...state};
+            newstate.CourseArray = res.data;
+            axios.get('http://localhost:8080/hod/viewallMemberids', {params:{token:props.realToken}}).then(res=>{
+                newstate.InstructorsArray = res.data.filter(members=>{
+                    return members.MemberRank=="instructor"
+                });
+                setState(newstate);
+                console.log(newstate)
+            })
+            })
+           
 
-      }
-      const handleGender=(evt)=> {
-        const newstate={...state};
-        newstate.gender=evt.target.id;
-        setState(newstate);
-        console.log(newstate)
-
-       }
+            },[])
 
     return (
             <div>
@@ -132,9 +67,9 @@ function HODAssignStaffToCourse(props) {
 <div className="md:grid md:grid-rows-1 md:gap-6" style = {{marginRight: 150, marginLeft: 150}}>
   <div className="md:col-span-1">
     <div className="px-4 sm:px-0">
-      <h3 className="text-lg font-medium leading-6 text-gray-900">Add Member</h3>
+      <h3 className="text-lg font-medium leading-6 text-gray-900">Assign Instructor to Course</h3>
       <p className="mt-1 text-sm text-gray-600">
-        Enter the member's personal information.
+        Enter the Course and Instructor information.
       </p>
     </div>
   </div>
@@ -142,51 +77,32 @@ function HODAssignStaffToCourse(props) {
       <div className="shadow overflow-hidden sm:rounded-md">
         <div className="px-4 py-5 bg-white sm:p-6">
           <div className="grid grid-cols-6 gap-6">
-            <div className="col-span-6 sm:col-span-3">
-              <label for="first_name" className="block text-sm font-medium text-gray-700">First name</label>
-              <input onChange={handleFirstName} type="text" name="first_name" id="first_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
-            </div>
+            
 
             <div className="col-span-6 sm:col-span-3">
-              <label for="last_name" className="block text-sm font-medium text-gray-700">Last name</label>
-              <input onChange={handleLastName} type="text" name="last_name" id="last_name" autocomplete="family-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+              <label for="country" className="block text-sm font-medium text-gray-700">Instructor ID</label>
+              <select onChange={handeleInstructorid} id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg">
+              <option selected= "disabled">Choose here</option>
+
+              { state.InstructorsArray.map((element)=>{return <option>ID: {element.id}  ,  Name: {element.name}</option>})}
+
+              </select>
             </div>
 
-            <div className="col-span-6 sm:col-span-4">
-              <label for="email_address" className="block text-sm font-medium text-gray-700">Email address</label>
-              <input onChange={handleEmailAddress} type="text" name="email_address" id="email_address" autocomplete="email" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
-            </div>
 
             <div className="col-span-6 sm:col-span-3">
-              <label for="country" className="block text-sm font-medium text-gray-700">Member Rank</label>
-              <select onChange={handleMemberRank} id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option>Instructor</option>
-                <option>TA</option>
-                <option>HR</option>
+              <label for="country" className="block text-sm font-medium text-gray-700">Course Name</label>
+              <select onChange={handleCourseName} id="country" name="country" autocomplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg">
+              <option selected= "disabled">Choose here</option>
+
+              { state.CourseArray.map((element)=>{return <option >{element.courseName}</option>})}
+
               </select>
             </div>
           </div>
         
             <br></br>
-          <fieldset>
-            <div>
-              <legend className="text-base font-medium text-gray-900">Gender</legend>
-            </div>
-            <div className="mt-4 space-y-4" onChange={handleGender}>
-              <div className="flex items-center">
-                <input id="M" name="push_notifications" type="radio" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"/>
-                <label for="M" className="ml-3 block text-sm font-medium text-gray-700">
-                  Male
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input id="F" name="push_notifications" type="radio" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"/>
-                <label for="F" className="ml-3 block text-sm font-medium text-gray-700">
-                  Female
-                </label>
-              </div>
-            </div>
-          </fieldset>
+          
         
         </div>
 
@@ -194,7 +110,7 @@ function HODAssignStaffToCourse(props) {
 
 
         <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-          <button onClick={addMember} type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button onClick={handleAssign} type="Assign" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Save
           </button>
         </div>
