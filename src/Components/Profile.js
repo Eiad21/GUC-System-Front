@@ -58,8 +58,10 @@ class Profile extends Component {
  handleSignOut(){
   axios.post('http://localhost:8080/memberRoutes/signOut' , {} ,{params:{token:this.props.realToken}})
   .then(res  => {
+    alert("Done Successfully")
+
       console.log(res.data);
-  } )
+  } ).catch(err=>{console.log(err);alert("Updating Failed ")}) 
 }
 handleChangeBio(evt){
   this.setState({newBio:evt.target.value})
@@ -74,9 +76,13 @@ handleUpdateBio(){
   })
   axios.post('http://localhost:8080/memberRoutes/updateProfile' , {bio:this.state.newBio} ,{params:{token:this.props.realToken}})
   .then(res  => {
+    alert("Done Successfully")
+
       console.log(res.data.bio);
-  } )
+  } )     .catch(err=>{console.log(err);alert("Updating Failed ")}) 
+
 }
+
 
 handleChangePassword(evt){
     const {name, value } = evt.target;
@@ -91,6 +97,8 @@ handleUpdatePassword(){
 
   axios.put('http://localhost:8080/memberRoutes/updatePassword' , {passwordOld:this.state.passwordOld, passwordNew: this.state.passwordNew} ,{params:{token:this.props.realToken}})
   .then(res  => {
+    alert("Done Successfully")
+
       console.log(res.data);
       this.setState((preState)=>{
         return {

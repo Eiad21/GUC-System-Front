@@ -17,10 +17,15 @@ class CoorAddSlot extends Component {
     console.log(this.state)
     axios.post('http://localhost:8080/cooRoutes/courseSlot',{courseName: this.state.courseName, courseSlot:{time:this.state.time,day: this.state.day, location: this.state.location}}, {params:{token:this.props.realToken}})
     .then(res  => {
-       
+      alert("Done Successfully")
+
         console.log(res.data);
-    } ) 
+    } ).catch(err=>{console.log(err);alert("Updating Failed ")}) 
+
  }
+
+
+
  handleCourseNameChange =(evt)=>{
      this.setState((prevState) =>{
      

@@ -43,7 +43,10 @@ class AcademicMemberReplacement extends Component {
     axios.post('http://localhost:8080/AnyAcademic/replacementReq', reqBody , {params:{token:this.props.realToken}})
     .then(res  => {   
         console.log(res);
+        alert("Done Successfully")
     } ).catch((err)=>{
+
+      alert("Updating Failed ")
       console.log(" ERROR in send replacement request");
        if(!err || !err.response || !err.response.data){
           this.setState((preState)=>{
@@ -59,10 +62,13 @@ class AcademicMemberReplacement extends Component {
               error:err.response.data}
           })
        }
-    })
- }
 
+   })
+ } 
 
+ 
+
+ 
  handleYear =(evt)=>{
      this.setState((prevState) =>{
      

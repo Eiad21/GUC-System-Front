@@ -39,8 +39,11 @@ class AnyAcademicLeaveRequest extends Component {
        };
     axios.post('http://localhost:8080/AnyAcademic/submitLeaves', reqBody , {params:{token:this.props.realToken}})
     .then(res  => {   
+      alert("Done Successfully")
+
         console.log(res.data);
-    } ) 
+    } ).catch(err=>{console.log(err);alert("Updating Failed ")}) 
+
  }
 
   render(){

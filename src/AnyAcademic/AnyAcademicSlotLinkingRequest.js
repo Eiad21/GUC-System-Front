@@ -35,10 +35,13 @@ class AnyAcademicSlotLinkingRequest extends Component {
        };
     axios.post('http://localhost:8080/AnyAcademic/slotLinkReq', reqBody , {params:{token:this.props.realToken}})
     .then(res  => {   
-        console.log(res.data);
-    } ) 
- }
+      alert("Done Successfully")
 
+        console.log(res.data);
+    } ) .catch(err=>{console.log(err);alert("Updating Failed ")}) 
+ 
+ }
+ 
 
   render(){
 
