@@ -25,6 +25,23 @@ function HRMembersContainer(props) {
     setState(newstate);
   }
 
+  const updateMe = async (updateObj)=>{
+    if(updateObj.facultyName && updateObj.departmentName){
+      await axios.post('http://localhost:8080/hr/updateMemberDepartment', 
+    {memberId:updateObj.id, facultyName:updateObj.facultyName, departmentName:updateObj.departmentName},
+    {params:{token:realToken}})
+    }
+
+    console.log("Before salary")
+    console.log(realToken)
+    await axios.post('http://localhost:8080/hr/updateMemberSalary', 
+    {memberId: updateObj.memberId, salary:updateObj.salary}, {params:{token:realToken}})
+    
+    const newstate={...state};
+    newstate.counter= state.counter+1;
+    setState(newstate);
+  }
+
   const showMyAttendance = async (id)=>{
     const newstate = {...state};
     newstate.viewedId = id;
@@ -103,9 +120,10 @@ function HRMembersContainer(props) {
           mail={item.email} 
           fac={item.FacultyName} 
           dep = {item.departmentName} 
+          salary = {item.salary}
           MemberRank = {item.MemberRank}
           showMyAttendance={showMyAttendance}
-
+          updateMe = {updateMe}
           deleteMe = {deleteMe}/>
 })}
         </tbody>

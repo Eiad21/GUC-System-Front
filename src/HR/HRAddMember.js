@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'
-
+import {
+  Redirect
+} from "react-router-dom";
 function HRAddMember(props) {
   const history = useHistory();
 
@@ -12,7 +14,8 @@ function HRAddMember(props) {
           mail:"",
           MemberRank:"instructor",
           gender: "",
-          office:""
+          office:"",
+          salary:0
         }
       );
     
@@ -46,7 +49,8 @@ function HRAddMember(props) {
             name: combine,
             gender: state.gender,
             email: state.mail,
-            office: state.office
+            office: state.office,
+            salary:state.salary
         }
       
 
@@ -128,8 +132,15 @@ function HRAddMember(props) {
         setState(newstate);
         console.log(newstate)
      }
+     const handleSalary=(evt)=> {
+      const newstate={...state};
+      newstate.salary=evt.target.value;
+      setState(newstate);
+      console.log(newstate)
+   }
 
     return (
+      !props.realToken?<Redirect to="/login"/>:
             <div>
 <div className="hidden sm:block" aria-hidden="true">
 <div className="py-5">
@@ -169,6 +180,11 @@ function HRAddMember(props) {
             <div className="col-span-6 sm:col-span-4">
               <label for="office_loc" className="block text-sm font-medium text-gray-700">Office location</label>
               <input onChange={handleOffice} type="text" name="office_loc" id="office_loc" autocomplete="email" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+            </div>
+
+            <div className="col-span-6 sm:col-span-4">
+              <label for="email_address" className="block text-sm font-medium text-gray-700">Salary</label>
+              <input onChange={handleSalary} type="number" name="email_address" id="email_address" autocomplete="email" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
             </div>
 
             <div className="col-span-6 sm:col-span-3">
