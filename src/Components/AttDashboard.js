@@ -77,7 +77,7 @@ export default function AttDashboard(props) {
               <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
                 
                 <div>
-                    <Button onClick={()=>{history.push("/ViewCourses")}}>View Attendance</Button>
+                    <Button onClick={()=>{history.push("/viewAnyMemAtt")}}>View Attendance</Button>
                     <Button onClick={()=>{history.push("/AnyMissingDays")}}>View missing days</Button>
                     <Button onClick={()=>{update();}}>{showmissing?`Don't `:``}View missing/extra hours</Button>
                 </div>
