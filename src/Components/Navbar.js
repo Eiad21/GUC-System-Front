@@ -48,14 +48,14 @@ function Navbar(props) {
       case "Accept/Reject Requests":path="/Requeststoview";break;
       case "View Staff Info":path="/viewstaffinfo";break; 
       case "My Profile" : path="/profile";break; 
-      case "Linking Request" : path="/coordinator/requests";break; 
+      case "Recieved Linking Requests" : path="/coordinator/requests";break; 
       case "View Entity Info":path="/viewentityinfo";break; 
       case "Assign/Delete Staff":path="/manipulatestaff";break
       case "Replacement Requests":path="/AcademicMemberReplacement";break
       case "Change Day off":path="/AnyAcademicDayOffRequest";break
       case "Leave Request":path="/AnyAcademicLeaveRequest";break
       case "Requests":path="/AcademicMemberReqContainer";break
-
+      case "Manage Courses":path="/coordinator/courseManagement";break;
 {/* AcademicMemberReqContainer */}
       default: path = "/";
     }
@@ -85,13 +85,18 @@ function Navbar(props) {
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Departments</a>
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Locations</a>
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Courses</a>
-              <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor"||props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Replacement Requests" onClick={handleNavClick}>Replacement</a>
+              <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor"||props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Replacement Requests" onClick={handleNavClick}>Replacement Requests</a>
               <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor"||props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Change Day off" onClick={handleNavClick}>Change Day off</a>
               <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor"||props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Leave Request" onClick={handleNavClick}>Leave Request</a>
+<<<<<<< HEAD
+              <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Requests" onClick={handleNavClick}>Requests</a>
+              <a style={(props.user.MemberRank=="coordinator")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Manage Courses" onClick={handleNavClick}>Manage Courses</a>
+=======
               <a style={(props.user.MemberRank=="coordinator"||props.user.MemberRank=="instructor") || props.user.MemberRank=="hod"?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Requests" onClick={handleNavClick}>Requests</a>
+>>>>>>> 7d47c0449507ea4ae405274e33e7a4b58d7965f7
 
               {/* coordinator  carentials  */}
-              <a style={(props.user.MemberRank=="coordinator")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Linking Request" onClick={handleNavClick}>Linking Request</a>
+              <a style={(props.user.MemberRank=="coordinator")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} text ="Recieved Linking Requests" onClick={handleNavClick}>Recieved Linking Requests</a>
 
               <a style={(props.user.MemberRank=="hr")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked} onClick={handleNavClick}>Staff Attendance</a>
 
@@ -104,9 +109,13 @@ function Navbar(props) {
               <a style={(props.user.MemberRank=="hod")?{display: 'block', cursor:'pointer'}:{display: 'none'}}   onClick={handleNavClick} className={NBclassNotClicked}>View Entity Info</a>
 
 
-              <Link style={(props.user.MemberRank!="hr" && props.user.MemberRank!="hod")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">Courses</Link>
+<<<<<<< HEAD
+              <Link style={(props.user.MemberRank=="instructor")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">Courses</Link>
               
-              <a style={(props.user.MemberRank=="coordinator")?{display: 'block', cursor:'pointer'}:{display: 'none'}} className={NBclassNotClicked}>Slot Linking requests</a>
+=======
+              <Link style={(props.user.MemberRank!="hr" && props.user.MemberRank!="hod")?{display: 'block'}:{display: 'none'}} className={NBclassNotClicked} to="/MyCourses">Courses</Link>
+>>>>>>> 7d47c0449507ea4ae405274e33e7a4b58d7965f7
+              
 
 
 
