@@ -30,8 +30,7 @@ class AnyAcademicDayOffRequest extends Component {
     axios.post('http://localhost:8080/AnyAcademic/changeDayOffReq', reqBody , {params:{token:this.props.realToken}})
     .then(res  => {   
       alert("Done Successfully")
-        console.log(res.data);
-    } ).catch(err=>{console.log(err);alert("Updating Failed ")}) 
+    } ).catch(err=>{console.log(err);alert("Updating Failed Enter Correct Data ")}) 
  }
 
 
