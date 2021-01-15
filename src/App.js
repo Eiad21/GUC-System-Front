@@ -49,6 +49,7 @@ import Profile from './Components/Profile';
 import AcademicMemberReqContainer from './AnyAcademic/AcademicMemberReqContainer';
 import AttDashboard from './Components/AttDashboard';
 
+import AnyMemberAttendance from "./Components/AnyMemberAttendance"
 import AcademicMemberReplacementContainer from './AnyAcademic/AcademicMemberReplacementContainer';
 
 // import AnyAcademicSlotLinkingRequest from './AnyAcademicSlotLinkingRequest';
@@ -310,6 +311,13 @@ function App() {
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
     <HRLocationsContainer user={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/viewAnyMemAtt">
+  <React.StrictMode>
+    <Navbar user={state.token} logOut={logOut}/>
+    <AnyMemberAttendance user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 

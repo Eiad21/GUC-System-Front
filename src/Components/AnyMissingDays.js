@@ -86,13 +86,18 @@ export default function AnyMissingDays(props) {
     ]
                  
     return (
+      <div>
+      
+
       <div className="max-w-7xl mx-auto py-12 sm:px-4 lg:px-4">
       <div className="px-2 py-20 sm:px-0">
         <p className="a" align="center" style={(error)?{display: 'block'}:{display: 'none'}}>{error}</p>
-            <Table data={state} width={600} height={600} columns={columns}/>
+        <br></br>
+        <br></br>
+         <Table data={state} width={600} height={600} columns={columns}/>
 
              </div>
              </div>
-    
+    </div>
     )
 }
