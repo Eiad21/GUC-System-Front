@@ -48,20 +48,20 @@ class AcademicMemberReplacement extends Component {
 
       alert("Updating Failed ")
       console.log(" ERROR in send replacement request");
-       if(!err || !err.response || !err.response.data){
-          this.setState((preState)=>{
-               return {
-                 ...preState,
-                 error:'invalid data'}
-          })
-       }
-       else{
-          this.setState((preState)=>{
-            return {
-              ...preState,
-              error:err.response.data}
-          })
-       }
+      //  if(!err || !err.response || !err.response.data){
+      //     this.setState((preState)=>{
+      //          return {
+      //            ...preState,
+      //            error:'invalid data'}
+      //     })
+      //  }
+      //  else{
+      //     this.setState((preState)=>{
+      //       return {
+      //         ...preState,
+      //         error:err.response.data}
+      //     })
+      //  }
 
    })
  } 

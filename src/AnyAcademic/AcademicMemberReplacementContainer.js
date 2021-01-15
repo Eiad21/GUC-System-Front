@@ -83,7 +83,7 @@ render(){
         
         </table>
        {requests }
-       < AcademicMemberReplacementItem
+       {/* < AcademicMemberReplacementItem
                   repId="1"
                   sender="req.sender"
                   slotDate = "req.date"
@@ -94,7 +94,7 @@ render(){
                   slotTime = "req.slotTime"
                   status="req.status"
                   realToken={this.props.realToken}
-        />
+        /> */}
       </div>
     </div>
   </div>

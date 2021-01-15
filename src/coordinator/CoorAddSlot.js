@@ -20,7 +20,8 @@ class CoorAddSlot extends Component {
       alert("Done Successfully")
 
         console.log(res.data);
-    } ).catch(err=>{console.log(err);alert("Updating Failed ")}) 
+    } ).catch(err=>{
+      console.log(err);alert("Updating Failed ")}) 
 
  }
 
