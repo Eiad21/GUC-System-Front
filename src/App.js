@@ -21,7 +21,7 @@ import ViewCourses from './Components/ViewCourses';
 import CourseSchedule from './Components/CourseSchedule';
 import StaffDep from './Components/StaffDep';
 import CourseStaff from './Components/CourseStaff';
-
+import AnyMissingDays from './Components/AnyMissingDays';
 
 import HRMembersContainer from './HR/HRMembersContainer';
 import HRFacultiesContainer from './HR/HRFacultiesContainer';
@@ -47,6 +47,7 @@ import AnyAcademicLeaveRequest from './AnyAcademic/AnyAcademicLeaveRequest';
 import AnyAcademicSlotLinkingRequest from './AnyAcademic/AnyAcademicSlotLinkingRequest';
 import Profile from './Components/Profile';
 import AcademicMemberReqContainer from './AnyAcademic/AcademicMemberReqContainer';
+import AttDashboard from './Components/AttDashboard';
 
 import AcademicMemberReplacementContainer from './AnyAcademic/AcademicMemberReplacementContainer';
 
@@ -163,6 +164,20 @@ function App() {
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
     <MyCourses token={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+  
+  <Route exact path="/AnyMissingDays">
+  <React.StrictMode>
+    <Navbar user={state.token} logOut={logOut}/>
+    <AnyMissingDays token={state.token} realToken={state.realToken}/>
+  </React.StrictMode>
+  </Route>
+
+  <Route exact path="/AnyAtt">
+  <React.StrictMode>
+    <Navbar user={state.token} logOut={logOut}/>
+    <AttDashboard token={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
   

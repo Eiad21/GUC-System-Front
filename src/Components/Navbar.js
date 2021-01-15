@@ -26,11 +26,16 @@ function Navbar(props) {
       setState(newstate);
   }
 
-  const handlelogout=(evt)=>{
+  const handlelogout=()=>{
    
       props.logOut();
       history.push("/login");
   
+  }
+
+  const handleatt=()=>{
+    history.push("/AnyAtt");
+
 }
 
   const handleNavClick=(evt)=>{
@@ -141,7 +146,7 @@ function Navbar(props) {
               {state.checked&&<div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 submenu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                 <a   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" text ="My Profile"onClick={handleNavClick}>My Profile</a>
 
-                <button href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Attendance</button>
+                <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" onClick={handleatt}>My Attendance</button>
 
                 <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" onClick={handlelogout}>Log out</button>
               </div>}
