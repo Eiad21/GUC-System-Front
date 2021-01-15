@@ -81,12 +81,6 @@ const loginData={
   }
 
   const handlePassChange=(evt)=> {
-  //   setState((prevState) =>{
-  //     return{
-  //       ...prevState,
-  //       password: evt.target.value
-  //     }
-  //  } )
    const newstate={...state};
   //  console.log(newstate);
    newstate.password=evt.target.value;

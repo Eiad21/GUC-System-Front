@@ -49,6 +49,13 @@ import  '../Components/Navbar.css';
               else{if(counter<1){array.push(""); counter++}}
                      
             });
+            if (array.length==0)
+            {
+                
+                console.log("hi")
+                array.push("");
+                counter++;
+            }
 
 
           return array;  
@@ -113,7 +120,7 @@ import  '../Components/Navbar.css';
                             <td className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Monday</td>
                             <td className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Tuesday</td>
                             <td className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Wednesday</td>
-                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest">tdursday </td>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest">Thursday </td>
                             <td className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Friday</td>
                         
                         </tr>
@@ -136,19 +143,19 @@ import  '../Components/Navbar.css';
                              <div className="flex-shrink-0 h-10 w-10">
                              </div>
                              <div className="ml-4">
-                             {element.assignedMemberID && <div>
+                             {element.output && <div>
                              <div className="text-xs text-gray-500">
                                  
                                  Staff ID: {element.output.assignedMemberID}
                                  </div>
                                  <div className="text-xsfont-medium text-gray-900">
-                                  Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                  Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                  </div>
                                      <div className="text-xs text-gray-500 font-bold">
-                                OFFICE: {element.location}
+                                OFFICE: {element.output.location}
                                  </div>
                          </div> }
-                         {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                         {!element.output && <div className="text-xs text-gray-500">
                                  
                                  Empty
                                  </div>}
@@ -157,25 +164,25 @@ import  '../Components/Navbar.css';
                      })
                         }
                      </td>
-                            <td className=" border-green-600 px-6 py-3 text-left text-xs font-small text-gray-2000 whitespace-nowrap tracking-wider">{getscheduleinfo(element.courseSchedule,"SUN",1).map(element=>{
-                               return(
+                            <td className="  px-6 py-3 text-left text-xs font-small text-gray-2000 whitespace-nowrap tracking-wider">{getscheduleinfo(element.courseSchedule,"SUN",1).map(element=>{
+                             return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
-                                    <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                        <div className="text-xs text-gray-500 font-bold">
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -183,24 +190,24 @@ import  '../Components/Navbar.css';
                             </div> )
                         })}</td>
                             <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"MON",1).map(element=>{
-                               return(
+                              return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -213,69 +220,69 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
-                                    
-                                    Empty
-                                    </div>}
-                                </div>
-                            </div> ) 
-                        })}</td>
-                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",1).map(element=>{
-                               return(
-                                <div className="flex items-center">
-                                <div className="flex-shrink-0 h-10 w-10">
-                                </div>
-                                <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
-                                    
-                                    Staff ID: {element.output.assignedMemberID}
-                                    </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
-                                    </div>
-                                        <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
-                                    </div>
-                            </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
                                 </div>
                             </div> )
                         })}</td>
-                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"tdU",1).map(element=>{
-                               return(
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",1).map(element=>{
+                             return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
-                                    <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                        <div className="text-xs text-gray-500 font-bold">
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
+                                    
+                                    Empty
+                                    </div>}
+                                </div>
+                            </div> )
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"THU",1).map(element=>{
+                              return(
+                                <div className="flex items-center">
+                                <div className="flex-shrink-0 h-10 w-10">
+                                </div>
+                                <div className="ml-4">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
+                                    
+                                    Staff ID: {element.output.assignedMemberID}
+                                    </div>
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    </div>
+                                        <div className="text-xs text-gray-500 font-bold">
+                                   OFFICE: {element.output.location}
+                                    </div>
+                            </div> }
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -288,19 +295,19 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -316,24 +323,24 @@ import  '../Components/Navbar.css';
                         </div>
                         <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">
                         {getscheduleinfo(element.courseSchedule,"SAT",2).map(element=>{
-                               return(
+                             return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -347,143 +354,152 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
                                 </div>
                             </div> )
                         })}</td>
-                            <td className="   px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"MON",2).map(element=>{return(
-                               <div className="flex items-center">
-                               <div className="flex-shrink-0 h-10 w-10">
-                               </div>
-                               <div className="ml-4">
-                               <div className="text-xs text-gray-500">
-                                   Staff ID: {element.output.assignedMemberID}
-                                   </div>
-                                   <div className="text-xsfont-medium text-gray-900">
-                                    Staff Assigned: {element.output.assignedMemberName}
-                                   </div>
-                                       <div className="text-xs text-gray-500 font-bold">
-                                  OFFICE: {element.output.location}
-                                   </div>
-                                   
-                               </div>
-                           </div> )
+                            <td className="   px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"MON",2).map(element=>{
+                                return(
+                                    <div className="flex items-center">
+                                    <div className="flex-shrink-0 h-10 w-10">
+                                    </div>
+                                    <div className="ml-4">
+                                    {element.output && <div>
+                                    <div className="text-xs text-gray-500">
+                                        
+                                        Staff ID: {element.output.assignedMemberID}
+                                        </div>
+                                        <div className="text-xsfont-medium text-gray-900">
+                                         Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                        </div>
+                                            <div className="text-xs text-gray-500 font-bold">
+                                       OFFICE: {element.output.location}
+                                        </div>
+                                </div> }
+                                {!element.output && <div className="text-xs text-gray-500">
+                                        
+                                        Empty
+                                        </div>}
+                                    </div>
+                                </div> )
                         })}</td>
-                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"TUE",2).map(element=>{return (
-                               <div className="flex items-center">
-                               <div className="flex-shrink-0 h-10 w-10">
-                               </div>
-                               <div className="ml-4">
-                               {element.assignedMemberID && <div>
-                               <div className="text-xs text-gray-500">
-                                   
-                                   Staff ID: {element.output.assignedMemberID}
-                                   </div>
-                                   <div className="text-xsfont-medium text-gray-900">
-                                    Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
-                                   </div>
-                                       <div className="text-xs text-gray-500 font-bold">
-                                  OFFICE: {element.location}
-                                   </div>
-                           </div> }
-                           {!element.assignedMemberID && <div className="text-xs text-gray-500">
-                                   
-                                   Empty
-                                   </div>}
-                               </div>
-                           </div> )
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"TUE",2).map(element=>{
+                                return(
+                                    <div className="flex items-center">
+                                    <div className="flex-shrink-0 h-10 w-10">
+                                    </div>
+                                    <div className="ml-4">
+                                    {element.output && <div>
+                                    <div className="text-xs text-gray-500">
+                                        
+                                        Staff ID: {element.output.assignedMemberID}
+                                        </div>
+                                        <div className="text-xsfont-medium text-gray-900">
+                                         Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                        </div>
+                                            <div className="text-xs text-gray-500 font-bold">
+                                       OFFICE: {element.output.location}
+                                        </div>
+                                </div> }
+                                {!element.output && <div className="text-xs text-gray-500">
+                                        
+                                        Empty
+                                        </div>}
+                                    </div>
+                                </div> )
                         })}</td>
                             <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",2).map(element=>{return(
-                                     <div className="flex items-center">
-                                     <div className="flex-shrink-0 h-10 w-10">
-                                     </div>
-                                     <div className="ml-4">
-                                     {element.assignedMemberID && <div>
-                                         <div className="text-xs text-gray-500 font-bold">
-                                         
-                                         Staff ID: {element.output.assignedMemberID}
-                                         </div>
-                                         <div className="text-xsfont-medium text-gray-900 font-bold">
-                                          Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
-                                         </div>
-                                             <div className="text-xs text-gray-500 font-bold">
-                                        OFFICE: {element.location}
-                                         </div>
-                                 </div> }
-                                 {!element.assignedMemberID && <div className="text-xs text-gray-500">
-                                         
-                                         Empty
-                                         </div>}
-                                     </div>
-                                 </div> )
+                             <div className="flex items-center">
+                             <div className="flex-shrink-0 h-10 w-10">
+                             </div>
+                             <div className="ml-4">
+                             {element.output && <div>
+                             <div className="text-xs text-gray-500">
+                                 
+                                 Staff ID: {element.output.assignedMemberID}
+                                 </div>
+                                 <div className="text-xsfont-medium text-gray-900">
+                                  Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                 </div>
+                                     <div className="text-xs text-gray-500 font-bold">
+                                OFFICE: {element.output.location}
+                                 </div>
+                         </div> }
+                         {!element.output && <div className="text-xs text-gray-500">
+                                 
+                                 Empty
+                                 </div>}
+                             </div>
+                         </div> )
                         })}</td>
-                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"tdU",2).map(element=>{return(
-                                     <div className="flex items-center">
-                                     <div className="flex-shrink-0 h-10 w-10">
-                                     </div>
-                                     <div className="ml-4">
-                                     {element.assignedMemberID && <div>
-                                         <div className="text-xs text-gray-500 font-bold">
-                                         
-                                         Staff ID: {element.output.assignedMemberID}
-                                         </div>
-                                         <div className="text-xsfont-medium text-gray-900 font-bold">
-                                          Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
-                                         </div>
-                                             <div className="text-xs text-gray-500 font-bold">
-                                        OFFICE: {element.location}
-                                         </div>
-                                 </div> }
-                                 {!element.assignedMemberID && <div className="text-xs text-gray-500">
-                                         
-                                         Empty
-                                         </div>}
-                                     </div>
-                                 </div> )
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"THU",2).map(element=>{return(
+                             <div className="flex items-center">
+                             <div className="flex-shrink-0 h-10 w-10">
+                             </div>
+                             <div className="ml-4">
+                             {element.output && <div>
+                             <div className="text-xs text-gray-500">
+                                 
+                                 Staff ID: {element.output.assignedMemberID}
+                                 </div>
+                                 <div className="text-xsfont-medium text-gray-900">
+                                  Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                 </div>
+                                     <div className="text-xs text-gray-500 font-bold">
+                                OFFICE: {element.output.location}
+                                 </div>
+                         </div> }
+                         {!element.output && <div className="text-xs text-gray-500">
+                                 
+                                 Empty
+                                 </div>}
+                             </div>
+                         </div> )
                         })} </td>
-                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"FRI",2).map(element=>{return(
-                                     <div className="flex items-center">
-                                     <div className="flex-shrink-0 h-10 w-10">
-                                     </div>
-                                     <div className="ml-4">
-                                     {element.assignedMemberID && <div>
-                                         <div className="text-xs text-gray-500 font-bold">
-                                         
-                                         Staff ID: {element.output.assignedMemberID}
-                                         </div>
-                                         <div className="text-xsfont-medium text-gray-900 font-bold">
-                                          Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
-                                         </div>
-                                             <div className="text-xs text-gray-500 font-bold">
-                                        OFFICE: {element.location}
-                                         </div>
-                                 </div> }
-                                 {!element.assignedMemberID && <div className="text-xs text-gray-500">
-                                         
-                                         Empty
-                                         </div>}
-                                     </div>
-                                 </div> )
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"FRI",2).map(element=>{
+                                return(
+                             <div className="flex items-center">
+                             <div className="flex-shrink-0 h-10 w-10">
+                             </div>
+                             <div className="ml-4">
+                             {element.output && <div>
+                             <div className="text-xs text-gray-500">
+                                 
+                                 Staff ID: {element.output.assignedMemberID}
+                                 </div>
+                                 <div className="text-xsfont-medium text-gray-900">
+                                  Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                 </div>
+                                     <div className="text-xs text-gray-500 font-bold">
+                                OFFICE: {element.output.location}
+                                 </div>
+                         </div> }
+                         {!element.output && <div className="text-xs text-gray-500">
+                                 
+                                 Empty
+                                 </div>}
+                             </div>
+                         </div> )
                         })}</td>
                         </tr>
                         
                         <tr className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider">
-                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">tdird</td>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">third</td>
                             <div className="py-5 black">
                         {/* <div className="border-t border-gray-200"></div> */}
                         </div>
@@ -494,19 +510,19 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -520,19 +536,19 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -545,19 +561,19 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -570,19 +586,19 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -590,49 +606,49 @@ import  '../Components/Navbar.css';
                             </div> )
                         })}</td>
                             <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",3).map(element=>{
-                               return(
+                              return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
                                 </div>
                             </div> )
                         })}</td>
-                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"tdU",3).map(element=>{
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"THU",3).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -645,19 +661,19 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -667,7 +683,7 @@ import  '../Components/Navbar.css';
                         </tr>
                         
                         <tr className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider">
-                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">Fourtd</td>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">Fourth</td>
                             <div className="py-5 black">
                         {/* <div className="border-t border-gray-200"></div> */}
                         </div>
@@ -678,19 +694,19 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -704,19 +720,19 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -724,24 +740,24 @@ import  '../Components/Navbar.css';
                             </div> )
                         })}</td>
                             <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"MON",4).map(element=>{
-                              return(
+                             return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -754,19 +770,19 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -774,74 +790,74 @@ import  '../Components/Navbar.css';
                             </div> )
                         })}</td>
                             <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",4).map(element=>{
-                              return(
+                             return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
                                 </div>
                             </div> )
                         })}</td>
-                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"tdU",4).map(element=>{
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"THU",4).map(element=>{
+                             return(
+                                <div className="flex items-center">
+                                <div className="flex-shrink-0 h-10 w-10">
+                                </div>
+                                <div className="ml-4">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
+                                    
+                                    Staff ID: {element.output.assignedMemberID}
+                                    </div>
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    </div>
+                                        <div className="text-xs text-gray-500 font-bold">
+                                   OFFICE: {element.output.location}
+                                    </div>
+                            </div> }
+                            {!element.output && <div className="text-xs text-gray-500">
+                                    
+                                    Empty
+                                    </div>}
+                                </div>
+                            </div> )
+                        })} </td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"FRI",4).map(element=>{
                               return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
-                                    
-                                    Empty
-                                    </div>}
-                                </div>
-                            </div> ) 
-                        })} </td>
-                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"FRI",4).map(element=>{
-                               return(
-                                <div className="flex items-center">
-                                <div className="flex-shrink-0 h-10 w-10">
-                                </div>
-                                <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
-                                    
-                                    Staff ID: {element.output.assignedMemberID}
-                                    </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
-                                    </div>
-                                        <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
-                                    </div>
-                            </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -851,30 +867,30 @@ import  '../Components/Navbar.css';
                         </tr>
                         
                         <tr className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider">
-                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">Fiftd</td>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">Fifth</td>
                             <div className="py-5 black">
                         {/* <div className="border-t border-gray-200"></div> */}
                         </div>
                         <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">
                         {getscheduleinfo(element.courseSchedule,"SAT",5).map(element=>{
-                             return(
+                            return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -888,19 +904,19 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -913,19 +929,19 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -933,24 +949,24 @@ import  '../Components/Navbar.css';
                             </div> )
                         })}</td>
                             <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"TUE",5).map(element=>{
-                               return(
+                              return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -963,44 +979,44 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
                                 </div>
                             </div> )
                         })}</td>
-                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"tdU",5).map(element=>{
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"THU",5).map(element=>{
                              return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
@@ -1013,19 +1029,19 @@ import  '../Components/Navbar.css';
                                 <div className="flex-shrink-0 h-10 w-10">
                                 </div>
                                 <div className="ml-4">
-                                {element.assignedMemberID && <div>
-                                    <div className="text-xs text-gray-500 font-bold">
+                                {element.output && <div>
+                                <div className="text-xs text-gray-500">
                                     
                                     Staff ID: {element.output.assignedMemberID}
                                     </div>
-                                    <div className="text-xsfont-medium text-gray-900 font-bold">
-                                     Staff Assigned: {element.assignedMemberName &&element.assignedMemberID} {!element.assignedMemberName && "Empty"}
+                                    <div className="text-xsfont-medium text-gray-900">
+                                     Staff Assigned: {element.output.assignedMemberName &&element.output.assignedMemberID} {!element.assignedMemberName && "Empty"}
                                     </div>
                                         <div className="text-xs text-gray-500 font-bold">
-                                   OFFICE: {element.location}
+                                   OFFICE: {element.output.location}
                                     </div>
                             </div> }
-                            {!element.assignedMemberID && <div className="text-xs text-gray-500">
+                            {!element.output && <div className="text-xs text-gray-500">
                                     
                                     Empty
                                     </div>}
