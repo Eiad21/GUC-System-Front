@@ -6,6 +6,9 @@ function HRMemberAttendanceItem(props) {
           detailsShown:false
         }
       )
+    const addSign = (updateObj)=>{
+      props.addSign(updateObj);
+    }
     const showDetails = ()=>{
       const newstate = {...state};
       newstate.detailsShown = !state.detailsShown
@@ -44,6 +47,9 @@ function HRMemberAttendanceItem(props) {
               {state.detailsShown&&
                       props.sessions.map((item, idx)=>{
                         return <HRMemberAttendanceDetail
+                        memberId = {props.memberId}
+                        date = {props.date}
+                        addSign = {addSign}
                         timein = {item.timein}
                         timeout = {item.timeout}
                         idx = {idx+1}/>

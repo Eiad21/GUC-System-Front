@@ -2,7 +2,9 @@ import React, {useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import HRDepartmentItem from "./HRDepartmentItem"
 import axios from 'axios'
-import Navbar from '../Components/Navbar';
+import {
+  Redirect
+} from "react-router-dom";
 
 let test = false;
 let realToken;
@@ -61,7 +63,7 @@ function HRDepartmentsContainer(props) {
   });
 
     return (
-
+    !props.realToken?<Redirect to="/login"/>:
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
         <table class="min-w-full divide-y divide-gray-200">

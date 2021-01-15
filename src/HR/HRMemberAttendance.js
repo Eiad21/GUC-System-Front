@@ -12,6 +12,15 @@ function HRMemberAttendance(props) {
         arr:[],
       }
     );
+
+    const addSign = async (updateObj)=>{
+      await axios.post('http://localhost:8080/hr/addNewSignRecord', updateObj ,{params:{token:props.realToken}})
+      
+      const newstate={...state};
+      newstate.counter= state.counter+1;
+      setState(newstate);
+      console.log(state.counter)
+    }
     const history = useHistory();
     useEffect(() => {
       async function fetchData() {
@@ -64,7 +73,8 @@ function HRMemberAttendance(props) {
           {state.arr.map((item)=>{
             return <HRMemberAttendanceItem 
             memberId = {item.memberId} 
-            date = {item.date} 
+            date = {item.date}
+            addSign = {addSign} 
             missedDay ={item.missedDay?"Absent":"Attended"}
             sessions = {item.sessions}/>
   })}
