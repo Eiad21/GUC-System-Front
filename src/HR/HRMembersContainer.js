@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import { useHistory } from 'react-router-dom';
 import HRMemberItem from "./HRMemberItem"
 import HRMemberAttendance from "./HRMemberAttendance"
 import axios from 'axios'
-import Navbar from '../Components/Navbar';
 
 let realToken;
 
@@ -22,7 +20,7 @@ function HRMembersContainer(props) {
     
     const newstate={...state};
     newstate.arr= newstate.arr.filter((item)=>{
-      return item.memberId != id;
+      return item.memberId !== id;
     })
     setState(newstate);
   }
@@ -43,7 +41,6 @@ function HRMembersContainer(props) {
     // })
   }
 
-  const history = useHistory();
   useEffect(() => {
     async function fetchData() {
       realToken = props.realToken;
@@ -63,7 +60,7 @@ function HRMembersContainer(props) {
     })
     console.log("after res")
     }
-    if(state.counter %2== 0){
+    if(state.counter %2=== 0){
       console.log("test")
       fetchData();
     }

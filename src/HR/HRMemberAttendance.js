@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom';
-import HRMemberItem from "./HRMemberItem"
 import axios from 'axios'
 import HRMemberAttendanceItem from './HRMemberAttendanceItem';
 
@@ -40,8 +39,8 @@ function HRMemberAttendance(props) {
     });
   
       return (
-        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8" >
+        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg" style = {{marginRight: 150, marginLeft: 150}}>
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
               <tr>
@@ -54,21 +53,20 @@ function HRMemberAttendance(props) {
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Attended
                 </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  
-                </th>
+
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Edit
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Delete
                 </th>
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
             
           {state.arr.map((item)=>{
-            return <HRMemberAttendanceItem name = {item}/>
+            return <HRMemberAttendanceItem 
+            memberId = {item.memberId} 
+            date = {item.date} 
+            missedDay ={item.missedDay?"Absent":"Attended"}
+            sessions = {item.sessions}/>
   })}
           </tbody>
           </table>

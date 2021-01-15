@@ -16,7 +16,7 @@ function HRAddLocation(props) {
       const addLocation=(evt)=>{
         console.log( props.user)
         console.log( props.realToken)
-        if(state.LocationName == ""){
+        if(state.LocationName === ""){
             alert("Enter Location name");
             return;
         }

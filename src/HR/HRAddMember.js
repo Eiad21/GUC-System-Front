@@ -19,11 +19,11 @@ function HRAddMember(props) {
     const addMember=(evt)=>{
         console.log("user" + props.user)
         console.log("token" + props.realToken)
-        if(state.firstName == ""){
+        if(state.firstName === ""){
             alert("Enter first name");
             return;
         }
-        if(state.lastName == ""){
+        if(state.lastName === ""){
             alert("Enter last name");
             return;
         }
@@ -35,7 +35,7 @@ function HRAddMember(props) {
         alert("wrong")
         return;
     }
-        if(state.gender == ""){
+        if(state.gender === ""){
             alert("Enter gender");
             return;
         }

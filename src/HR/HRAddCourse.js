@@ -16,19 +16,19 @@ function HRAddCourse(props) {
       );
     
     const addCourse=(evt)=>{
-        if(state.FacultyName == ""){
+        if(state.FacultyName === ""){
             alert("Enter Faculty name");
             return;
         }
-        if(state.DepartmentName == ""){
+        if(state.DepartmentName === ""){
             alert("Enter Department name");
             return;
         }
-        if(state.CourseName == ""){
+        if(state.CourseName === ""){
           alert("Enter Coordinator Name");
           return;
         }
-        if(state.CoordinatorName == ""){
+        if(state.CoordinatorName === ""){
             alert("Enter Coordinator Name");
             return;
         }

@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'
-import Navbar from '../Components/Navbar';
 
-let test = false;
 let realToken;
 
 function HRStaffAttendance(props) {
@@ -40,7 +38,7 @@ function HRStaffAttendance(props) {
     })
     console.log("after res")
     }
-    if(state.counter %2== 0){
+    if(state.counter %2=== 0){
       console.log("test")
       fetchData();
     }

@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import { useHistory } from 'react-router-dom';
 import HRFacultyItem from "./HRFacultyItem"
 import axios from 'axios'
-import Navbar from '../Components/Navbar';
 
 let test = false;
 let realToken;
@@ -24,7 +22,14 @@ function HRFacultiesContainer(props) {
     setState(newstate);
   }
 
-  const history = useHistory();
+  const updateMe = async (updateObj)=>{
+
+    await axios.post('http://localhost:8080/hr/updateFaculty', updateObj ,{params:{token:realToken}})
+    
+    const newstate={...state};
+    newstate.counter= state.counter+1;
+    setState(newstate);
+  }
   useEffect(() => {
     async function fetchData() {
       realToken = props.realToken;
@@ -44,7 +49,7 @@ function HRFacultiesContainer(props) {
     })
     console.log("after res")
     }
-    if(state.counter %2== 0){
+    if(state.counter %2=== 0){
       console.log("test")
       fetchData();
     }
@@ -81,7 +86,7 @@ function HRFacultiesContainer(props) {
           facultyName = {item.facultyName}  
           deanID = {item.deanID} 
           deanName = {item.deanName}
-
+          updateMe = {updateMe}
           deleteMe = {deleteMe}/>
 })}
         </tbody>

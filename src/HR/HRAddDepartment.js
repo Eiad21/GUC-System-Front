@@ -17,16 +17,16 @@ function HRAddDepartment(props) {
     const addDepartment=(evt)=>{
         console.log("user" + props.user)
         console.log("token" + props.realToken)
-        if(state.FacultyName == ""){
+        if(state.FacultyName === ""){
             alert("Enter Faculty name");
             return;
         }
-        if(state.DepartmentName == ""){
+        if(state.DepartmentName === ""){
             alert("Enter Department name");
             return;
         }
 
-        if(state.HeadName == ""){
+        if(state.HeadName === ""){
             alert("Enter Head Name");
             return;
         }
@@ -37,7 +37,7 @@ function HRAddDepartment(props) {
     else{
         alert("ID should be in format of ac-IDnumber")
     }
-        if(state.gender == ""){
+        if(state.gender === ""){
             alert("Enter gender");
             return;
         }

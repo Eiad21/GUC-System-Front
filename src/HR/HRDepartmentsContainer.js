@@ -54,7 +54,7 @@ function HRDepartmentsContainer(props) {
     })
     console.log("after res")
     }
-    if(state.counter %2== 0){
+    if(state.counter %2=== 0){
       console.log("test")
       fetchData();
     }

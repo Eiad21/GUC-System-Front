@@ -16,11 +16,11 @@ function HRAddFaculty(props) {
     const addFaculty=(evt)=>{
         console.log("user" + props.user)
         console.log("token" + props.realToken)
-        if(state.FacultyName == ""){
+        if(state.FacultyName === ""){
             alert("Enter Faculty name");
             return;
         }
-        if(state.DeanName == ""){
+        if(state.DeanName === ""){
           alert("Enter Dean name");
           return;
       }

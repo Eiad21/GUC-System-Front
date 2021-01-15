@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios'
 
 function HRDepartmentItem(props) {
     const [state, setState] = useState(
