@@ -28,7 +28,7 @@ import HRFacultiesContainer from './HR/HRFacultiesContainer';
 import HRDepartmentsContainer from './HR/HRDepartmentsContainer';
 import HRLocationsContainer from './HR/HRLocationsContainer';
 import HRCoursesContainer from './HR/HRCoursesContainer';
-import HRStaffAttendance from './HR/HRStaffAttendance';
+import HRStaffMissingAttendance from './HR/HRStaffMissingAttendance';
 import HodStaffinDepartment from './Components/HodStaffinDepartment'
 import HodStaffDayOffview from './Components/HodStaffDayOffview'
 import HodViewCoverageOfCourses from './Components/HodViewCoverageOfCourses'
@@ -305,10 +305,10 @@ function App() {
   </React.StrictMode>
   </Route>
 
-  <Route exact path="/viewStaffAttendance">
+  <Route exact path="/viewStaffMissingAttendance">
   <React.StrictMode>
     <Navbar user={state.token} logOut={logOut}/>
-    <HRStaffAttendance user={state.token} realToken={state.realToken}/>
+    <HRStaffMissingAttendance user={state.token} realToken={state.realToken}/>
   </React.StrictMode>
   </Route>
 

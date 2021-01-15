@@ -1,41 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import HRFacultyItem from "./HRFacultyItem"
+import HRStaffMissingAttendanceItem from "./HRStaffMissingAttendanceItem"
 import axios from 'axios'
 import {
   Redirect
 } from "react-router-dom";
+
 let realToken;
 
-function HRFacultiesContainer(props) {
+function HRStaffMissingAttendance(props) {
   const [state, setState] = useState(
     {
       counter:0,
-      arr:[]
+      arr:[],
     }
   );
-  const deleteMe = (mFacultyName)=>{
-    axios.post('http://localhost:8080/hr/deleteFaculty', {facultyName:mFacultyName} ,{params:{token:realToken}})
-    
-    const newstate={...state};
-    newstate.arr= newstate.arr.filter((item)=>{
-      return item.facultyName != mFacultyName;
-    })
-    setState(newstate);
-  }
 
-  const updateMe = async (updateObj)=>{
-
-    await axios.post('http://localhost:8080/hr/updateFaculty', updateObj ,{params:{token:realToken}})
-    
-    const newstate={...state};
-    newstate.counter= state.counter+1;
-    setState(newstate);
-  }
+  
   useEffect(() => {
     async function fetchData() {
       realToken = props.realToken;
-      await axios.post('http://localhost:8080/hr/viewAllFaculties', {} ,{params:{token:props.realToken}})
+      await axios.post('http://localhost:8080/hr/viewMembersMissingTime', {} ,{params:{token:props.realToken}})
     .then((res) => {
+      
       const newstate={...state};
       newstate.arr=res.data;
       newstate.counter = state.counter+1;
@@ -64,31 +50,27 @@ function HRFacultiesContainer(props) {
           <thead class="bg-gray-50">
             <tr>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Faculty Name
+                Name
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Dean ID
+                Faculty / Department
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Dean Name
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Edit
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Delete
+                Job Title
               </th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
           
         {state.arr.map((item)=>{
-          return <HRFacultyItem
-          facultyName = {item.facultyName}  
-          deanID = {item.deanID} 
-          deanName = {item.deanName}
-          updateMe = {updateMe}
-          deleteMe = {deleteMe}/>
+          return <HRStaffMissingAttendanceItem
+          id = {item.memberId}  
+          name ={item.name} 
+          mail={item.email} 
+          fac={item.FacultyName} 
+          dep = {item.departmentName} 
+          salary = {item.salary}
+          MemberRank = {item.MemberRank}/>
 })}
         </tbody>
         </table>
@@ -100,4 +82,4 @@ function HRFacultiesContainer(props) {
         )
 }
 
-export default HRFacultiesContainer;
+export default HRStaffMissingAttendance;
