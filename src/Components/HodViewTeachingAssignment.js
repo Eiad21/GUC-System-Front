@@ -91,8 +91,9 @@ import  '../Components/Navbar.css';
                      
                       <div>
     
-        { state.isViewed&& <div>
-         <table >
+        { state.isViewed&& <div className=" py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div className=" shadow overflow-hidden border-b border-gray-2  00 sm:rounded-lg">
+         <table className=" min-w-full divide-y divide-gray-100 border border-green-600" >
              
                     {state.schedule.map(element=>{return (
                         <div>
@@ -103,31 +104,31 @@ import  '../Components/Navbar.css';
                     </div>
                     <thead >
                         <tr className="px-6 py-3 text-left text-xs font-medium bg-gray-800 text-gray-50 uppercase tracking-wider ">
-                            <th className=" px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider">slot\day</th>
+                            <td className=" px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider">slot\day</td>
                             <div className="py-5 black">
                         {/* <div className="border-t border-gray-200"></div> */}
                         </div >
-                            <th  className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest ">Saturday </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest">Sunday </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Monday</th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Tuesday</th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Wednesday</th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest">Thursday </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Friday</th>
+                            <td  className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest ">Saturday </td>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest">Sunday </td>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Monday</td>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Tuesday</td>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Wednesday</td>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest">tdursday </td>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-widest"> Friday</td>
                         
                         </tr>
                         </thead>
                         <hr></hr>
-                        <tbody >
+                        <tbody className="bg-white divide-y divide-gray-200">
                         <div className=" black">
                         {/* <div className="border-t border-gray-200"></div> */}
                           </div>
                         <tr className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider">
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">First</th>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">First</td>
                             <div className="py-5 black">
                         {/* <div className="border-t border-gray-200"></div> */}
                         </div>
-                        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">
+                        <td className="px-6 py-3 text-left text-xs font-small text-gray-2000 whitespace-nowrap tracking-wider">
                         { 
                         getscheduleinfo(element.courseSchedule,"SUN",1).map(element=>{
                             return(
@@ -155,8 +156,8 @@ import  '../Components/Navbar.css';
                          </div> )
                      })
                         }
-                     </th>
-                            <th className=" px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"SUN",1).map(element=>{
+                     </td>
+                            <td className=" border-green-600 px-6 py-3 text-left text-xs font-small text-gray-2000 whitespace-nowrap tracking-wider">{getscheduleinfo(element.courseSchedule,"SUN",1).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -180,8 +181,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"MON",1).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"MON",1).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -205,8 +206,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"TUE",1).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"TUE",1).map(element=>{
                               return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -230,8 +231,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> ) 
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",1).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",1).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -255,8 +256,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"THU",1).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"tdU",1).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -280,8 +281,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })} </th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"FRI",1).map(element=>{
+                        })} </td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"FRI",1).map(element=>{
                              return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -305,15 +306,15 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
+                        })}</td>
                         </tr>
                         
                         <tr className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider">
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">Second</th>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">Second</td>
                             <div className="py-5 black">
                         {/* <div className="border-t border-gray-200"></div> */}
                         </div>
-                        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">
+                        <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">
                         {getscheduleinfo(element.courseSchedule,"SAT",2).map(element=>{
                                return(
                                 <div className="flex items-center">
@@ -339,8 +340,8 @@ import  '../Components/Navbar.css';
                                 </div>
                             </div> )
                         })}
-                     </th>
-                            <th className="  px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"SUN",2).map(element=>{
+                     </td>
+                            <td className="  px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"SUN",2).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -364,8 +365,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="   px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"MON",2).map(element=>{return(
+                        })}</td>
+                            <td className="   px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"MON",2).map(element=>{return(
                                <div className="flex items-center">
                                <div className="flex-shrink-0 h-10 w-10">
                                </div>
@@ -382,8 +383,8 @@ import  '../Components/Navbar.css';
                                    
                                </div>
                            </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"TUE",2).map(element=>{return (
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"TUE",2).map(element=>{return (
                                <div className="flex items-center">
                                <div className="flex-shrink-0 h-10 w-10">
                                </div>
@@ -406,8 +407,8 @@ import  '../Components/Navbar.css';
                                    </div>}
                                </div>
                            </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",2).map(element=>{return(
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",2).map(element=>{return(
                                      <div className="flex items-center">
                                      <div className="flex-shrink-0 h-10 w-10">
                                      </div>
@@ -430,8 +431,8 @@ import  '../Components/Navbar.css';
                                          </div>}
                                      </div>
                                  </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"THU",2).map(element=>{return(
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"tdU",2).map(element=>{return(
                                      <div className="flex items-center">
                                      <div className="flex-shrink-0 h-10 w-10">
                                      </div>
@@ -454,8 +455,8 @@ import  '../Components/Navbar.css';
                                          </div>}
                                      </div>
                                  </div> )
-                        })} </th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"FRI",2).map(element=>{return(
+                        })} </td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"FRI",2).map(element=>{return(
                                      <div className="flex items-center">
                                      <div className="flex-shrink-0 h-10 w-10">
                                      </div>
@@ -478,15 +479,15 @@ import  '../Components/Navbar.css';
                                          </div>}
                                      </div>
                                  </div> )
-                        })}</th>
+                        })}</td>
                         </tr>
                         
                         <tr className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider">
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">third</th>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">tdird</td>
                             <div className="py-5 black">
                         {/* <div className="border-t border-gray-200"></div> */}
                         </div>
-                        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">
+                        <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">
                         {getscheduleinfo(element.courseSchedule,"SAT",3).map(element=>{
                                return(
                                 <div className="flex items-center">
@@ -512,8 +513,8 @@ import  '../Components/Navbar.css';
                                 </div>
                             </div> )
                         })}
-                     </th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"SUN",3).map(element=>{
+                     </td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"SUN",3).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -537,8 +538,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"MON",3).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"MON",3).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -562,8 +563,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"TUE",3).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"TUE",3).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -587,8 +588,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",3).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",3).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -612,8 +613,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"THU",3).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"tdU",3).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -637,8 +638,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })} </th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"FRI",3).map(element=>{
+                        })} </td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"FRI",3).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -662,15 +663,15 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
+                        })}</td>
                         </tr>
                         
                         <tr className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider">
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">Fourth</th>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">Fourtd</td>
                             <div className="py-5 black">
                         {/* <div className="border-t border-gray-200"></div> */}
                         </div>
-                        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">
+                        <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">
                         {getscheduleinfo(element.courseSchedule,"SAT",4).map(element=>{
                                return(
                                 <div className="flex items-center">
@@ -696,8 +697,8 @@ import  '../Components/Navbar.css';
                                 </div>
                             </div> )
                         })}
-                     </th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"SUN",4).map(element=>{
+                     </td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"SUN",4).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -721,8 +722,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"MON",4).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"MON",4).map(element=>{
                               return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -746,8 +747,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"TUE",4).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"TUE",4).map(element=>{
                             return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -771,8 +772,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",4).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",4).map(element=>{
                               return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -796,8 +797,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"THU",4).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"tdU",4).map(element=>{
                               return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -821,8 +822,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> ) 
-                        })} </th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"FRI",4).map(element=>{
+                        })} </td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"FRI",4).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -846,15 +847,15 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
+                        })}</td>
                         </tr>
                         
                         <tr className="px-6 py-3 text-left text-xs font-medium text-gray-2000 uppercase tracking-wider">
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">Fifth</th>
+                            <td className="px-6 py-3 text-left text-xs font-medium text-gray-50 bg-gray-800 uppercase tracking-wider">Fiftd</td>
                             <div className="py-5 black">
                         {/* <div className="border-t border-gray-200"></div> */}
                         </div>
-                        <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">
+                        <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">
                         {getscheduleinfo(element.courseSchedule,"SAT",5).map(element=>{
                              return(
                                 <div className="flex items-center">
@@ -880,8 +881,8 @@ import  '../Components/Navbar.css';
                                 </div>
                             </div> )
                         })}
-                     </th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"SUN",5).map(element=>{
+                     </td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"SUN",5).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -905,8 +906,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"MON",5).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"MON",5).map(element=>{
                              return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -930,8 +931,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"TUE",5).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"TUE",5).map(element=>{
                                return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -955,8 +956,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",5).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"WED",5).map(element=>{
                               return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -980,8 +981,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"THU",5).map(element=>{
+                        })}</td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider">{getscheduleinfo(element.courseSchedule,"tdU",5).map(element=>{
                              return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -1005,8 +1006,8 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> ) 
-                        })} </th>
-                            <th className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"FRI",5).map(element=>{
+                        })} </td>
+                            <td className="px-6 py-3 text-left text-xs font-small text-gray-2000  tracking-wider"> {getscheduleinfo(element.courseSchedule,"FRI",5).map(element=>{
                               return(
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
@@ -1030,7 +1031,7 @@ import  '../Components/Navbar.css';
                                     </div>}
                                 </div>
                             </div> )
-                        })}</th>
+                        })}</td>
                         </tr>
                         </tbody>
                         </div>)
@@ -1038,6 +1039,7 @@ import  '../Components/Navbar.css';
     )
     }   
         </table>
+        </div>
         </div>
         }
     
