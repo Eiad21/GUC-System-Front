@@ -42,7 +42,7 @@ function HRMemberAttendanceItem(props) {
                 <a 
                 style = {{cursor:'pointer'}} 
                 class="text-indigo-600 hover:text-indigo-900"
-                onClick={showDetails}>Edit</a>
+                onClick={showDetails}>Details</a>
               </td>
               {state.detailsShown&&
                       props.sessions.map((item, idx)=>{

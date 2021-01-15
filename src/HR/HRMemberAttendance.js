@@ -49,6 +49,7 @@ function HRMemberAttendance(props) {
   
       return (
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8" >
+        <h2 style={{cursor:'pointer'}} onClick={props.setFalse}>Back</h2>
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg" style = {{marginRight: 150, marginLeft: 150}}>
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
@@ -64,7 +65,7 @@ function HRMemberAttendance(props) {
                 </th>
 
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Edit
+                  Details
                 </th>
               </tr>
             </thead>

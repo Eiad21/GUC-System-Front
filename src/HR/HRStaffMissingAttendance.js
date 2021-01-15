@@ -15,16 +15,14 @@ function HRStaffMissingAttendance(props) {
     }
   );
 
-  
-  useEffect(() => {
-    async function fetchData() {
-      realToken = props.realToken;
-      await axios.post('http://localhost:8080/hr/viewMembersMissingTime', {} ,{params:{token:props.realToken}})
+  const choseDate = async (evt)=>{
+    const dateoz = new Date(evt.target.value);
+    dateoz.setUTCHours(22)
+    await axios.post('http://localhost:8080/hr/viewMembersMissingTime', {date:dateoz} ,{params:{token:props.realToken}})
     .then((res) => {
       
       const newstate={...state};
       newstate.arr=res.data;
-      newstate.counter = state.counter+1;
       setState(newstate);
       console.log("res.data");
       console.log(res.data);
@@ -34,17 +32,15 @@ function HRStaffMissingAttendance(props) {
      
        console.log(err);
     })
-    console.log("after res")
-    }
-    if(state.counter %2=== 0){
-      console.log("test")
-      fetchData();
-    }
-  });
-
+  }
+  
     return (
     !props.realToken?<Redirect to="/login"/>:
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div className="col-span-6 sm:col-span-3">
+            <label for="first_name" className="block text-sm font-medium text-gray-700">Coordinator Name</label>
+            <input onChange={choseDate} style={{height:25}} type="date" name="first_name" id="first_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+        </div>
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">

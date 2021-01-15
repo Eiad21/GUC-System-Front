@@ -60,7 +60,12 @@ function HRMembersContainer(props) {
     //    console.log(err);
     // })
   }
-
+  const setFalse = ()=>{
+    console.log("Ente");
+    const newstate = {...state};
+    newstate.viewingList = true;
+    setState(newstate);
+  }
   useEffect(() => {
     async function fetchData() {
       realToken = props.realToken;
@@ -133,7 +138,7 @@ function HRMembersContainer(props) {
         </table>
       
       </div>
-      :<HRMemberAttendance id={state.viewedId} realToken={props.realToken}/>
+      :<HRMemberAttendance id={state.viewedId} realToken={props.realToken} setFalse = {setFalse}/>
       }
 </div>
 
