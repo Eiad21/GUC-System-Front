@@ -4,6 +4,7 @@ import axios from "axios"
 class CoorDeleteSlot extends Component {
     constructor(){
         super();
+        
         this.state={courseName: "",day:"",time:"",location:""}
         this.handleCourseNameChange = this.handleCourseNameChange.bind(this);
         this.handleTimeChange = this.handleTimeChange.bind(this);
@@ -13,10 +14,11 @@ class CoorDeleteSlot extends Component {
     
     
     }
-
     handleDelete(){
+      
         console.log("deleting slot");
-        axios.delete('http://localhost:8080/cooRoutes/courseSlot',{courseName: this.state.courseName, time:this.state.time,day: this.state.day, location: this.state.location}, {params:{token:this.props.realToken}})
+        axios.post('http://localhost:8080/cooRoutes/deleteSlot',{courseName: this.state.courseName, time:this.state.time,day: this.state.day, location: this.state.location} ,{params:{token:this.props.realToken}})
+        // 
         .then(res  => {
            console.log("1233141341351351341242412413413513413414134hhhhhhhhhhhhhhhh")
             console.log(res);

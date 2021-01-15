@@ -14,9 +14,9 @@ class CoorRequestContainer extends Component {
         axios.get('http://localhost:8080/cooRoutes/viewSlotLinkingReqs', {params:{token:this.props.realToken}})
         .then(res  => {
             this.setState(
-                {requests:res}
+                {requests:res.data}
                 ) ;
-            console.log(res);
+            console.log(res.data);
         } ) 
      }
 
